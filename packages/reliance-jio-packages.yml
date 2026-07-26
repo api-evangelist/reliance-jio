@@ -1,0 +1,160 @@
+generated: '2026-07-25'
+method: searched
+description: >-
+  First-party Reliance Jio client libraries. Everything below is published by Jio
+  under the JioMeet GitHub organization (github.com/JioMeet, 34 public repositories),
+  the @jiomeet npm scope, the CocoaPods trunk, or GitHub Packages Maven. Distribution
+  is deliberately uneven: web and React Native ship through public npm, iOS through
+  CocoaPods and a Swift Package Manager repository that vends XCFrameworks, Android
+  through a GitHub Packages Maven repository that requires a personal access token
+  with read:packages (NOT Maven Central - a Maven Central search for "jiomeet"
+  returns zero artifacts), and Flutter through a git dependency (NOT pub.dev - a
+  pub.dev search for "jiomeet" returns no first-party package). There is no Python,
+  Go, Ruby, PHP, .NET or Rust SDK, and no server-side SDK of any kind: every package
+  is a client-side real-time-communication SDK. The three REST APIs documented at
+  dev.jiomeet.com have no client library at all.
+sdk_scope: client-side RTC / UI only - no server SDK for the REST APIs
+packages:
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/core-sdk-web"
+    version: 1.1.1
+    url: https://www.npmjs.com/package/@jiomeet/core-sdk-web
+    install: npm install @jiomeet/core-sdk-web
+    repository: https://github.com/JioMeet/JioMeetCoreSDK_Web
+    official: true
+    description: JioMeet Core SDK for the web - audio/video engine without prebuilt UI.
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/core-template-web"
+    version: 1.1.1
+    url: https://www.npmjs.com/package/@jiomeet/core-template-web
+    install: npm install @jiomeet/core-template-web
+    repository: https://github.com/JioMeet/JioMeetCoreTemplateSDK_Web
+    official: true
+    description: JioMeet Core Template SDK for the web - prebuilt meeting UI on top of the core SDK.
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/hooks-sdk-web"
+    version: 1.1.1
+    url: https://www.npmjs.com/package/@jiomeet/hooks-sdk-web
+    install: npm install @jiomeet/hooks-sdk-web
+    repository: https://github.com/JioMeet/JioMeetHooksSDK_Web
+    official: true
+    description: React hooks binding for the JioMeet web SDK.
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/jm-media-web"
+    version: 1.1.12
+    url: https://www.npmjs.com/package/@jiomeet/jm-media-web
+    install: npm install @jiomeet/jm-media-web
+    official: true
+    description: JioMeet media stack for the web (WebRTC transport layer).
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/store-sdk-web"
+    version: 1.1.1
+    url: https://www.npmjs.com/package/@jiomeet/store-sdk-web
+    install: npm install @jiomeet/store-sdk-web
+    official: true
+    description: State store used by the JioMeet web SDKs.
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/core_sdk_plugin"
+    version: 2.3.2
+    url: https://www.npmjs.com/package/@jiomeet/core_sdk_plugin
+    install: npm install @jiomeet/core_sdk_plugin
+    repository: https://github.com/JioMeet/JioMeetCoreTemplateSDK_ReactNative
+    official: true
+    description: React Native bridge for the JioMeet Core SDK (Android + iOS).
+  - language: javascript
+    registry: npm
+    name: "@jiomeet/healthcare-template-react-native"
+    version: 1.2.0
+    url: https://www.npmjs.com/package/@jiomeet/healthcare-template-react-native
+    install: npm install @jiomeet/healthcare-template-react-native
+    repository: https://github.com/JioMeet/JioMeetHealthcareTemplateSDK_ReactNative
+    official: true
+    description: React Native bridge for the JioMeet healthcare (teleconsultation) template.
+  - language: kotlin
+    registry: github-packages-maven
+    name: com.jiomeet.platform:jiomeetcoresdk
+    url: https://maven.pkg.github.com/JioMeet/JioMeetCoreTemplateSDK_ANDROID
+    install: 'implementation "com.jiomeet.platform:jiomeetcoresdk:<version>"'
+    repository: https://github.com/JioMeet/JioMeetCoreSDK_ANDROID
+    official: true
+    auth_required: true
+    note: >-
+      Hosted on GitHub Packages, not Maven Central. The quick start instructs
+      developers to generate a GitHub personal access token with the read:packages
+      scope and put it in the Gradle repository credentials block - so the Android SDK
+      cannot be pulled anonymously. Releases are tagged at
+      https://github.com/JioMeet/JioMeetCoreSDK_ANDROID/releases.
+  - language: kotlin
+    registry: github-packages-maven
+    name: com.jiomeet.platform:jiomeetcoretemplatesdk
+    url: https://maven.pkg.github.com/JioMeet/JioMeetCoreTemplateSDK_ANDROID
+    install: 'implementation "com.jiomeet.platform:jiomeetcoretemplatesdk:<version>"'
+    repository: https://github.com/JioMeet/JioMeetCoreTemplateSDK_ANDROID
+    official: true
+    auth_required: true
+    description: Prebuilt Android meeting UI on top of the core SDK.
+  - language: swift
+    registry: cocoapods
+    name: JioMeetScreenShareSDK_iOS
+    version: 5.3.0
+    url: https://cocoapods.org/pods/JioMeetScreenShareSDK_iOS
+    install: "pod 'JioMeetScreenShareSDK_iOS'"
+    official: true
+    description: >-
+      iOS broadcast-upload-extension screen share SDK. The only Jio pod published to the
+      CocoaPods trunk; the core iOS SDK is vended as XCFrameworks instead.
+  - language: swift
+    registry: swift-package-manager
+    name: jiomeet-ui-sdk-ios-spm
+    url: https://github.com/JioMeet/jiomeet-ui-sdk-ios-spm
+    install: 'Xcode > Add Package Dependency > https://github.com/JioMeet/jiomeet-ui-sdk-ios-spm'
+    official: true
+    description: >-
+      Swift Package Manager distribution of the JioMeet iOS SDKs, vending prebuilt
+      XCFrameworks. Default branch is `dev`.
+  - language: dart
+    registry: git
+    name: JioMeetCoreTemplateSDK_Flutter
+    url: https://github.com/JioMeet/JioMeetCoreTemplateSDK_Flutter
+    install: "dependency via git: url: https://github.com/JioMeet/JioMeetCoreTemplateSDK_Flutter.git"
+    official: true
+    note: Not published to pub.dev - consumed as a git dependency.
+registries_probed:
+  - registry: npm
+    result: 7 first-party @jiomeet packages found
+  - registry: pypi
+    result: none
+  - registry: maven-central
+    result: none (search.maven.org "jiomeet" -> 0 artifacts)
+  - registry: nuget
+    result: none
+  - registry: pkg.go.dev
+    result: none
+  - registry: rubygems
+    result: none
+  - registry: packagist
+    result: none
+  - registry: crates.io
+    result: none
+  - registry: pub.dev
+    result: none first-party (only an unrelated third-party package matches "jiomeet")
+  - registry: cocoapods
+    result: JioMeetScreenShareSDK_iOS only
+source_repositories:
+  - url: https://github.com/JioMeet
+    public_repos: 34
+    note: >-
+      The substantive Jio open-source surface - core SDKs, template/UI SDKs and
+      vertical templates for iOS, Android, Web, React, Angular, React Native and
+      Flutter, plus JioMeetVideoKYCSDK, JioTranslateCoreSDK, JioLocalizationSDK and
+      the JMMediaStackSDK media layer. Most repositories default to the `dev` branch.
+  - url: https://github.com/RelianceJio
+    public_repos: 0
+  - url: https://github.com/JioPlatforms
+    public_repos: 0

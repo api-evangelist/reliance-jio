@@ -1,0 +1,56 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/reliance-jio-jioevents-platform-openapi.yml, openapi/reliance-jio-jiomeet-oauth-openapi.yml,
+  openapi/reliance-jio-jiomeet-platform-openapi.yml
+description: API-level error catalogue derived from the 4xx responses declared on every harvested JioMeet
+  / JioEvents operation. Jio does not use RFC 9457 application/problem+json; every documented error is
+  a JSON object with a numeric customCode, a message, and an errors / errorsArray detail list.
+format: vendor-json
+rfc9457: false
+envelope:
+  media_type: application/json
+  fields:
+    customCode: number - status code of the API
+    message: string - the error code of the API
+    errors: the errors that occurred (CustomError shape)
+    errorsArray: array of {property, message} objects (ValidationError shape)
+problems:
+- status: 400
+  schema: CustomError
+  title: Bad Request
+  description: null
+  fields:
+  - customCode
+  - message
+  - errors
+  operation_count: 28
+  example_operations:
+  - DELETE /api/platform/v1/meetingInvite/{meetingId}
+  - DELETE /api/platform/v1/schedule/meeting
+  - DELETE /api/platform/v1/schedule/webinar
+- status: 401
+  schema: CustomError
+  title: Unauthorized
+  description: null
+  fields:
+  - customCode
+  - message
+  - errors
+  operation_count: 29
+  example_operations:
+  - DELETE /api/platform/v1/meetingInvite/{meetingId}
+  - DELETE /api/platform/v1/schedule/meeting
+  - DELETE /api/platform/v1/schedule/webinar
+- status: 412
+  schema: ValidationError
+  title: Precondition Failed / validation error
+  description: Validation Errors usually arise when the request body is incorrect
+  fields:
+  - customCode
+  - message
+  - errorsArray
+  operation_count: 29
+  example_operations:
+  - DELETE /api/platform/v1/meetingInvite/{meetingId}
+  - DELETE /api/platform/v1/schedule/meeting
+  - DELETE /api/platform/v1/schedule/webinar

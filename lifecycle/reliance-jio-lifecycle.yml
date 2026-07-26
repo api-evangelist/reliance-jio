@@ -1,0 +1,75 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://dev.jiomeet.com (docs version switcher and legacy banner),
+  https://dev.jiomeet.com/docs/1.0.0/api/server-apis/provision-room, and the harvested
+  OpenAPI (openapi/reliance-jio-*-openapi.yml)
+description: >-
+  Reliance Jio publishes no versioning policy, no deprecation policy, no SLA and no
+  status page for any developer-facing API. What it does operate is a two-track
+  documentation version switcher on dev.jiomeet.com - "current" and "legacy" - where the
+  legacy set carries an explicit banner that it is no longer actively maintained. That
+  banner is the only deprecation signal in the estate, and it sits on documentation, not
+  on the API: no Sunset or Deprecation response header is documented, no operation in the
+  harvested spec is marked deprecated, and no migration guide is published.
+versioning:
+  scheme: uri-path
+  current: v1
+  pattern: /api/platform/v1/...
+  note: >-
+    The JioMeet Platform and JioEvents Platform APIs are versioned in the path at v1. The
+    JioMeet OAuth API mixes versions - the token endpoint is /api/oauth2/v2/token (v2)
+    while the meeting endpoints under it are unversioned (/api/meeting, /api/my_profile).
+    info.version in all three harvested specs is 1.0.0.
+  docs_versions:
+    - label: current
+      url: https://dev.jiomeet.com/docs/quick-start/introduction
+      status: maintained
+    - label: legacy
+      url: https://dev.jiomeet.com/docs/1.0.0/introduction
+      status: unmaintained
+      note: >-
+        Legacy pages carry the banner "no longer actively maintained". They document an
+        older generation of server APIs on the same host under /api/thirdparty/* -
+        e.g. POST https://jiomeetpro.jio.com/api/thirdparty/provision/room and
+        /api/thirdparty/provision/user - authenticated with `app` and `authToken` headers
+        rather than a JWT. Those paths have been superseded by /api/platform/v1/*.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  superseded_surfaces:
+    - from: /api/thirdparty/provision/room (legacy docs)
+      to: POST /api/platform/v1/room
+    - from: /api/thirdparty/provision/user (legacy docs)
+      to: null
+      note: No current-version equivalent is documented.
+    - from: /api/thirdparty/recordings/list (legacy docs)
+      to: POST /api/platform/v1/recordings/list
+  note: >-
+    Recorded as observed practice, not as a published policy. Jio states no notice
+    period, no support window and no migration commitment.
+sla:
+  url: null
+  uptime_target: null
+  published: false
+status_page:
+  url: null
+  published: false
+  probed:
+    - {url: 'https://status.jio.com', status: '000 - does not resolve'}
+    - {url: 'https://status.jiomeet.com', status: '000 - does not resolve'}
+changelog:
+  url: null
+  published: false
+  note: >-
+    No dated changelog or release-notes page exists on dev.jiomeet.com (checked
+    /docs/changelog and /docs/release-notes, both 404, and the full sitemap of 76 URLs).
+    The only per-release history Jio publishes anywhere is GitHub releases on the SDK
+    repositories, e.g. https://github.com/JioMeet/JioMeetCoreSDK_ANDROID/releases.
+support:
+  email: jiomeet.support@jio.com
+  contact_page: https://jiomeetpro.jio.com/contact-us
+  note: Both are cited in the JioMeet SDK READMEs as the real-time support path.

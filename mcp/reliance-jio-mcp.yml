@@ -1,0 +1,219 @@
+generated: '2026-07-25'
+method: derived
+status: candidate
+source: openapi/reliance-jio-jioevents-platform-openapi.yml, openapi/reliance-jio-jiomeet-oauth-openapi.yml,
+  openapi/reliance-jio-jiomeet-platform-openapi.yml
+description: Reliance Jio publishes no hosted or remote MCP server - searches of the Jio developer surfaces,
+  the JioMeet GitHub organization, npm and the public MCP registries found none. This is a CANDIDATE tool
+  surface derived one-to-one from the 29 operations harvested from Jio's own JioMeet / JioEvents API reference,
+  so an agent builder has a grounded starting point. Nothing here is published by Jio.
+server:
+  name: reliance-jio
+  transport: http
+  url: null
+  published: false
+tool_count: 29
+tools:
+- name: jioevents_platform_meeting_invite_create_a_meeting_invite
+  operationId: meetingInviteCreateAMeetingInvite
+  description: Meeting Invite - Create a meeting invite
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#POST /api/platform/v1/meetingInvite
+  method: POST
+  path: /api/platform/v1/meetingInvite
+  server: https://jioevents.com
+- name: jioevents_platform_meeting_invite_delete_meeting_invites
+  operationId: meetingInviteDeleteMeetingInvites
+  description: Meeting Invite - Delete meeting invites
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#DELETE /api/platform/v1/meetingInvite/{meetingId}
+  method: DELETE
+  path: /api/platform/v1/meetingInvite/{meetingId}
+  server: https://jioevents.com
+- name: jioevents_platform_meeting_invite_get_meeting_invites
+  operationId: meetingInviteGetMeetingInvites
+  description: Meeting Invite - Get meeting invites
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#GET /api/platform/v1/meetingInvite/{meetingId}
+  method: GET
+  path: /api/platform/v1/meetingInvite/{meetingId}
+  server: https://jioevents.com
+- name: jioevents_platform_scheduled_webinar_delete_a_scheduled_webinar
+  operationId: scheduledWebinarDeleteAScheduledWebinar
+  description: Scheduled Webinar - Delete a scheduled webinar
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#DELETE /api/platform/v1/schedule/webinar
+  method: DELETE
+  path: /api/platform/v1/schedule/webinar
+  server: https://jioevents.com
+- name: jioevents_platform_scheduled_webinar_update_a_scheduled_webinar
+  operationId: scheduledWebinarUpdateAScheduledWebinar
+  description: Scheduled Webinar - Update a scheduled webinar
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#PUT /api/platform/v1/schedule/webinar
+  method: PUT
+  path: /api/platform/v1/schedule/webinar
+  server: https://jioevents.com
+- name: jioevents_platform_scheduled_webinar_create_a_scheduled_webinar
+  operationId: scheduledWebinarCreateAScheduledWebinar
+  description: Scheduled Webinar - Create a scheduled webinar
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#POST /api/platform/v1/schedule/webinar
+  method: POST
+  path: /api/platform/v1/schedule/webinar
+  server: https://jioevents.com
+- name: jioevents_platform_scheduled_webinar_fetch_a_scheduled_webinar
+  operationId: scheduledWebinarFetchAScheduledWebinar
+  description: Scheduled Webinar - Fetch a scheduled webinar
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#GET /api/platform/v1/schedule/webinar
+  method: GET
+  path: /api/platform/v1/schedule/webinar
+  server: https://jioevents.com
+- name: jioevents_platform_sessions_create_a_session
+  operationId: sessionsCreateASession
+  description: Sessions - Create a session
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#POST /api/platform/v1/sessions/{meetingId}
+  method: POST
+  path: /api/platform/v1/sessions/{meetingId}
+  server: https://jioevents.com
+- name: jioevents_platform_sessions_get_sessions
+  operationId: sessionsGetSessions
+  description: Sessions - Get sessions
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#GET /api/platform/v1/sessions/{meetingId}
+  method: GET
+  path: /api/platform/v1/sessions/{meetingId}
+  server: https://jioevents.com
+- name: jioevents_platform_sessions_delete_a_session
+  operationId: sessionsDeleteASession
+  description: Sessions - Delete a session
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#DELETE /api/platform/v1/sessions/{meetingId}/{sessionId}
+  method: DELETE
+  path: /api/platform/v1/sessions/{meetingId}/{sessionId}
+  server: https://jioevents.com
+- name: jioevents_platform_webinar_download_attendance_registration_report
+  operationId: webinarDownloadAttendanceRegistrationReport
+  description: Webinar - Download attendance/ Registration report
+  source_operation: openapi/reliance-jio-jioevents-platform-openapi.yml#GET /api/platform/v1/webinar/{meetingId}/download
+  method: GET
+  path: /api/platform/v1/webinar/{meetingId}/download
+  server: https://jioevents.com
+- name: jiomeet_platform_get_meeting_report
+  operationId: getMeetingReport
+  description: Get Meeting Report
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#GET /api/platform/v1/analytics/report
+  method: GET
+  path: /api/platform/v1/analytics/report
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_list_chat_thread
+  operationId: listChatThread
+  description: List chat thread
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#GET /api/platform/v1/chat/thread
+  method: GET
+  path: /api/platform/v1/chat/thread
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_check_recording_status
+  operationId: checkRecordingStatus
+  description: Check Recording Status
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/recordings/isrecording
+  method: POST
+  path: /api/platform/v1/recordings/isrecording
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_list_recordings
+  operationId: listRecordings
+  description: List Recordings
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/recordings/list
+  method: POST
+  path: /api/platform/v1/recordings/list
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_start_recording
+  operationId: startRecording
+  description: Start Recording
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/recordings/start
+  method: POST
+  path: /api/platform/v1/recordings/start
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_stop_recording
+  operationId: stopRecording
+  description: Stop Recording
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/recordings/stop
+  method: POST
+  path: /api/platform/v1/recordings/stop
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_create_a_dynamic_meeting
+  operationId: createADynamicMeeting
+  description: Create a dynamic meeting
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/room
+  method: POST
+  path: /api/platform/v1/room
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_scheduled_meeting_update_a_scheduled_meeting
+  operationId: scheduledMeetingUpdateAScheduledMeeting
+  description: Scheduled Meeting - Update a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#PUT /api/platform/v1/schedule/meeting
+  method: PUT
+  path: /api/platform/v1/schedule/meeting
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_scheduled_meeting_delete_a_scheduled_meeting
+  operationId: scheduledMeetingDeleteAScheduledMeeting
+  description: Scheduled Meeting - Delete a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#DELETE /api/platform/v1/schedule/meeting
+  method: DELETE
+  path: /api/platform/v1/schedule/meeting
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_scheduled_meeting_create_a_scheduled_meeting
+  operationId: scheduledMeetingCreateAScheduledMeeting
+  description: Scheduled Meeting - Create a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#POST /api/platform/v1/schedule/meeting
+  method: POST
+  path: /api/platform/v1/schedule/meeting
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_platform_scheduled_meeting_fetch_a_scheduled_meeting
+  operationId: scheduledMeetingFetchAScheduledMeeting
+  description: Scheduled Meeting - Fetch a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-platform-openapi.yml#GET /api/platform/v1/schedule/meeting
+  method: GET
+  path: /api/platform/v1/schedule/meeting
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_scheduled_meeting_create_a_scheduled_meeting
+  operationId: scheduledMeetingCreateAScheduledMeeting
+  description: Scheduled Meeting - Create a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#POST /api/meeting
+  method: POST
+  path: /api/meeting
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_scheduled_meeting_delete_a_scheduled_meeting
+  operationId: scheduledMeetingDeleteAScheduledMeeting
+  description: Scheduled Meeting - Delete a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#POST /api/meeting/cancel/{meetingId}
+  method: POST
+  path: /api/meeting/cancel/{meetingId}
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_scheduled_meeting_fetch_a_scheduled_meeting
+  operationId: scheduledMeetingFetchAScheduledMeeting
+  description: Scheduled Meeting - Fetch a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#GET /api/meeting/meetingDetails/{meetingId}
+  method: GET
+  path: /api/meeting/meetingDetails/{meetingId}
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_scheduled_meeting_update_a_scheduled_meeting
+  operationId: scheduledMeetingUpdateAScheduledMeeting
+  description: Scheduled Meeting - Update a scheduled meeting
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#PUT /api/meeting/meetingDetails/{meetingId}
+  method: PUT
+  path: /api/meeting/meetingDetails/{meetingId}
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_scheduled_meeting_list_all_meetings_of_user
+  operationId: scheduledMeetingListAllMeetingsOfUser
+  description: Scheduled Meeting - List all meetings of user
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#GET /api/meeting/{userId}
+  method: GET
+  path: /api/meeting/{userId}
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_user_info_fetch_user_profile_info
+  operationId: userInfoFetchUserProfileInfo
+  description: User Info - Fetch User profile info
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#GET /api/my_profile
+  method: GET
+  path: /api/my_profile
+  server: https://jiomeetpro.jio.com
+- name: jiomeet_oauth_access_token_endpoint_fetch_access_and_refresh_token
+  operationId: accessTokenEndpointFetchAccessAndRefreshToken
+  description: Access Token Endpoint -fetch access and refresh token
+  source_operation: openapi/reliance-jio-jiomeet-oauth-openapi.yml#POST /api/oauth2/v2/token
+  method: POST
+  path: /api/oauth2/v2/token
+  server: https://jiomeetpro.jio.com

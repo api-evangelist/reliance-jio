@@ -1,0 +1,106 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://dev.jiomeet.com/docs/1.0.0/integration/web/embed-jiomeet-in-iframe,
+  https://dev.jiomeet.com/docs/1.0.0/integration/web/query-params,
+  https://dev.jiomeet.com/docs/1.0.0/integration/web/postmessage-call-controls,
+  https://dev.jiomeet.com/docs/1.0.0/web/postmessages-events, and the JioMeet GitHub
+  organization
+description: >-
+  Reliance Jio's embeddable client-side surface is substantial and, unlike its REST
+  APIs, it is where most of Jio's developer investment actually sits. Three families:
+  a hosted iframe embed of the whole JioMeet meeting UI driven by URL query parameters
+  and a bidirectional postMessage protocol; prebuilt "Template" UI SDKs that drop a
+  complete meeting screen into a native or web app; and headless "Core" SDKs that expose
+  the audio/video engine with no UI. A set of vertical templates (healthcare
+  teleconsultation, video KYC, watch party) are prebuilt product surfaces on top.
+  Distribution for all of them is catalogued in packages/reliance-jio-packages.yml.
+families:
+  - name: Hosted iframe embed
+    kind: hosted-embed
+    description: >-
+      The entire JioMeet meeting experience embedded in an iframe. No SDK install; the
+      integration contract is a URL plus postMessage.
+    url_pattern: 'https://jiomeetpro.jio.com/guest?meetingId={jiomeetId}&pwd={roomPIN}&name={displayName}&autoJoin=true'
+    required_iframe_attributes: 'allow="camera;microphone;display-capture"'
+    query_parameters:
+      - {name: meetingId, description: The JioMeet meeting identifier (10-digit jiomeetId)}
+      - {name: pwd, description: Room PIN / meeting password}
+      - {name: name, description: Display name of the participant}
+      - {name: autojoin, description: Automatically join the user to the call}
+      - {name: hideAllCallControls, description: Hide all call controls in the JioMeet call UI}
+      - {name: isFullScreenShare, description: Remove the participant tiles during screen share}
+      - {name: chatbot, description: Set false to disable the chatbot in the iframe / webview}
+    docs: https://dev.jiomeet.com/docs/1.0.0/integration/web/embed-jiomeet-in-iframe
+  - name: postMessage control channel
+    kind: in-page-messaging
+    description: >-
+      Bidirectional window.postMessage contract between the host page and the embedded
+      JioMeet iframe. This is the closest thing Jio has to an event surface; it is an
+      in-page contract, not a server-to-server webhook.
+    outbound_controls:
+      - toggleAudio
+      - toggleVideo
+      - toggleParticipantList
+      - toggleChat
+      - startScreenShare
+      - startWhiteboardShare
+      - stopSharing
+      - toggleHand
+      - leaveMeeting
+      - EndMeeting
+      - showSelfView
+      - toggleParticipantsView
+      - openIframe
+      - closeIframe
+      - enablePresenterLayout
+      - disablePresenterLayout
+      - changePresenter
+    inbound_events:
+      - callStarted
+      - callEnded
+      - participantListUpdated
+      - loadingCompleted
+      - chatMessageRecieved
+      - userVolumeStatus
+    envelope: 'JSON.stringify({ type: "<name>", ...args })'
+    docs:
+      controls: https://dev.jiomeet.com/docs/1.0.0/integration/web/postmessage-call-controls
+      events: https://dev.jiomeet.com/docs/1.0.0/web/postmessages-events
+  - name: Template UI SDKs (prebuilt meeting screen)
+    kind: prebuilt-ui
+    platforms:
+      - {platform: web, package: "@jiomeet/core-template-web", repo: https://github.com/JioMeet/JioMeetCoreTemplateSDK_Web}
+      - {platform: react-native, package: "@jiomeet/core_sdk_plugin", repo: https://github.com/JioMeet/JioMeetCoreTemplateSDK_ReactNative}
+      - {platform: android, package: com.jiomeet.platform:jiomeetcoretemplatesdk, repo: https://github.com/JioMeet/JioMeetCoreTemplateSDK_ANDROID}
+      - {platform: ios, repo: https://github.com/JioMeet/JioMeetCoreTemplateSDK_iOS}
+      - {platform: flutter, repo: https://github.com/JioMeet/JioMeetCoreTemplateSDK_Flutter}
+  - name: Core SDKs (headless engine)
+    kind: headless
+    platforms:
+      - {platform: web, package: "@jiomeet/core-sdk-web", repo: https://github.com/JioMeet/JioMeetCoreSDK_Web}
+      - {platform: react-hooks, package: "@jiomeet/hooks-sdk-web", repo: https://github.com/JioMeet/JioMeetHooksSDK_Web}
+      - {platform: android, package: com.jiomeet.platform:jiomeetcoresdk, repo: https://github.com/JioMeet/JioMeetCoreSDK_ANDROID}
+      - {platform: ios, repo: https://github.com/JioMeet/JioMeetCoreSDK_iOS}
+    media_layer:
+      - {name: JMMediaStackSDK_iOS, repo: https://github.com/JioMeet/JMMediaStackSDK_iOS}
+      - {name: JMMediaStackSDK_Android, repo: https://github.com/JioMeet/JMMediaStackSDK_Android}
+      - {name: "@jiomeet/jm-media-web", registry: npm}
+  - name: Vertical templates
+    kind: prebuilt-product-surface
+    items:
+      - {name: Healthcare teleconsultation, platforms: [android, ios, react-native]}
+      - {name: Video KYC, platforms: [android, ios], repos: [https://github.com/JioMeet/JioMeetVideoKYCSDK_Android, https://github.com/JioMeet/JioMeetVideoKYCSDK_iOS]}
+      - {name: JioCinema watch party, platforms: [android, ios]}
+      - {name: JioMeet Plus template, platforms: [android]}
+  - name: Cross-cutting client libraries
+    kind: support-library
+    items:
+      - {name: JioLocalizationSDK, platforms: [ios, android, web, react, angular]}
+      - {name: JioTranslateCoreSDK, platforms: [ios, android]}
+      - {name: JioMatrixTranslation UI kits, platforms: [ios, android]}
+      - {name: VoiceActivityDetector, note: WebRTC-based voice activity detection (Swift)}
+      - {name: WebRtcVad, note: C voice-activity-detection primitive}
+screen_share:
+  ios_pod: JioMeetScreenShareSDK_iOS
+  note: Requires a broadcast upload extension target on iOS.

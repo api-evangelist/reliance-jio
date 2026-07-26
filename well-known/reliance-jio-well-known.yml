@@ -1,0 +1,122 @@
+generated: '2026-07-25'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface on every Reliance Jio host
+  in apis.yml plus the two API hosts recovered from the harvested OpenAPI servers[]
+  (jiomeetpro.jio.com, jioevents.com). Only one real document exists across the whole
+  estate: an RFC 9116 security.txt on jiomeetpro.jio.com, the JioMeet API host. Note
+  the www.jio.com pattern - it answers 200 with a text/html SPA shell for every
+  /.well-known/ path (including invented ones), so those are recorded as
+  present-but-not-a-real-document and were not saved.
+hosts:
+  - host: https://jiomeetpro.jio.com
+    note: JioMeet Platform / OAuth API host (OpenAPI servers[]).
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        type: text/plain
+        file: reliance-jio-security.txt
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+  - host: https://www.jio.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        type: text/html
+        note: SPA shell, not a real security.txt; not saved.
+      - path: /.well-known/openid-configuration
+        status: 200
+        type: text/html
+        note: SPA shell, not an OIDC discovery document; not saved.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        type: text/html
+        note: SPA shell; not saved.
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        type: text/html
+        note: SPA shell; not saved.
+      - path: /.well-known/api-catalog
+        status: 200
+        type: text/html
+        note: SPA shell; not saved.
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        type: text/html
+        note: SPA shell; not saved.
+  - host: https://dev.jiomeet.com
+    note: The JioMeet developer documentation portal (Docusaurus).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://platform.jiomeet.com
+    note: JioMeet platform console (credential issuance).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://developer.jio.com
+    note: Set-top-box developer programme.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://api.jio.com
+    note: Responds but forbids everything anonymously.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+robots:
+  url: https://www.jio.com/robots.txt
+  status: 200
+  note: >-
+    Real robots.txt with an explicit AI/search bot allow-list section - GPTBot,
+    PerplexityBot, Google-Extended, bingGPT and Googlebot are all Allow: / - plus
+    seven sitemap references. Jio's crawl posture toward AI agents is open at the
+    web layer even though no agent-facing API surface is published.

@@ -1,0 +1,881 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/reliance-jio-jioevents-platform-openapi.yml, openapi/reliance-jio-jiomeet-oauth-openapi.yml,
+  openapi/reliance-jio-jiomeet-platform-openapi.yml
+description: Request and response examples published inside Jio's own API reference, extracted per operation.
+  Every value below is Jio's documented example payload - nothing was invented.
+apis:
+- api: JioMeet User OAuth APIs
+  spec: openapi/reliance-jio-jiomeet-oauth-openapi.yml
+  examples:
+  - operation: GET /api/meeting/meetingDetails/{meetingId}
+    summary: Scheduled Meeting - Fetch a scheduled meeting
+    operationId: scheduledMeetingFetchAScheduledMeeting
+    response_examples:
+    - name: Example fetch scheduled meeting response
+      value:
+      - jiomeetId: '7212310665'
+        topic: Meeting created at 07:09 AM
+        startTime: '2023-09-08T02:39:27.000Z'
+        endTime: '2023-09-08T03:09:27.000Z'
+        scheduledDuration: 1800000
+        meetingUrl: https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq
+        status: active
+        pin: 7mVhq
+        _id: sm-aed12dea-60d2-4757-9705-6c93dce0e3f0
+  - operation: GET /api/meeting/{userId}
+    summary: Scheduled Meeting - List all meetings of user
+    operationId: scheduledMeetingListAllMeetingsOfUser
+    response_examples:
+    - name: Example fetch scheduled meeting response
+      value:
+        totalCount: 1
+        moreAvailable: false
+        meetingDetails:
+        - jiomeetId: '7212310665'
+          topic: Meeting created at 07:09 AM
+          startTime: '2023-09-08T02:39:27.000Z'
+          endTime: '2023-09-08T03:09:27.000Z'
+          scheduledDuration: 1800000
+          meetingUrl: https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq
+          status: active
+          pin: 7mVhq
+          _id: sm-aed12dea-60d2-4757-9705-6c93dce0e3f0
+  - operation: GET /api/my_profile
+    summary: User Info - Fetch User profile info
+    operationId: userInfoFetchUserProfileInfo
+    response_examples:
+    - name: Example User Profile
+      value:
+        _id: u-5a0d550b-85cc-4200-97j5-81088364a6b8
+        name: John
+        lname: Doe
+        email: johndoe@gmail.com
+  - operation: POST /api/meeting
+    summary: Scheduled Meeting - Create a scheduled meeting
+    operationId: scheduledMeetingCreateAScheduledMeeting
+    request_example:
+      topic: The title of your meeting
+      startTime: '2023-11-11T12:50:00.000Z'
+      endTime: '2023-11-11T15:50:00.000Z'
+      isPinEnabled: true
+    response_examples:
+    - name: Example scheduled meeting response
+      value:
+        status: Meeting created successfully.
+        meetingDetails:
+        - jiomeetId: '5319535369'
+          topic: My Scheduled Meeting
+          startTime: '2023-09-11T12:50:00.000Z'
+          endTime: '2023-09-15T13:20:00.000Z'
+          scheduledDuration: 1800000
+          meetingUrl: https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CaU
+          advancedOptions:
+            joinBeforeHost: true
+            waitingRoom: false
+            participantHardAudioMute: false
+            participantHardVideoMute: false
+            isClassroomMode: false
+          status: active
+          pin: n5CaU
+          _id: sm-77189593-f31a-4b62-941a-74f9147e465
+  - operation: POST /api/meeting/cancel/{meetingId}
+    summary: Scheduled Meeting - Delete a scheduled meeting
+    operationId: scheduledMeetingDeleteAScheduledMeeting
+    request_example:
+      cancel: current
+    response_examples:
+    - name: Example delete scheduled meeting response
+      value:
+        status: Your meeting has been cancelled successfully.
+  - operation: POST /api/oauth2/v2/token
+    summary: Access Token Endpoint -fetch access and refresh token
+    operationId: accessTokenEndpointFetchAccessAndRefreshToken
+    request_example:
+      code: 43473295-453c-451e-83af-7620f41fb87f
+      grant_type: authorization_code
+    response_examples:
+    - name: Example Access token response
+      value:
+        access_token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE2OTYzNDIwMDJ9.q9ov96lDmdYdBhQ-5JnppOB3s1we6B5NIaqkHoYFjHMSBpY6F22BIfYRSzKZNglByuu6_nw6QGM8MptyQT_qpqnPlCH-uDRgkQ5vvvARLW6wOH2b8kUzEpr8My2seB5WBniplu4UoYEfKRPEuu-8y1fnUF_aDfQ276NP3RU0-8Y
+        refresh_token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE3MDE0Mzk2MDJ9.nd1LJFFN-C6gu6hjWk0kJ1MVZ5_twB_ggvnuoYAuk9r3xVi9KzFlc6mbM6cuP7_RvoGvSp_Oqd_VSzn9O3QRFFhyrEzU0rYG6QBqfCD2Jx4DB_8-oqiBFm-lUWKmwxGOuJ1BElqb-7rEk4HpizlNqoP281L3QQ4T82GUopSgS3A
+        token_type: Bearer
+        expires_in: '2023-10-03T14:05:42.305Z'
+        scope: meeting:create meeting:delete user:read
+  - operation: PUT /api/meeting/meetingDetails/{meetingId}
+    summary: Scheduled Meeting - Update a scheduled meeting
+    operationId: scheduledMeetingUpdateAScheduledMeeting
+    request_example:
+      topic: My Updated Scheduled Meeting
+      startTime: '2023-12-12T13:50:00.000Z'
+      endTime: '2023-12-12T14:20:00.000Z'
+      isPinEnabled: true
+    response_examples:
+    - name: Example update scheduled meeting response
+      value:
+        jiomeetId: '5319535369'
+        topic: My Updated Scheduled Meeting
+        startTime: '2023-12-12T13:50:00.000Z'
+        endTime: '2023-12-12T14:20:00.000Z'
+        scheduledDuration: 1800000
+        meetingUrl: https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CrU
+        advancedOptions:
+          joinBeforeHost: true
+          waitingRoom: false
+          participantHardAudioMute: false
+          participantHardVideoMute: false
+          isClassroomMode: false
+        isPinEnabled: true
+        status: active
+        pin: n5CaU
+        _id: sm-77189593-f31a-4b62-941a-74f9147e465
+- api: JioMeet Platform APIs
+  spec: openapi/reliance-jio-jiomeet-platform-openapi.yml
+  examples:
+  - operation: DELETE /api/platform/v1/schedule/meeting
+    summary: Scheduled Meeting - Delete a scheduled meeting
+    operationId: scheduledMeetingDeleteAScheduledMeeting
+    request_example:
+      meetingId: The meeting returned when you scheduled the meeting
+      type: current
+    response_examples:
+    - name: Example delete scheduled meeting response
+      value:
+        status: DELETED
+  - operation: GET /api/platform/v1/analytics/report
+    summary: Get Meeting Report
+    operationId: getMeetingReport
+    response_examples:
+    - name: Example recording status response
+      value:
+        report:
+        - Date: 25th July 2025
+          UserId: gu-43616e22-af54-4315-bbe0-60f23182046c
+          Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+          JiomeetId: '8069667546'
+          Topic: title of the meeting
+          Enterprise Name: OTT
+          User Name: 'asdfa '
+          Call Role: callJoinee
+          Status: Accepted
+          User Role: member
+          User Email: NA
+          User PhoneNo.: NA
+          User Type: member
+          Machine IP Address: 116.50.84.118
+          Scheduled Meeting Start Time: NA
+          Scheduled Meeting End Time: NA
+          Actual Start Time: '10:45:11'
+          Actual End Time: '10:46:20'
+          Participants Endpoint Type: 'web '
+          Participants Endpoint Name: web
+          Call Direction: DialIn
+          Call Duration: 00:01:09
+          Type of Meeting: Call
+          Media Engine: NA
+    - name: Example recording status response
+      value:
+        report:
+        - Date: 25th July 2025
+          UserId: gu-43616e22-af54-4315-bbe0-60f23182046c
+          Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+          JiomeetId: '8069667546'
+          Topic: title of the meeting
+          Enterprise Name: OTT
+          User Name: 'asdfa '
+          Call Role: callJoinee
+          Status: Accepted
+          User Role: member
+          User Email: NA
+          User PhoneNo.: NA
+          User Type: member
+          Machine IP Address: 116.50.84.118
+          Scheduled Meeting Start Time: NA
+          Scheduled Meeting End Time: NA
+          Actual Start Time: '10:45:11'
+          Actual End Time: '10:46:20'
+          Participants Endpoint Type: 'web '
+          Participants Endpoint Name: web
+          Call Direction: DialIn
+          Call Duration: 00:01:09
+          Type of Meeting: Call
+          Media Engine: NA
+        - Date: 25th July 2025
+          UserId: gu-87654321-xy98-7654-abc0-12345678901z
+          Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+          JiomeetId: '8069667546'
+          Topic: title of the meeting
+          Enterprise Name: OTT
+          User Name: John Doe
+          Call Role: callInitiator
+          Status: Accepted
+          User Role: moderator
+          User Email: john.doe@example.com
+          User PhoneNo.: +91-9876543210
+          User Type: member
+          Machine IP Address: 192.168.1.100
+          Scheduled Meeting Start Time: '10:00:00'
+          Scheduled Meeting End Time: '11:00:00'
+          Actual Start Time: '10:00:05'
+          Actual End Time: '10:55:30'
+          Participants Endpoint Type: desktop
+          Participants Endpoint Name: JioMeet Desktop
+          Call Direction: DialIn
+          Call Duration: 00:55:25
+          Type of Meeting: Conference
+          Media Engine: WebRTC
+  - operation: GET /api/platform/v1/chat/thread
+    summary: List chat thread
+    operationId: listChatThread
+    response_examples:
+    - name: Example recording status response
+      value:
+        totalCount: 2
+        moreAvailable: true
+        messages: []
+  - operation: GET /api/platform/v1/schedule/meeting
+    summary: Scheduled Meeting - Fetch a scheduled meeting
+    operationId: scheduledMeetingFetchAScheduledMeeting
+    response_examples:
+    - name: Example fetch scheduled meeting response
+      value:
+        meetingsCount: 1
+        meetingDetails:
+        - jiomeetId: '7212310665'
+          topic: Meeting created at 07:09 AM
+          isAutoRecordingEnabled: true
+          startTime: '2023-09-08T02:39:27.000Z'
+          endTime: '2023-09-08T03:09:27.000Z'
+          scheduledDuration: 1800000
+          meetingUrl: https://platform.jiomeet.com/guest?meetingId=7212310665&pwd=7mVhq
+          status: active
+          roomPIN: 7mVhq
+          meetingId: sm-aed12dea-60d2-4757-9705-6c93dce0e3f0
+  - operation: POST /api/platform/v1/recordings/isrecording
+    summary: Check Recording Status
+    operationId: checkRecordingStatus
+    request_example:
+      jiomeetId: The 10 digit unique ID of the meeting
+    response_examples:
+    - name: Example recording status response
+      value:
+        recordingStatus: true
+  - operation: POST /api/platform/v1/recordings/list
+    summary: List Recordings
+    operationId: listRecordings
+    request_example:
+      jiomeetId: The 10 digit unique ID of the meeting
+      roomPIN: Meeting secret that secures the meeting from unwanted access
+      historyId: Unique identifier of the recording. This should be used to fetch the recording once it
+        has completed
+    response_examples:
+    - name: Example recording response
+      value:
+        callRecordings:
+        - recorderId: Etglyx
+          url: https://example.jio.com/api/shorturl/getVideo?hash=dFnCz8qIO10215123
+          customName: Recording(1)_10:24__10:27
+          duration: null
+          dateCreated: '2022-03-10T04:54:50.254Z'
+          startTime: '2022-03-10T04:54:55.247Z'
+          endTime: '2022-03-10T04:57:22.785Z'
+          fileSize: 4255450
+  - operation: POST /api/platform/v1/recordings/start
+    summary: Start Recording
+    operationId: startRecording
+    request_example:
+      jiomeetId: The 10 digit unique ID of the meeting
+      roomPIN: Meeting secret that secures the meeting from unwanted access
+    response_examples:
+    - name: Example recording response
+      value:
+        status: OK
+        historyId: chis-123
+  - operation: POST /api/platform/v1/recordings/stop
+    summary: Stop Recording
+    operationId: stopRecording
+    request_example:
+      jiomeetId: The 10 digit unique ID of the meeting
+      roomPIN: Meeting secret that secures the meeting from unwanted access
+    response_examples:
+    - name: Example recording response
+      value:
+        status: OK
+        historyId: chis-123
+  - operation: POST /api/platform/v1/room
+    summary: Create a dynamic meeting
+    operationId: createADynamicMeeting
+    request_example:
+      name: name of the user creating the meeting
+      title: title of the meeting
+      description: description for the meeting
+      hostToken: false
+    response_examples:
+    - name: Example meeting response
+      value:
+        jiomeetId: 1234567890
+        roomPIN: abcdef
+        subdomain: myjiomeetapplication
+        guestMeetingLink: https://jiomeetpro.jio.com/guest?meetingId=123456789&pwd=abcdef
+        meetingLink: https://myjiomeetapplication.platform.jiomeet.com/guest?meetingId=123456789&pwd=abcdef"
+        joinEndpoint: guest
+        hostToken: xEEREASDASAD343a
+  - operation: POST /api/platform/v1/schedule/meeting
+    summary: Scheduled Meeting - Create a scheduled meeting
+    operationId: scheduledMeetingCreateAScheduledMeeting
+    request_example:
+      topic: The title of your meeting
+      startTime: '2023-09-11T12:50:00.000Z'
+      endTime: '2023-09-11T12:50:00.000Z'
+    response_examples:
+    - name: Example scheduled meeting response
+      value:
+        jiomeetId: '5319535369'
+        topic: My Scheduled Meeting
+        isAutoRecordingEnabled: false
+        startTime: '2023-09-11T12:50:00.000Z'
+        endTime: '2023-09-11T13:20:00.000Z'
+        scheduledDuration: 1800000
+        meetingUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU
+        hostUrl: httpss://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A
+        hostToken: Z5gdmTRSb11A
+        advancedOptions:
+          joinBeforeHost: true
+          waitingRoom: false
+          participantHardAudioMute: false
+          participantHardVideoMute: false
+          isClassroomMode: false
+        status: active
+        roomPIN: n5CaU
+        meetingId: sm-77189593-f31a-4b62-941a-74f9147e465
+  - operation: PUT /api/platform/v1/schedule/meeting
+    summary: Scheduled Meeting - Update a scheduled meeting
+    operationId: scheduledMeetingUpdateAScheduledMeeting
+    request_example:
+      meetingId: The meeting returned when you scheduled the meeting
+      topic: My Updated Scheduled Meeting
+      startTime: '2023-09-11T13:50:00.000Z'
+      endTime: '2023-09-11T14:20:00.000Z'
+    response_examples:
+    - name: Example update scheduled meeting response
+      value:
+        jiomeetId: '5319535369'
+        topic: My Updated Scheduled Meeting
+        isAutoRecordingEnabled: false
+        startTime: '2023-09-11T13:50:00.000Z'
+        endTime: '2023-09-11T14:20:00.000Z'
+        scheduledDuration: 1800000
+        meetingUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU
+        hostUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A
+        hostToken: Z5gdmTRSb11A
+        advancedOptions:
+          joinBeforeHost: true
+          waitingRoom: false
+          participantHardAudioMute: false
+          participantHardVideoMute: false
+          isClassroomMode: false
+        status: active
+        roomPIN: n5CaU
+        meetingId: sm-77189593-f31a-4b62-941a-74f9147e465
+- api: JioEvents Platform APIs
+  spec: openapi/reliance-jio-jioevents-platform-openapi.yml
+  examples:
+  - operation: DELETE /api/platform/v1/meetingInvite/{meetingId}
+    summary: Meeting Invite - Delete meeting invites
+    operationId: meetingInviteDeleteMeetingInvites
+    request_example:
+      meetingInviteIds:
+      - mi-984037ef-b959-4210-998a-2be29c14e72b
+    response_examples:
+    - name: Example delete meeting invite response
+      value:
+        success: true
+  - operation: DELETE /api/platform/v1/schedule/webinar
+    summary: Scheduled Webinar - Delete a scheduled webinar
+    operationId: scheduledWebinarDeleteAScheduledWebinar
+    request_example:
+      meetingId: sm-085033e1-b83c-43ea-afa9-49df09173534
+      type: current
+    response_examples:
+    - name: Example delete scheduled webinar response
+      value:
+        status: DELETED
+  - operation: DELETE /api/platform/v1/sessions/{meetingId}/{sessionId}
+    summary: Sessions - Delete a session
+    operationId: sessionsDeleteASession
+    response_examples:
+    - name: Example delete session response
+      value:
+        success: true
+  - operation: GET /api/platform/v1/meetingInvite/{meetingId}
+    summary: Meeting Invite - Get meeting invites
+    operationId: meetingInviteGetMeetingInvites
+    response_examples:
+    - name: Example get meeting invites response
+      value:
+        maxInvites: 50
+        invitesCount: 1
+        invitesList:
+        - _id: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+          firstName: tp-088573cb-34d3-405d-a954-119ee6aaff92
+          lastName: ''
+          emailId: tp-088573cb-34d3-405d-a954-119ee6aaff92@cpassbot.jiomeet
+          role: Host
+          meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+          userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+          isDeleted: false
+          socialMediaLinks: []
+          registered: false
+          isInviteSent: false
+          cOn: '2025-08-20T21:26:12.068Z'
+          mOn: '2025-08-20T21:26:12.068Z'
+          __v: 0
+  - operation: GET /api/platform/v1/schedule/webinar
+    summary: Scheduled Webinar - Fetch a scheduled webinar
+    operationId: scheduledWebinarFetchAScheduledWebinar
+    response_examples:
+    - name: Example fetch scheduled webinar response
+      value:
+        meetingDetails:
+        - jiomeetId: '7975873555'
+          topic: Test1 user's JioEvent
+          startTime: '2025-08-21T14:00:00.000Z'
+          endTime: '2025-08-21T16:30:00.000Z'
+          scheduledDuration: 9000000
+          meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+          speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+            lastName}
+          attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+          webinar:
+            enabled: true
+            options:
+              quesAns: true
+              allowGuests: true
+              comments: true
+              ticker:
+                enabled: false
+                text: ''
+              thankYouMsg:
+                enabled: true
+                text: Thank you for attending the event
+              views:
+                showCount: true
+              likes:
+                showCount: true
+                floatingReactions:
+                  enabled: true
+                reactionType:
+                - laugh
+                - awesome
+                - like
+                - applause
+                - greet
+                enabled: true
+              videoQuality: sd
+              customization:
+                hideCompletedSessions: true
+                enableHandRaise: true
+                hideWelcomeMessage: true
+                equalTileLayout: false
+                shouldSendSMSToAttendee: true
+              practiceSession: false
+              onDemand: false
+              record: false
+              flashcard: false
+              feedLayout: grid
+            registration:
+              enabled: false
+              enabledFullName: true
+              autoApprove: true
+              otpEnabled: true
+              inviteOnly: false
+              openInvite: false
+              closeBeforeDays: 0
+            recording:
+              recordingType: attendee_page_only_player
+            attendeeFeed: live
+            activation:
+              hash: _vs-p5ZUhx42846b73f6801755725171923
+              url: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+            attendeeWebsocketEnabled: false
+            broadcasting: false
+            qnaTimeLimit: 3
+            webinarPortal:
+              enabled: false
+            sessions:
+              enabled: true
+              registrationEnabled: false
+            networking:
+              enabled: false
+              availability: always
+            leaderboard:
+              enabled: false
+            preRecordedVideo:
+              enabled: false
+              loop: 1
+          advancedOptions:
+            joinBeforeHost: true
+            loggedInOnly: false
+          status: active
+          roomPIN: 1Hn8c
+          meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+        meetingsCount: 1
+  - operation: GET /api/platform/v1/sessions/{meetingId}
+    summary: Sessions - Get sessions
+    operationId: sessionsGetSessions
+    response_examples:
+    - name: Example get sessions response
+      value:
+        meetingDetails:
+          topic: Test1 user's JioEvent
+          startTime: '2025-08-21T14:00:00.000Z'
+          topicMarkdown:
+            text: Test1 user's JioEvent
+            messageType: default
+          hash: ''
+        speakers:
+        - _id: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+          firstName: tp-088573cb-34d3-405d-a954-119ee6aaff92
+          lastName: ''
+          role: Host
+          userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+          socialMediaLinks: []
+        sessions:
+        - _id: se-77a4ef5e-0e86-4217-9f5b-08d766a48aef
+          topic: Welcome Session
+          description: ''
+          meetingId: sm-92e0f49f-5e55-4703-b26e-f9c89898786e
+          parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+          type: default
+          startTime: '2025-08-21T14:00:00.000Z'
+          endTime: '2025-08-21T14:30:00.000Z'
+          invites: []
+          status: active
+          isDeleted: false
+          cOn: '2025-08-20T21:28:41.315Z'
+          mOn: '2025-08-20T21:28:41.315Z'
+          __v: 0
+          invitedCoHosts: []
+          invitedSpeakers: []
+          broadcasting: false
+          preRecordedVideo:
+            enabled: false
+            loop: 1
+          cohost:
+          - u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+          meetingUrl: https://jioevents.com/shortener?meetingId=9376680649&pwd=qrBG5
+        - _id: se-eff13292-c342-4394-85a1-e64b42fadd2b
+          topic: Session2
+          description: ''
+          descriptionMarkdown:
+            text: ''
+            messageType: web
+          meetingId: sm-0666ba1c-c585-4193-a329-2fc23bd29e72
+          parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+          type: normal
+          startTime: '2025-08-21T14:30:00.000Z'
+          endTime: '2025-08-21T15:00:00.000Z'
+          invites: []
+          status: active
+          isDeleted: false
+          cOn: '2025-08-20T21:38:13.546Z'
+          mOn: '2025-08-20T21:38:13.546Z'
+          __v: 0
+          invitedCoHosts: []
+          invitedSpeakers: []
+          broadcasting: false
+          preRecordedVideo:
+            enabled: false
+            loop: 1
+          cohost:
+          - u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+          meetingUrl: https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y
+        lastSessionDate: '2025-08-21T14:30:00.000Z'
+  - operation: GET /api/platform/v1/webinar/{meetingId}/download
+    summary: Webinar - Download attendance/ Registration report
+    operationId: webinarDownloadAttendanceRegistrationReport
+    response_examples:
+    - name: Example download webinar attendance response
+      value:
+        success: true
+        fileName: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx
+        downloadUrl: https://jiomeetpro.jio.com/api/meeting/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/webinar/download/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWVhZDY5ZDhlLThjMzAtNDJmMS05Nzk4LThhY2ZhNWRkMTI3Ny1hdHRlbmRhbmNlLnhsc3giLCJpYXQiOjE3NTU3MjY5NDgsImV4cCI6MTc1NTcyNzI0OH0.nd_l91epkHKl8rZ8o8bAVR9xeN4VJXaR7SErmL8Qvr9eWUn0nHj8UhfFurP_6-Bca1_aK6kdUxJPYgr-TxR_MpkYCr9husHFz2inuWvu-dOuDPxSMNT3KeRmiTDYUm9OrUOCFj9ZjOmCL9yPUhQRGa8XC3zM37oq6jvEwCBeAyxF-_ukuRsFpQtGpXwbatZuEuziY42Mmw2hpA2DKs5MsClUcoS6EfhlYM0rNefynwvfnjSo3MPfY9yYjgFtCKO936EqnhaD4nFsBTGIk3f4_8ZRIve3fR7oWq-uAAaJey4TJcq1vhNqOScCFliLFrpaUnYZaaGfubw2kqxn_61vBQ
+    - name: Example download webinar registration response
+      value:
+        success: true
+        fileName: sm-cc88e8f1-65f4-4a44-8280-a526215033c2-registered-attendees.xlsx
+        downloadUrl: https://jiomeetpro.jio.com/api/meeting/sm-cc88e8f1-65f4-4a44-8280-a526215033c2/webinar/download/sm-cc88e8f1-65f4-4a44-8280-a526215033c2-registered-attendees.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWNjODhlOGYxLTY1ZjQtNGE0NC04MjgwLWE1MjYyMTUwMzNjMi1yZWdpc3RlcmVkLWF0dGVuZGVlcy54bHN4IiwiaWF0IjoxNzU2NDU1MjQ4LCJleHAiOjE3NTY0NTU1NDh9.kiqkbDatP6lREN-qO87t8xGuHewX_9K9U7hG1Uv9zLvHc2VJ3TOKL4TOGCPeyR6sOmzgbO5d7DwUampawk-183dlnVRx2v3LF7IWzMdwnwkW2wImgiHGh0jOPnmTxDtNvedgVFFawJrGGlB0yIFxgO3Ut2_AJVylh3Obcf4hPBMQ8_EMuAaEavFKURvQC5rR26_3mfMRxKfNFKI3rNGHR6gcWA4LB1eBoVuVraSkdUM6nqs56BNUb8W_bqrq6GLu4IXeSLcUuU1ahsW7hM-APHXxnt25BM8H2A69WJByPBh2RXBzn4NhfV7PXnOy13yTYlA_1ZCmB8nEjWNisxrW9A
+  - operation: POST /api/platform/v1/meetingInvite
+    summary: Meeting Invite - Create a meeting invite
+    operationId: meetingInviteCreateAMeetingInvite
+    request_example:
+      role: Co-Host
+      firstName: Test
+      lastName: user
+      identity: m48519891@gmail.com
+      sendInvite: true
+      meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+    response_examples:
+    - name: Example meeting invite response
+      value:
+        _id: mi-984037ef-b959-4210-998a-2be29c14e72b
+        joinUrl: https://jioevents.com/meetingInvite/join/_tD6SZHCMQ50885cdde5341755725215006
+        joinHash: _tD6SZHCMQ50885cdde5341755725215006
+        firstName: Test
+        lastName: user
+        emailId: m48519891@gmail.com
+        role: Co-Host
+        meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+        userId: u-17dbc620-b434-4ef4-bc77-412e41f71911
+        isDeleted: false
+        socialMediaLinks: []
+        registered: true
+        isInviteSent: false
+        sendInvite: true
+        cOn: '2025-08-20T21:26:55.007Z'
+        mOn: '2025-08-20T21:26:55.007Z'
+        __v: 0
+  - operation: POST /api/platform/v1/schedule/webinar
+    summary: Scheduled Webinar - Create a scheduled webinar
+    operationId: scheduledWebinarCreateAScheduledWebinar
+    request_example:
+      topic: Test1 user's JioEvent
+      startTime: '2025-08-18T19:00:00.000Z'
+      endTime: '2025-08-18T19:30:00.000Z'
+      webinar:
+        enabled: true
+    response_examples:
+    - name: Example scheduled webinar response
+      value:
+        jiomeetId: '7975873555'
+        topic: Test1 user's JioEvent
+        startTime: '2025-08-21T14:00:00.000Z'
+        endTime: '2025-08-21T16:30:00.000Z'
+        scheduledDuration: 9000000
+        meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+        speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+          lastName}
+        attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+        webinar:
+          enabled: true
+          options:
+            quesAns: true
+            allowGuests: true
+            comments: true
+            ticker:
+              enabled: false
+              text: ''
+            thankYouMsg:
+              enabled: true
+              text: Thank you for attending the event
+            views:
+              showCount: true
+            likes:
+              showCount: true
+              floatingReactions:
+                enabled: true
+              reactionType:
+              - laugh
+              - awesome
+              - like
+              - applause
+              - greet
+              enabled: true
+            videoQuality: sd
+            customization:
+              hideCompletedSessions: true
+              enableHandRaise: true
+              hideWelcomeMessage: true
+              equalTileLayout: false
+              shouldSendSMSToAttendee: true
+            practiceSession: false
+            onDemand: false
+            record: false
+            flashcard: false
+            feedLayout: grid
+          registration:
+            enabled: false
+            enabledFullName: true
+            autoApprove: true
+            otpEnabled: true
+            inviteOnly: false
+            openInvite: false
+            closeBeforeDays: 0
+          recording:
+            recordingType: attendee_page_only_player
+          attendeeFeed: live
+          activation:
+            hash: _vs-p5ZUhx42846b73f6801755725171923
+            url: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+          attendeeWebsocketEnabled: false
+          broadcasting: false
+          qnaTimeLimit: 3
+          webinarPortal:
+            enabled: false
+          sessions:
+            enabled: true
+            registrationEnabled: false
+          networking:
+            enabled: false
+            availability: always
+          leaderboard:
+            enabled: false
+          preRecordedVideo:
+            enabled: false
+            loop: 1
+        advancedOptions:
+          joinBeforeHost: true
+          loggedInOnly: false
+        status: active
+        roomPIN: 1Hn8c
+        meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+  - operation: POST /api/platform/v1/sessions/{meetingId}
+    summary: Sessions - Create a session
+    operationId: sessionsCreateASession
+    request_example:
+      description: ''
+      descriptionMarkdown:
+        text: ''
+        messageType: web
+      invites: []
+      topic: Session2
+      startTime: '2025-08-21T14:30:00.000Z'
+      endTime: '2025-08-21T15:00:00.000Z'
+    response_examples:
+    - name: Example create session response
+      value:
+        status: Session created successfully.
+        sessionDetails:
+          _id: se-eff13292-c342-4394-85a1-e64b42fadd2b
+          topic: Session2
+          description: ''
+          descriptionMarkdown:
+            text: ''
+            messageType: web
+          meetingId: sm-0666ba1c-c585-4193-a329-2fc23bd29e72
+          parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+          type: normal
+          startTime: '2025-08-21T14:30:00.000Z'
+          endTime: '2025-08-21T15:00:00.000Z'
+          invites: []
+          status: active
+          isDeleted: false
+          cOn: '2025-08-20T21:38:13.546Z'
+          mOn: '2025-08-20T21:38:13.546Z'
+          __v: 0
+          scheduledDuration: 1800000
+          meetingUrl: https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y
+          userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+          jiomeetId: 0161894358
+          pin: dJy2y
+          advancedOptions:
+            hostAudio: false
+            participantAudio: true
+            hostVideo: false
+            participantVideo: true
+            joinBeforeHost: true
+            waitingRoom: false
+            loggedInOnly: false
+            colleagueOnly: false
+            participantHardAudioMute: false
+            participantHardVideoMute: false
+            isRestrictedMeeting: false
+            isClassroomMode: false
+            restrictChat: NONE
+  - operation: PUT /api/platform/v1/schedule/webinar
+    summary: Scheduled Webinar - Update a scheduled webinar
+    operationId: scheduledWebinarUpdateAScheduledWebinar
+    request_example:
+      topic: Test1 user's JioEvent
+      startTime: '2025-08-21T14:00:00.000Z'
+      endTime: '2025-08-21T16:30:00.000Z'
+      meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      webinar:
+        sessions:
+          enabled: true
+          registrationEnabled: false
+    response_examples:
+    - name: Example update scheduled webinar response
+      value:
+        jiomeetId: '7975873555'
+        topic: Test1 user's JioEvent
+        startTime: '2025-08-21T14:00:00.000Z'
+        endTime: '2025-08-21T16:30:00.000Z'
+        scheduledDuration: 9000000
+        meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+        speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+          lastName}
+        attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+        webinar:
+          enabled: true
+          options:
+            quesAns: true
+            allowGuests: true
+            comments: true
+            ticker:
+              enabled: false
+              text: ''
+            thankYouMsg:
+              enabled: true
+              text: Thank you for attending the event
+            views:
+              showCount: true
+            likes:
+              showCount: true
+              floatingReactions:
+                enabled: true
+              reactionType:
+              - laugh
+              - awesome
+              - like
+              - applause
+              - greet
+              enabled: true
+            videoQuality: sd
+            customization:
+              hideCompletedSessions: true
+              enableHandRaise: true
+              hideWelcomeMessage: true
+              equalTileLayout: false
+              shouldSendSMSToAttendee: true
+            practiceSession: false
+            onDemand: false
+            record: false
+            flashcard: false
+            feedLayout: grid
+          registration:
+            enabled: false
+            enabledFullName: true
+            autoApprove: true
+            otpEnabled: true
+            inviteOnly: false
+            openInvite: false
+            closeBeforeDays: 0
+          recording:
+            recordingType: attendee_page_only_player
+          attendeeFeed: live
+          activation:
+            hash: _xZtO9QIKVda1c34d0fe601755526454337
+            url: https://jioevents.com/attendee/sm-085033e1-b83c-43ea-afa9-49df09173534/join/_xZtO9QIKVda1c34d0fe601755526454337
+          attendeeWebsocketEnabled: false
+          broadcasting: false
+          qnaTimeLimit: 3
+          webinarPortal:
+            enabled: false
+          sessions:
+            enabled: true
+            registrationEnabled: false
+          networking:
+            enabled: false
+            availability: always
+          leaderboard:
+            enabled: false
+          preRecordedVideo:
+            enabled: false
+            loop: 1
+        advancedOptions:
+          joinBeforeHost: true
+          loggedInOnly: false
+        status: active
+        roomPIN: 2xJbU
+        meetingId: sm-085033e1-b83c-43ea-afa9-49df09173534

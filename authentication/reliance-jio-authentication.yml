@@ -1,0 +1,91 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://dev.jiomeet.com/docs/quick-start/authentication,
+  https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client, and the
+  securitySchemes / Authorization header parameters in the harvested OpenAPI
+  (openapi/reliance-jio-*-openapi.yml)
+docs: https://dev.jiomeet.com/docs/quick-start/authentication
+description: >-
+  Reliance Jio's publicly documented authentication surface is entirely the JioMeet /
+  JioEvents developer platform. Two distinct models are in play. Server-to-server
+  (JioMeet Platform Server API, JioEvents Platform Server API) uses a self-signed JWT
+  built from app credentials issued in the JioMeet console and sent in the Authorization
+  header - the spec models it as a required header PARAMETER, not a securityScheme, so
+  it is invisible to tooling that only reads components.securitySchemes. User-authorized
+  access (JioMeet Platform OAuth API) is a real OAuth 2.0 authorization-code flow with
+  HTTP Basic client authentication at the token endpoint and HTTP Bearer on every
+  subsequent call - that surface IS modelled as securitySchemes. Jio's network / CAMARA
+  APIs are not in scope here: they are partner-gated through Aduna and the GSMA
+  federated hub, and Jio publishes no CIBA endpoint and no OIDC discovery document
+  anywhere in its estate.
+summary:
+  types: [http, jwt-bearer, oauth2]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  oidc_discovery: false
+  mtls: false
+  ciba: false
+schemes:
+  - name: jwt-app-credentials
+    type: jwt
+    location: Authorization header
+    modelled_as: required header parameter (not a securityScheme)
+    algorithms: [HS256, RS256]
+    docs: https://dev.jiomeet.com/docs/quick-start/authentication
+    applies_to:
+      - openapi/reliance-jio-jiomeet-platform-openapi.yml
+      - openapi/reliance-jio-jioevents-platform-openapi.yml
+    detail: >-
+      One-step authentication signs the token with the app secret using HMAC SHA-256
+      (HS256). Two-step authentication signs with a private key using RS256 and
+      registers the matching public key. In both cases the JWT payload must carry an
+      issuer and an "app" claim holding the JioMeet app id generated in the platform
+      console at https://platform.jiomeet.com. Jio's own guidance is to keep tokens
+      short-lived and validate them server-side.
+    credential_issuance: https://platform.jiomeet.com
+  - name: basicAuth
+    type: http
+    scheme: basic
+    description: >-
+      OAuth clientId as the username and the OAuth client secret as the password. Used
+      only on POST /api/oauth2/v2/token.
+    sources: [openapi/reliance-jio-jiomeet-oauth-openapi.yml]
+    operations: ['POST /api/oauth2/v2/token']
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    description: >-
+      The access_token returned by /api/oauth2/v2/token, sent as an HTTP Bearer token on
+      every user-authorized call.
+    sources: [openapi/reliance-jio-jiomeet-oauth-openapi.yml]
+    operation_count: 6
+oauth2:
+  flow: authorizationCode
+  authorization_endpoint: https://jiomeetpro.jio.com/oauth2/authorize
+  token_endpoint: https://jiomeetpro.jio.com/api/oauth2/v2/token
+  token_endpoint_auth_method: client_secret_basic
+  grant_types: [authorization_code, refresh_token]
+  state_parameter: recommended (base64-encoded CSRF token)
+  scopes: scopes/reliance-jio-scopes.yml
+  token_lifetimes:
+    authorization_code: 5 minutes
+    access_token: 1 day
+    refresh_token: 60 days
+  docs: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+not_found:
+  - id: openid-connect
+    note: >-
+      No OIDC discovery document is served anywhere on a Jio host. jiomeetpro.jio.com
+      returns 403 for /.well-known/openid-configuration, dev.jiomeet.com and
+      platform.jiomeet.com return 404, and www.jio.com returns a 200 text/html SPA shell
+      for every /.well-known/ path.
+  - id: ciba
+    note: >-
+      CIBA - the backchannel authentication mechanism CAMARA pairs with OIDC for network
+      APIs - does not appear on any Jio-operated surface, consistent with Jio publishing
+      no first-party Open Gateway portal.
+  - id: mutual-tls
+    note: No mTLS scheme is documented or declared.
+  - id: api-key
+    note: No plain apiKey scheme; app credentials are always exchanged for a JWT first.

@@ -1,0 +1,122 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  TM Forum public conformance reports, the GSMA Open Gateway press release of
+  2025-10-09, Jio's JioMeet developer documentation, and the harvested OpenAPI
+  (openapi/reliance-jio-*-openapi.yml)
+description: >-
+  Reliance Jio's conformance posture is the sharpest example in the catalogue of
+  certified-but-not-callable. It holds TM Forum Open API Platinum conformance - the
+  first communications service provider ever to do so - across more than twenty
+  certified Open APIs, and it has launched a CAMARA SIM Swap API under GSMA Open
+  Gateway. None of those interfaces is publicly callable or publicly documented by Jio.
+  Meanwhile the API surface Jio DOES publish self-serve (JioMeet, JioEvents) conforms to
+  almost no cross-cutting standard: no RFC 9457 problem details, no OIDC, no idempotency
+  contract, no pagination convention, no webhook signing.
+standards:
+  - id: tmforum-open-api
+    conforms: true
+    level: Open API Platinum
+    evidence: >-
+      Reliance Jio was the first CSP to achieve TM Forum Open API Platinum conformance
+      certification (reported as 23 certifications covering more than 20 Open APIs). A
+      public conformance report for TMF653 (Service Test Management) is hosted by TM
+      Forum at
+      https://s3.us-east-1.amazonaws.com/tmf-sfdc-public/Conformance/CON-01539/JIO-Certification%20Report-TMF653%20API-Aug2022.pdf
+      (HTTP 200, application/pdf, 477,083 bytes, August 2022).
+    caveat: >-
+      These are BSS/OSS supplier-integration interfaces. Not one is publicly callable or
+      publicly documented by Jio.
+  - id: camara-sim-swap
+    conforms: true
+    evidence: >-
+      GSMA press release, 9 October 2025 - "Bharti Airtel, Reliance Jio and Vodafone Idea
+      have already launched the SIM Swap API, which help banks prevent account takeover
+      attacks."
+    caveat: >-
+      Reachable only through Aduna (Jio is one of twelve carrier equity owners), the GSMA
+      federated hub, or a CPaaS partner. Jio publishes no first-party Open Gateway portal
+      - opengateway.jio.com and developers.opengateway.jio.com do not resolve - and no
+      CAMARA OpenAPI mirror, sandbox or CIBA endpoint.
+  - id: camara-number-verification
+    conforms: false
+    evidence: >-
+      Announced in the same GSMA release as planned before the end of 2025; no Jio-hosted
+      documentation, endpoint, sandbox or spec for it was found.
+  - id: gsma-open-gateway
+    conforms: true
+    evidence: >-
+      Named by the GSMA as one of India's three operators strengthening anti-scam work
+      through the GSMA Open Gateway initiative, 9 October 2025.
+    first_party_portal: false
+  - id: oauth2-authorization-code
+    conforms: true
+    evidence: >-
+      JioMeet Platform OAuth API implements the authorization-code grant with a refresh
+      grant, HTTP Basic client authentication at
+      https://jiomeetpro.jio.com/api/oauth2/v2/token, documented scopes and documented
+      redirect-URI restrictions.
+  - id: http-basic-bearer-auth
+    conforms: true
+    evidence: openapi securitySchemes declare basicAuth (http/basic) and bearerAuth (http/bearer).
+  - id: jwt-rfc7519
+    conforms: true
+    evidence: >-
+      Server-to-server access uses a self-signed JWT (HS256 one-step, RS256 two-step)
+      carrying an issuer and an "app" claim; documented at
+      https://dev.jiomeet.com/docs/quick-start/authentication.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No OIDC discovery document on any Jio host (jiomeetpro 403, dev.jiomeet.com 404,
+      platform.jiomeet.com 404, www.jio.com returns an HTML SPA shell).
+  - id: ciba
+    conforms: false
+    evidence: No CIBA authorization endpoint on any Jio-operated surface.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a vendor envelope - {customCode, message, errors|errorsArray} - served as
+      application/json, not application/problem+json. See
+      errors/reliance-jio-problem-types.yml.
+  - id: rfc9116-security-txt
+    conforms: true
+    partial: true
+    evidence: >-
+      https://jiomeetpro.jio.com/.well-known/security.txt returns 200 text/plain with a
+      Contact field, but omits the required Expires field and every other RFC 9116 field.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header, parameter or retry contract appears in any of the 29
+      harvested operations or anywhere in the documentation.
+  - id: pagination
+    conforms: false
+    evidence: >-
+      No list operation declares limit/offset/cursor parameters; GET
+      /api/platform/v1/schedule/meeting and GET /api/meeting/{userId} return unbounded
+      collections.
+  - id: webhook-signing
+    conforms: false
+    evidence: Jio publishes no webhooks and no AsyncAPI document; there is nothing to sign.
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: 3gpp-nef-scef
+    conforms: false
+    evidence: >-
+      No NEF, SCEF, network-slicing or edge/MEC API documentation was found on any Jio
+      property; Jio True 5G enterprise connectivity is marketed as a sales-led product.
+certifications_published:
+  - name: TM Forum Open API Conformance - TMF653 Service Test Management
+    authority: TM Forum
+    date: '2022-08'
+    url: https://s3.us-east-1.amazonaws.com/tmf-sfdc-public/Conformance/CON-01539/JIO-Certification%20Report-TMF653%20API-Aug2022.pdf
+    level: Open API Platinum (programme level)

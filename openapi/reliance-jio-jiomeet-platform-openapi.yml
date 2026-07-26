@@ -1,0 +1,1566 @@
+openapi: 3.0.3
+info:
+  title: JioMeet Platform APIs
+  description: This section covers the JioMeet Platform APIs which can be used to quickly setup JioMeet
+    APIs in your backend.
+  version: 1.0.0
+servers:
+- url: https://jiomeetpro.jio.com
+tags:
+- name: JioMeetCpaasPlatform
+paths:
+  /api/platform/v1/recordings/start:
+    post:
+      summary: Start Recording
+      description: This API allows you to start a recording. Ensure that the meeting is started for this
+        API to take effect. A historyId is returned by this API which can be used to fetch the recordings
+        later
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                jiomeetId: The 10 digit unique ID of the meeting
+                roomPIN: Meeting secret that secures the meeting from unwanted access
+              type: object
+              properties:
+                jiomeetId:
+                  type: string
+                  description: The 10 digit unique ID of the meeting
+                roomPIN:
+                  type: string
+                  description: Meeting secret that secures the meeting from unwanted access
+              title: RecordingStartRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status whether the call was a success. Recording cant be started or stopped
+                      when the meeting has no one in the call
+                  historyId:
+                    type: string
+                    description: Unique identifier of the recording. This should be used to fetch the
+                      recording once it has completed
+                title: RecordingResponse
+              examples:
+                Example1:
+                  summary: Example recording response
+                  value:
+                    status: OK
+                    historyId: chis-123
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/room:
+    post:
+      summary: Create a dynamic meeting
+      description: This API allows you to provision a dynamic meeting. Dynamic meetings are valid for
+        24 hours from the time of creation.
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                name: name of the user creating the meeting
+                title: title of the meeting
+                description: description for the meeting
+                hostToken: false
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: name of the user creating the meeting
+                title:
+                  type: string
+                  description: title of the meeting
+                description:
+                  type: string
+                  description: description for the meeting
+                hostToken:
+                  type: boolean
+                  description: This boolean describes whether to return a host token or not. A host token
+                    can be used to join a meeting as a host
+                isAutoRecordingEnabled:
+                  type: boolean
+                  description: This boolean describes whether to auto recording the call. The recording
+                    starts automatically when there are more than 1 user in the call if this flag is enabled
+              title: RoomRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jiomeetId:
+                    type: string
+                    description: The 10 digit unique ID of the meeting
+                  roomPIN:
+                    type: string
+                    description: Meeting PIN that secures the meeting from unwanted access
+                  subdomain:
+                    type: string
+                    description: The JioMeet subdomain this meeting will run in
+                  joinEndpoint:
+                    type: string
+                    description: The endpoint path for joining the guestMeetingLink/meetingLink.
+                  hostToken:
+                    type: string
+                    description: This identifier allows a user to join with host privileges. To allow
+                      a user to join as host, append this parameter in the query parameters of the meetingLink/guestMeetingLink.
+                      "hostToken" is the query change
+                  guestMeetingLink:
+                    type: string
+                    description: The meeting link that the users will use to join the meeting. These users
+                      will be guest users and hence wont have any privileges to alter any meeting settings.
+                  meetingLink:
+                    type: string
+                    description: The meeting link with your custom sub-domain that the users will use
+                      to join the meeting. These users will be guest users and hence wont have any privileges
+                      to alter any meeting settings.
+                title: RoomResponse
+              examples:
+                Example1:
+                  summary: Example meeting response
+                  value:
+                    jiomeetId: 1234567890
+                    roomPIN: abcdef
+                    subdomain: myjiomeetapplication
+                    guestMeetingLink: https://jiomeetpro.jio.com/guest?meetingId=123456789&pwd=abcdef
+                    meetingLink: https://myjiomeetapplication.platform.jiomeet.com/guest?meetingId=123456789&pwd=abcdef"
+                    joinEndpoint: guest
+                    hostToken: xEEREASDASAD343a
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/recordings/list:
+    post:
+      summary: List Recordings
+      description: This API list recordings for a JioMeet meeting using the jiomeetId, roomPIN and the
+        historyId (historyId is obtained through the start/stop recording APIs)
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                jiomeetId: The 10 digit unique ID of the meeting
+                roomPIN: Meeting secret that secures the meeting from unwanted access
+                historyId: Unique identifier of the recording. This should be used to fetch the recording
+                  once it has completed
+              type: object
+              properties:
+                jiomeetId:
+                  type: string
+                  description: The 10 digit unique ID of the meeting
+                roomPIN:
+                  type: string
+                  description: Meeting secret that secures the meeting from unwanted access
+                historyId:
+                  type: string
+                  description: Unique identifier of the recording. This should be used to fetch the recording
+                    once it has completed
+              title: RecordingListRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  callRecordings:
+                    type: array
+                    description: An array of objects containing the recording download URL. Ensure you
+                      call the download URL with the proper Authorization header to download the recording
+                title: RecordingsListResponse
+              examples:
+                Example1:
+                  summary: Example recording response
+                  value:
+                    callRecordings:
+                    - recorderId: Etglyx
+                      url: https://example.jio.com/api/shorturl/getVideo?hash=dFnCz8qIO10215123
+                      customName: Recording(1)_10:24__10:27
+                      duration: null
+                      dateCreated: '2022-03-10T04:54:50.254Z'
+                      startTime: '2022-03-10T04:54:55.247Z'
+                      endTime: '2022-03-10T04:57:22.785Z'
+                      fileSize: 4255450
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/schedule/meeting:
+    put:
+      summary: Scheduled Meeting - Update a scheduled meeting
+      description: This API updates a scheduled meeting using the meetingId returned when the meeting
+        was created
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                meetingId: The meeting returned when you scheduled the meeting
+                topic: My Updated Scheduled Meeting
+                startTime: '2023-09-11T13:50:00.000Z'
+                endTime: '2023-09-11T14:20:00.000Z'
+              type: object
+              properties:
+                meetingId:
+                  type: string
+                  description: The meeting id of the meeting
+                topic:
+                  type: string
+                  description: The topic of the meeting
+                startTime:
+                  type: string
+                  description: The start time of the meeting in ISO format
+                endTime:
+                  type: string
+                  description: The end time of the meeting in ISO format
+                isAutoRecordingEnabled:
+                  type: boolean
+                  description: This boolean describes whether to auto recording the call. The recording
+                    starts automatically when there are more than 1 user in the call if this flag is enabled
+                advancedOptions:
+                  type: object
+                  properties:
+                    joinBeforeHost:
+                      type: boolean
+                      description: This boolean describes whether to allow users to join the meeting before
+                        the host
+                    waitingRoom:
+                      type: boolean
+                      description: This boolean describes whether to enable the waiting room for the meeting
+                    participantHardAudioMute:
+                      type: boolean
+                      description: This boolean describes whether to hard mute all participants in the
+                        meeting
+                    participantHardVideoMute:
+                      type: boolean
+                      description: This boolean describes whether to hard mute all participants in the
+                        meeting
+                    isClassroomMode:
+                      type: boolean
+                      description: This boolean describes whether to enable classroom mode for the meeting
+                  title: AdvancedOptions
+              title: UpdateScheduledMeetingRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meetingId:
+                    type: String
+                    description: The meeting id that can be used to update, delete or fetch this meeting
+                  jiomeetId:
+                    type: string
+                    description: The 10 digit unique ID of the meeting
+                  topic:
+                    type: string
+                    description: The topic of the meeting
+                  isAutoRecordingEnabled:
+                    type: boolean
+                    description: This boolean describes whether to auto recording the call. The recording
+                      starts automatically when there are more than 1 user in the call if this flag is
+                      enabled
+                  startTime:
+                    type: string
+                    description: The start time of the meeting in ISO format
+                  endTime:
+                    type: string
+                    description: The end time of the meeting in ISO format
+                  scheduledDuration:
+                    type: number
+                    description: The duration of the meeting in milliseconds
+                  meetingUrl:
+                    type: string
+                    description: The meeting link that the users will use to join the meeting. These users
+                      will be guest users and hence wont have any privileges to alter any meeting settings.
+                  hostUrl:
+                    type: string
+                    description: The meeting link that the hosts will use to join the meeting. These users
+                      will be host users and hence will have privileges to alter meeting settings.
+                  hostToken:
+                    type: string
+                    description: This identifier allows a user to join with host privileges. To allow
+                      a user to join as host, append this parameter in the query parameters of the meetingLink.
+                      "hostToken" is the query change
+                  roomPIN:
+                    type: string
+                    description: Meeting secret that secures the meeting from unwanted access
+                  status:
+                    type: string
+                    description: The status of the meeting
+                  advancedOptions:
+                    type: object
+                    properties:
+                      joinBeforeHost:
+                        type: boolean
+                        description: This boolean describes whether to allow users to join the meeting
+                          before the host
+                      waitingRoom:
+                        type: boolean
+                        description: This boolean describes whether to enable the waiting room for the
+                          meeting
+                      participantHardAudioMute:
+                        type: boolean
+                        description: This boolean describes whether to hard mute all participants in the
+                          meeting
+                      participantHardVideoMute:
+                        type: boolean
+                        description: This boolean describes whether to hard mute all participants in the
+                          meeting
+                      isClassroomMode:
+                        type: boolean
+                        description: This boolean describes whether to enable classroom mode for the meeting
+                    title: AdvancedOptions
+                title: ScheduledMeetingResponseBody
+              examples:
+                Example1:
+                  summary: Example update scheduled meeting response
+                  value:
+                    jiomeetId: '5319535369'
+                    topic: My Updated Scheduled Meeting
+                    isAutoRecordingEnabled: false
+                    startTime: '2023-09-11T13:50:00.000Z'
+                    endTime: '2023-09-11T14:20:00.000Z'
+                    scheduledDuration: 1800000
+                    meetingUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU
+                    hostUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A
+                    hostToken: Z5gdmTRSb11A
+                    advancedOptions:
+                      joinBeforeHost: true
+                      waitingRoom: false
+                      participantHardAudioMute: false
+                      participantHardVideoMute: false
+                      isClassroomMode: false
+                    status: active
+                    roomPIN: n5CaU
+                    meetingId: sm-77189593-f31a-4b62-941a-74f9147e465
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    delete:
+      summary: Scheduled Meeting - Delete a scheduled meeting
+      description: This API deletes a scheduled meeting using the meetingId returned when the meeting
+        was created
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                meetingId: The meeting returned when you scheduled the meeting
+                type: current
+              type: object
+              properties:
+                meetingId:
+                  type: String
+                  description: The meeting id that can be used to update, delete or fetch this meeting
+                type:
+                  type: String
+                  description: Should be 'current' to delete current meeting
+              title: DeleteScheduledMeetingRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Indicates whether meeting is DELETED or NOT_DELETED
+                title: DeleteScheduledMeetingResponseBody
+              examples:
+                Example1:
+                  summary: Example delete scheduled meeting response
+                  value:
+                    status: DELETED
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    post:
+      summary: Scheduled Meeting - Create a scheduled meeting
+      description: This API creates a scheduled meeting. Scheduled meetings are valid for till after 1
+        day from the start time of the meeting.
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                topic: The title of your meeting
+                startTime: '2023-09-11T12:50:00.000Z'
+                endTime: '2023-09-11T12:50:00.000Z'
+              type: object
+              properties:
+                topic:
+                  type: string
+                  description: The topic of the meeting
+                startTime:
+                  type: string
+                  description: The start time of the meeting in ISO format
+                endTime:
+                  type: string
+                  description: The end time of the meeting in ISO format
+                isAutoRecordingEnabled:
+                  type: boolean
+                  description: This boolean describes whether to auto recording the call. The recording
+                    starts automatically when there are more than 1 user in the call if this flag is enabled
+                advancedOptions:
+                  type: object
+                  properties:
+                    joinBeforeHost:
+                      type: boolean
+                      description: This boolean describes whether to allow users to join the meeting before
+                        the host
+                    waitingRoom:
+                      type: boolean
+                      description: This boolean describes whether to enable the waiting room for the meeting
+                    participantHardAudioMute:
+                      type: boolean
+                      description: This boolean describes whether to hard mute all participants in the
+                        meeting
+                    participantHardVideoMute:
+                      type: boolean
+                      description: This boolean describes whether to hard mute all participants in the
+                        meeting
+                    isClassroomMode:
+                      type: boolean
+                      description: This boolean describes whether to enable classroom mode for the meeting
+                  title: AdvancedOptions
+              title: ScheduledMeetingRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meetingId:
+                    type: String
+                    description: The meeting id that can be used to update, delete or fetch this meeting
+                  jiomeetId:
+                    type: string
+                    description: The 10 digit unique ID of the meeting
+                  topic:
+                    type: string
+                    description: The topic of the meeting
+                  isAutoRecordingEnabled:
+                    type: boolean
+                    description: This boolean describes whether to auto recording the call. The recording
+                      starts automatically when there are more than 1 user in the call if this flag is
+                      enabled
+                  startTime:
+                    type: string
+                    description: The start time of the meeting in ISO format
+                  endTime:
+                    type: string
+                    description: The end time of the meeting in ISO format
+                  scheduledDuration:
+                    type: number
+                    description: The duration of the meeting in milliseconds
+                  meetingUrl:
+                    type: string
+                    description: The meeting link that the users will use to join the meeting. These users
+                      will be guest users and hence wont have any privileges to alter any meeting settings.
+                  hostUrl:
+                    type: string
+                    description: The meeting link that the hosts will use to join the meeting. These users
+                      will be host users and hence will have privileges to alter meeting settings.
+                  hostToken:
+                    type: string
+                    description: This identifier allows a user to join with host privileges. To allow
+                      a user to join as host, append this parameter in the query parameters of the meetingLink.
+                      "hostToken" is the query change
+                  roomPIN:
+                    type: string
+                    description: Meeting secret that secures the meeting from unwanted access
+                  status:
+                    type: string
+                    description: The status of the meeting
+                  advancedOptions:
+                    type: object
+                    properties:
+                      joinBeforeHost:
+                        type: boolean
+                        description: This boolean describes whether to allow users to join the meeting
+                          before the host
+                      waitingRoom:
+                        type: boolean
+                        description: This boolean describes whether to enable the waiting room for the
+                          meeting
+                      participantHardAudioMute:
+                        type: boolean
+                        description: This boolean describes whether to hard mute all participants in the
+                          meeting
+                      participantHardVideoMute:
+                        type: boolean
+                        description: This boolean describes whether to hard mute all participants in the
+                          meeting
+                      isClassroomMode:
+                        type: boolean
+                        description: This boolean describes whether to enable classroom mode for the meeting
+                    title: AdvancedOptions
+                title: ScheduledMeetingResponseBody
+              examples:
+                Example1:
+                  summary: Example scheduled meeting response
+                  value:
+                    jiomeetId: '5319535369'
+                    topic: My Scheduled Meeting
+                    isAutoRecordingEnabled: false
+                    startTime: '2023-09-11T12:50:00.000Z'
+                    endTime: '2023-09-11T13:20:00.000Z'
+                    scheduledDuration: 1800000
+                    meetingUrl: https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU
+                    hostUrl: httpss://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A
+                    hostToken: Z5gdmTRSb11A
+                    advancedOptions:
+                      joinBeforeHost: true
+                      waitingRoom: false
+                      participantHardAudioMute: false
+                      participantHardVideoMute: false
+                      isClassroomMode: false
+                    status: active
+                    roomPIN: n5CaU
+                    meetingId: sm-77189593-f31a-4b62-941a-74f9147e465
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    get:
+      summary: Scheduled Meeting - Fetch a scheduled meeting
+      description: This API fetches scheduled meeting/s using the meetingId, jiomeetId or the time range.
+        Click the "Show optional parameters" button to test the query parameters
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: meetingId
+        in: query
+        required: false
+        description: The meeting Id of the scheduled meeting
+        schema:
+          type: string
+        example: sm-123456789
+      - name: jiomeetId
+        in: query
+        required: false
+        description: The 10 digit unique jiomeetId of the meeting
+        schema:
+          type: string
+        example: '1234567890'
+      - name: fromDate
+        in: query
+        required: false
+        description: Start of the time range. To be used in combination with toDate
+        schema:
+          type: string
+        example: '2023-10-01'
+      - name: endDate
+        in: query
+        required: false
+        description: End of the time range. To be used in combination with fromDate
+        schema:
+          type: string
+        example: '2023-10-02'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meetingsCount:
+                    type: number
+                    description: Number of meetings in the response
+                  meetingDetails:
+                    type: array
+                    description: List of meetings
+                title: GetScheduledMeetingResponseBody
+              examples:
+                Example1:
+                  summary: Example fetch scheduled meeting response
+                  value:
+                    meetingsCount: 1
+                    meetingDetails:
+                    - jiomeetId: '7212310665'
+                      topic: Meeting created at 07:09 AM
+                      isAutoRecordingEnabled: true
+                      startTime: '2023-09-08T02:39:27.000Z'
+                      endTime: '2023-09-08T03:09:27.000Z'
+                      scheduledDuration: 1800000
+                      meetingUrl: https://platform.jiomeet.com/guest?meetingId=7212310665&pwd=7mVhq
+                      status: active
+                      roomPIN: 7mVhq
+                      meetingId: sm-aed12dea-60d2-4757-9705-6c93dce0e3f0
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/recordings/isrecording:
+    post:
+      summary: Check Recording Status
+      description: This API suggests the status of the recording, whether the recording is happening or
+        not
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                jiomeetId: The 10 digit unique ID of the meeting
+              type: object
+              properties:
+                jiomeetId:
+                  type: string
+                  description: The 10 digit unique ID of the meeting
+              title: RecordingStatusRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordingStatus:
+                    type: boolean
+                    description: Boolean representing whether the recording is happening or not
+                title: RecordingStatusResponse
+              examples:
+                Example1:
+                  summary: Example recording status response
+                  value:
+                    recordingStatus: true
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/recordings/stop:
+    post:
+      summary: Stop Recording
+      description: This API allows you to stop a recording. Ensure that the meeting is ongoing for this
+        API to take effect. A historyId is returned by this API which can be used to fetch the recordings
+        later
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                jiomeetId: The 10 digit unique ID of the meeting
+                roomPIN: Meeting secret that secures the meeting from unwanted access
+              type: object
+              properties:
+                jiomeetId:
+                  type: string
+                  description: The 10 digit unique ID of the meeting
+                roomPIN:
+                  type: string
+                  description: Meeting secret that secures the meeting from unwanted access
+              title: RecordingStopRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status whether the call was a success. Recording cant be started or stopped
+                      when the meeting has no one in the call
+                  historyId:
+                    type: string
+                    description: Unique identifier of the recording. This should be used to fetch the
+                      recording once it has completed
+                title: RecordingResponse
+              examples:
+                Example1:
+                  summary: Example recording response
+                  value:
+                    status: OK
+                    historyId: chis-123
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/analytics/report:
+    get:
+      summary: Get Meeting Report
+      description: This API gets the details of the meeting. The info contains the information about when
+        users joined or left the meeting
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: jiomeetId
+        in: query
+        required: true
+        description: The 10 digit unique ID of the meeting
+        schema:
+          type: string
+        example: '3419081647'
+      - name: roomPIN
+        in: query
+        required: true
+        description: Meeting secret that secures the meeting from unwanted access
+        schema:
+          type: string
+        example: 'yM7EY    '
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report:
+                    type: array
+                    description: An array of objects containing metadata related to a participant’s session
+                      in a meeting or call. It includes user identity, meeting identifiers, role, connection
+                      details, timestamps, endpoint type, and session metrics. This data is useful for
+                      auditing, analytics, or monitoring participant activity within a conferencing platform.
+                title: ChatThreadResponse
+              examples:
+                Example1:
+                  summary: Example recording status response
+                  value:
+                    report:
+                    - Date: 25th July 2025
+                      UserId: gu-43616e22-af54-4315-bbe0-60f23182046c
+                      Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+                      JiomeetId: '8069667546'
+                      Topic: title of the meeting
+                      Enterprise Name: OTT
+                      User Name: 'asdfa '
+                      Call Role: callJoinee
+                      Status: Accepted
+                      User Role: member
+                      User Email: NA
+                      User PhoneNo.: NA
+                      User Type: member
+                      Machine IP Address: 116.50.84.118
+                      Scheduled Meeting Start Time: NA
+                      Scheduled Meeting End Time: NA
+                      Actual Start Time: '10:45:11'
+                      Actual End Time: '10:46:20'
+                      Participants Endpoint Type: 'web '
+                      Participants Endpoint Name: web
+                      Call Direction: DialIn
+                      Call Duration: 00:01:09
+                      Type of Meeting: Call
+                      Media Engine: NA
+                Example2:
+                  summary: Example recording status response
+                  value:
+                    report:
+                    - Date: 25th July 2025
+                      UserId: gu-43616e22-af54-4315-bbe0-60f23182046c
+                      Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+                      JiomeetId: '8069667546'
+                      Topic: title of the meeting
+                      Enterprise Name: OTT
+                      User Name: 'asdfa '
+                      Call Role: callJoinee
+                      Status: Accepted
+                      User Role: member
+                      User Email: NA
+                      User PhoneNo.: NA
+                      User Type: member
+                      Machine IP Address: 116.50.84.118
+                      Scheduled Meeting Start Time: NA
+                      Scheduled Meeting End Time: NA
+                      Actual Start Time: '10:45:11'
+                      Actual End Time: '10:46:20'
+                      Participants Endpoint Type: 'web '
+                      Participants Endpoint Name: web
+                      Call Direction: DialIn
+                      Call Duration: 00:01:09
+                      Type of Meeting: Call
+                      Media Engine: NA
+                    - Date: 25th July 2025
+                      UserId: gu-87654321-xy98-7654-abc0-12345678901z
+                      Conference Id: chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b
+                      JiomeetId: '8069667546'
+                      Topic: title of the meeting
+                      Enterprise Name: OTT
+                      User Name: John Doe
+                      Call Role: callInitiator
+                      Status: Accepted
+                      User Role: moderator
+                      User Email: john.doe@example.com
+                      User PhoneNo.: +91-9876543210
+                      User Type: member
+                      Machine IP Address: 192.168.1.100
+                      Scheduled Meeting Start Time: '10:00:00'
+                      Scheduled Meeting End Time: '11:00:00'
+                      Actual Start Time: '10:00:05'
+                      Actual End Time: '10:55:30'
+                      Participants Endpoint Type: desktop
+                      Participants Endpoint Name: JioMeet Desktop
+                      Call Direction: DialIn
+                      Call Duration: 00:55:25
+                      Type of Meeting: Conference
+                      Media Engine: WebRTC
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/chat/thread:
+    get:
+      summary: List chat thread
+      description: This API lists the chat thread for the meeting
+      tags:
+      - JioMeetCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioMeet Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Plaform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: jiomeetId
+        in: query
+        required: true
+        description: The 10 digit unique ID of the meeting
+        schema:
+          type: string
+        example: '1234567890'
+      - name: roomPIN
+        in: query
+        required: true
+        description: Meeting secret that secures the meeting from unwanted access
+        schema:
+          type: string
+        example: abcdef
+      - name: offset
+        in: query
+        description: The number of results to skip
+        schema:
+          type: number
+        example: '0'
+      - name: limit
+        in: query
+        description: The total number of results to get
+        schema:
+          type: number
+        example: '10'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report:
+                    type: array
+                    description: An array of objects containing metadata related to a participant’s session
+                      in a meeting or call. It includes user identity, meeting identifiers, role, connection
+                      details, timestamps, endpoint type, and session metrics. This data is useful for
+                      auditing, analytics, or monitoring participant activity within a conferencing platform.
+                title: ChatThreadResponse
+              examples:
+                Example1:
+                  summary: Example recording status response
+                  value:
+                    totalCount: 2
+                    moreAvailable: true
+                    messages: []
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: String
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: Array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+components:
+  securitySchemes: {}

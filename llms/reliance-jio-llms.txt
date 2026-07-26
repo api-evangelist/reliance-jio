@@ -1,0 +1,66 @@
+# Reliance Jio
+
+> Reliance Jio Infocomm is India's largest mobile network operator, serving roughly half
+> a billion subscribers on an all-IP 4G/5G network, alongside JioFiber broadband,
+> JioAirFiber fixed wireless, IoT connectivity, and the JioCX CPaaS business. Its API
+> posture is split: standards-forward but private on the network/BSS side (TM Forum Open
+> API Platinum, CAMARA SIM Swap under GSMA Open Gateway, reachable only through Aduna and
+> the GSMA federated hub), and genuinely self-serve on the SaaS side (JioMeet and
+> JioEvents REST APIs at dev.jiomeet.com). Jio serves no downloadable OpenAPI document
+> anywhere; the three specs below were harvested by API Evangelist from the OpenAPI
+> objects embedded in Jio's own published documentation build.
+
+Generated 2026-07-25 by the API Evangelist enrichment pipeline. Jio publishes no
+/llms.txt of its own (dev.jiomeet.com/llms.txt returns 404).
+
+## APIs
+
+- [JioMeet Platform Server API](https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis): Server-to-server meeting provisioning, recording and reporting. Host https://jiomeetpro.jio.com. App-credential JWT (HS256/RS256). 11 operations.
+- [JioMeet Platform OAuth API](https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis): User-authorized scheduled meetings and profile. Host https://jiomeetpro.jio.com. OAuth 2.0 authorization code. 7 operations.
+- [JioEvents Platform Server API](https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis): Webinars, sessions, meeting invites and attendance reporting. Host https://jioevents.com. App-credential JWT. 11 operations.
+- [JioPayments Set-Top-Box API](https://developer.jio.com/set-top-box.html): In-app purchase API for Jio set-top-box apps, published only as a PDF specification (v1.1).
+
+## Specs
+
+- [openapi/reliance-jio-jiomeet-platform-openapi.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/openapi/reliance-jio-jiomeet-platform-openapi.yml): OpenAPI 3.0.3, 11 operations.
+- [openapi/reliance-jio-jiomeet-oauth-openapi.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/openapi/reliance-jio-jiomeet-oauth-openapi.yml): OpenAPI 3.0.3, 7 operations, basicAuth + bearerAuth.
+- [openapi/reliance-jio-jioevents-platform-openapi.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/openapi/reliance-jio-jioevents-platform-openapi.yml): OpenAPI 3.0.3, 11 operations.
+- [overlays/](https://github.com/api-evangelist/reliance-jio/tree/main/overlays): OpenAPI Overlay 1.0.0 documents assigning operationIds - Jio's source spec declares none.
+
+## Docs
+
+- [JioMeet for Developers](https://dev.jiomeet.com/): The one genuinely self-serve API portal Jio operates.
+- [Authentication](https://dev.jiomeet.com/docs/quick-start/authentication): One-step HS256 and two-step RS256 JWT.
+- [OAuth 2.0 integration](https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client): Authorization endpoint, token endpoint, scopes, redirect-URI rules, token lifetimes.
+- [Server integration quick start](https://dev.jiomeet.com/docs/quick-start/integrate-with-ser)
+- [On-premise allow-listing](https://dev.jiomeet.com/docs/whitelisting_on_premise)
+- [Jio Developers Platform (set-top box)](https://developer.jio.com/)
+- [JioGames publishing docs](https://publish.jiogames.com/documents/)
+
+## Artifacts
+
+- [authentication/reliance-jio-authentication.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/authentication/reliance-jio-authentication.yml): Both auth models plus what is absent (no OIDC discovery, no CIBA, no mTLS).
+- [scopes/reliance-jio-scopes.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/scopes/reliance-jio-scopes.yml): The six documented OAuth scopes and token lifetimes.
+- [conventions/reliance-jio-conventions.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/conventions/reliance-jio-conventions.yml): Cross-cutting semantics - and the absent ones (no idempotency, no pagination, no request-id, no rate-limit contract).
+- [errors/reliance-jio-problem-types.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/errors/reliance-jio-problem-types.yml): The vendor error envelope; 412 is the validation status.
+- [conformance/reliance-jio-conformance.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/conformance/reliance-jio-conformance.yml): TM Forum Open API Platinum, CAMARA SIM Swap, GSMA Open Gateway - certified but not callable.
+- [lifecycle/reliance-jio-lifecycle.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/lifecycle/reliance-jio-lifecycle.yml): Versioning, the legacy docs track, and the absence of SLA, status page and changelog.
+- [packages/reliance-jio-packages.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/packages/reliance-jio-packages.yml): 13 first-party client SDKs across npm, CocoaPods, SPM, GitHub Packages Maven and git.
+- [components/reliance-jio-components.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/components/reliance-jio-components.yml): The iframe embed, its query parameters, and the postMessage control/event contract.
+- [data-model/reliance-jio-data-model.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/data-model/reliance-jio-data-model.yml): Meeting, Webinar, Session, Recording, User.
+- [examples/reliance-jio-examples.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/examples/reliance-jio-examples.yml): Jio's own published request/response examples.
+- [skills/_index.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/skills/_index.yml): Three packaged agent skills.
+- [mcp/reliance-jio-mcp.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/mcp/reliance-jio-mcp.yml): Candidate MCP tool surface - Jio publishes no MCP server.
+- [agentic-access/reliance-jio-agentic-access.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/agentic-access/reliance-jio-agentic-access.yml): Recommended x-agentic-access contracts for all 29 operations.
+- [security/reliance-jio-vulnerability-disclosure.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/security/reliance-jio-vulnerability-disclosure.yml): The one security.txt in the estate.
+- [security/reliance-jio-domain-security.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/security/reliance-jio-domain-security.yml): TLS, HSTS, DNSSEC, SPF and DMARC probe results.
+- [well-known/reliance-jio-well-known.yml](https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/well-known/reliance-jio-well-known.yml): The /.well-known/ probe matrix across six hosts.
+
+## Not published by Jio
+
+- No downloadable OpenAPI, Swagger, AsyncAPI, GraphQL schema or .proto file on any Jio property.
+- No webhooks and no event surface (the postMessage contract is in-page only).
+- No hosted MCP server, no first-party Postman workspace, no CLI.
+- No status page, no SLA, no changelog, no deprecation policy, no public roadmap.
+- No first-party GSMA Open Gateway / CAMARA developer portal - opengateway.jio.com does not resolve.
+- No developer documentation for JioCX (CPaaS) or Jio IoT - both are sales-led marketing pages.

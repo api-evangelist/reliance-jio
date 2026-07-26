@@ -85,8 +85,30 @@ findings:
     note: JioCX CPaaS brand domain returns 403 Forbidden; the CPaaS product is
       described only on marketing pages under jio.com/business with no developer docs
   downloadableSpecs:
-    openapiFound: false
-    count: 0
+    openapiFound: true
+    servedAsDownload: false
+    count: 3
+    operations: 29
+    correction: |
+      SUPERSEDES the 2026-07-25 first-pass finding of "no machine-readable API
+      description". Jio still serves no downloadable spec at any conventional path, but
+      the enrichment round of 2026-07-25 recovered the real thing from the site's own
+      build output. dev.jiomeet.com is a Docusaurus 2.2.0 site built with the
+      docusaurus-openapi-docs plugin; the plugin compiles each operation's OpenAPI object
+      into the per-page JavaScript chunk. Walking the webpack registry in
+      /assets/js/main.*.js to the 29 *.api.mdx page chunks, then resolving each chunk
+      through the runtime map, yields the verbatim operation objects - method, path,
+      servers, tags, parameters, requestBody, responses and securitySchemes. Reassembled
+      into three OpenAPI 3.0.3 documents in openapi/ (raw JSON in openapi/_original/):
+        - JioMeet Platform APIs      11 ops  server https://jiomeetpro.jio.com
+        - JioMeet User OAuth APIs     7 ops  server https://jiomeetpro.jio.com
+        - JioEvents Platform APIs    11 ops  server https://jioevents.com
+      Two consequences beyond the specs themselves. First, the base URLs are recovered:
+      the review correctly recorded that no host is stated in Jio's prose, and
+      jioevents.com in particular is a host no Jio documentation page names. Second, the
+      source spec declares no operationIds and no components.schemas - every schema is
+      inline - so the operationIds used by skills/ and mcp/ are assigned by the
+      overlays/, not by Jio.
     note: |
       No machine-readable API description was found. Probed /openapi.json, /openapi.yaml,
       /swagger.json, /api-docs, /spec and /redoc against dev.jiomeet.com (all 404) and
@@ -318,9 +340,13 @@ sources:
   type: Documentation
   note: JioGames publishing and SDK documentation; no REST API reference.
 actions:
-  openapiHarvested: false
-  openapiDirectoryCreated: false
-  reason: No parseable OpenAPI or Swagger document is served by any Reliance Jio
-    property. Nothing was fabricated and the openapi/ directory was deliberately omitted.
+  openapiHarvested: true
+  openapiDirectoryCreated: true
+  reason: >-
+    Corrected on 2026-07-25 during the enrichment round - see
+    findings.downloadableSpecs.correction. 29 operations across three OpenAPI 3.0.3
+    documents were harvested verbatim from the docusaurus-openapi-docs build output at
+    dev.jiomeet.com. Nothing was fabricated; the specs contain only content Jio
+    published.
   apisYmlCreated: true
   apisListed: 4

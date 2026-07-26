@@ -1,0 +1,3112 @@
+openapi: 3.0.3
+info:
+  title: JioEvents Platform APIs
+  description: This section covers the JioEvents Platform APIs which can be used to quickly setup JioEvents
+    APIs in your backend for event management and virtual event hosting.
+  version: 1.0.0
+servers:
+- url: https://jioevents.com
+tags:
+- name: JioEventsCpaasPlatform
+paths:
+  /api/platform/v1/meetingInvite:
+    post:
+      summary: Meeting Invite - Create a meeting invite
+      description: This API creates a meeting invite for a participant to join a scheduled webinar or
+        meeting
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: Accept
+        in: header
+        description: The accept type should be application/json
+        schema:
+          type: string
+        example: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+                  description: The role of the invitee (e.g., "Co-Host", "Host", "Participant")
+                  example: Co-Host
+                firstName:
+                  type: string
+                  description: First name of the invitee
+                  example: Test
+                lastName:
+                  type: string
+                  description: Last name of the invitee
+                  example: user
+                identity:
+                  type: string
+                  description: Email address or identity of the invitee
+                  example: m48519891@gmail.com
+                sendInvite:
+                  type: boolean
+                  description: Whether to send an email invite to the participant
+                  example: true
+                meetingId:
+                  type: string
+                  description: The meeting ID for which the invite is being created
+                  example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+              title: MeetingInviteRequestBody
+            example:
+              role: Co-Host
+              firstName: Test
+              lastName: user
+              identity: m48519891@gmail.com
+              sendInvite: true
+              meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: Unique identifier for the meeting invite
+                    example: mi-984037ef-b959-4210-998a-2be29c14e72b
+                  joinUrl:
+                    type: string
+                    description: The URL that the invitee can use to join the meeting
+                    example: https://jioevents.com/meetingInvite/join/_tD6SZHCMQ50885cdde5341755725215006
+                  joinHash:
+                    type: string
+                    description: Unique hash for joining the meeting
+                    example: _tD6SZHCMQ50885cdde5341755725215006
+                  firstName:
+                    type: string
+                    description: First name of the invitee
+                    example: Test
+                  lastName:
+                    type: string
+                    description: Last name of the invitee
+                    example: user
+                  emailId:
+                    type: string
+                    description: Email address of the invitee
+                    example: m48519891@gmail.com
+                  role:
+                    type: string
+                    description: The role assigned to the invitee
+                    example: Co-Host
+                  meetingId:
+                    type: string
+                    description: The meeting ID for which the invite was created
+                    example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                  userId:
+                    type: string
+                    description: Unique identifier for the user
+                    example: u-17dbc620-b434-4ef4-bc77-412e41f71911
+                  isDeleted:
+                    type: boolean
+                    description: Whether the invite has been deleted
+                    example: false
+                  socialMediaLinks:
+                    type: array
+                    description: Array of social media links associated with the invitee
+                    items:
+                      type: string
+                    example: []
+                  registered:
+                    type: boolean
+                    description: Whether the invitee has registered
+                    example: true
+                  isInviteSent:
+                    type: boolean
+                    description: Whether the invite has been sent
+                    example: false
+                  sendInvite:
+                    type: boolean
+                    description: Whether to send an email invite
+                    example: true
+                  enableSpeakerTile:
+                    type: boolean
+                    description: Whether to enable speaker tile for this participant
+                    example: true
+                  orderId:
+                    type: integer
+                    description: Order ID for the invite
+                    example: 1
+                  cOn:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                    example: '2025-08-20T21:26:55.007Z'
+                  mOn:
+                    type: string
+                    format: date-time
+                    description: Last modification timestamp
+                    example: '2025-08-20T21:26:55.007Z'
+                  __v:
+                    type: integer
+                    description: Version number
+                    example: 0
+                title: MeetingInviteResponseBody
+              examples:
+                Example1:
+                  summary: Example meeting invite response
+                  value:
+                    _id: mi-984037ef-b959-4210-998a-2be29c14e72b
+                    joinUrl: https://jioevents.com/meetingInvite/join/_tD6SZHCMQ50885cdde5341755725215006
+                    joinHash: _tD6SZHCMQ50885cdde5341755725215006
+                    firstName: Test
+                    lastName: user
+                    emailId: m48519891@gmail.com
+                    role: Co-Host
+                    meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                    userId: u-17dbc620-b434-4ef4-bc77-412e41f71911
+                    isDeleted: false
+                    socialMediaLinks: []
+                    registered: true
+                    isInviteSent: false
+                    sendInvite: true
+                    cOn: '2025-08-20T21:26:55.007Z'
+                    mOn: '2025-08-20T21:26:55.007Z'
+                    __v: 0
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/sessions/{meetingId}/{sessionId}:
+    delete:
+      summary: Sessions - Delete a session
+      description: This API deletes a specific session for a meeting
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to delete the session
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      - name: sessionId
+        in: path
+        required: true
+        description: The ID of the session to delete
+        schema:
+          type: string
+        example: se-77a4ef5e-0e86-4217-9f5b-08d766a48aef
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the delete operation was successful
+                    example: true
+                title: DeleteSessionResponseBody
+              examples:
+                Example1:
+                  summary: Example delete session response
+                  value:
+                    success: true
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request parameters are incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/sessions/{meetingId}:
+    post:
+      summary: Sessions - Create a session
+      description: This API creates a session within a webinar/meeting
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to create a session
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the session
+                  example: ''
+                descriptionMarkdown:
+                  type: object
+                  description: Markdown description configuration
+                  properties:
+                    text:
+                      type: string
+                      description: Markdown text content
+                      example: ''
+                    messageType:
+                      type: string
+                      description: Type of message
+                      example: web
+                invites:
+                  type: array
+                  description: Array of session invites
+                  items:
+                    type: object
+                  example: []
+                topic:
+                  type: string
+                  description: Topic/title of the session
+                  example: Session2
+                startTime:
+                  type: string
+                  format: date-time
+                  description: Start time of the session in ISO format
+                  example: '2025-08-21T14:30:00.000Z'
+                endTime:
+                  type: string
+                  format: date-time
+                  description: End time of the session in ISO format
+                  example: '2025-08-21T15:00:00.000Z'
+              title: CreateSessionRequestBody
+            example:
+              description: ''
+              descriptionMarkdown:
+                text: ''
+                messageType: web
+              invites: []
+              topic: Session2
+              startTime: '2025-08-21T14:30:00.000Z'
+              endTime: '2025-08-21T15:00:00.000Z'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status message indicating the result of session creation
+                    example: Session created successfully.
+                  sessionDetails:
+                    type: object
+                    description: Detailed information about the created session
+                    properties:
+                      _id:
+                        type: string
+                        description: Unique identifier for the session
+                        example: se-eff13292-c342-4394-85a1-e64b42fadd2b
+                      topic:
+                        type: string
+                        description: Topic/title of the session
+                        example: Session2
+                      description:
+                        type: string
+                        description: Description of the session
+                        example: ''
+                      descriptionMarkdown:
+                        type: object
+                        description: Markdown description configuration
+                        properties:
+                          text:
+                            type: string
+                            description: Markdown text content
+                            example: ''
+                          messageType:
+                            type: string
+                            description: Type of message
+                            example: web
+                      meetingId:
+                        type: string
+                        description: Unique meeting ID for the session
+                        example: sm-0666ba1c-c585-4193-a329-2fc23bd29e72
+                      parentMeetingId:
+                        type: string
+                        description: ID of the parent webinar/meeting
+                        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      type:
+                        type: string
+                        description: Type of session
+                        example: normal
+                      startTime:
+                        type: string
+                        format: date-time
+                        description: Start time of the session in ISO format
+                        example: '2025-08-21T14:30:00.000Z'
+                      endTime:
+                        type: string
+                        format: date-time
+                        description: End time of the session in ISO format
+                        example: '2025-08-21T15:00:00.000Z'
+                      invites:
+                        type: array
+                        description: Array of session invites
+                        items:
+                          type: object
+                        example: []
+                      status:
+                        type: string
+                        description: Current status of the session
+                        example: active
+                      isDeleted:
+                        type: boolean
+                        description: Whether the session has been deleted
+                        example: false
+                      cOn:
+                        type: string
+                        format: date-time
+                        description: Creation timestamp
+                        example: '2025-08-20T21:38:13.546Z'
+                      mOn:
+                        type: string
+                        format: date-time
+                        description: Last modification timestamp
+                        example: '2025-08-20T21:38:13.546Z'
+                      __v:
+                        type: integer
+                        description: Version number
+                        example: 0
+                      scheduledDuration:
+                        type: integer
+                        description: Duration of the session in milliseconds
+                        example: 1800000
+                      meetingUrl:
+                        type: string
+                        description: URL for joining the session
+                        example: https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y
+                      userId:
+                        type: string
+                        description: ID of the user who created the session
+                        example: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      jiomeetId:
+                        type: string
+                        description: 10-digit unique ID for the session
+                        example: 0161894358
+                      pin:
+                        type: string
+                        description: PIN for joining the session
+                        example: dJy2y
+                      advancedOptions:
+                        type: object
+                        description: Advanced configuration options for the session
+                        properties:
+                          hostAudio:
+                            type: boolean
+                            description: Whether host audio is enabled
+                            example: false
+                          participantAudio:
+                            type: boolean
+                            description: Whether participant audio is enabled
+                            example: true
+                          hostVideo:
+                            type: boolean
+                            description: Whether host video is enabled
+                            example: false
+                          participantVideo:
+                            type: boolean
+                            description: Whether participant video is enabled
+                            example: true
+                          joinBeforeHost:
+                            type: boolean
+                            description: Whether participants can join before the host
+                            example: true
+                          waitingRoom:
+                            type: boolean
+                            description: Whether waiting room is enabled
+                            example: false
+                          loggedInOnly:
+                            type: boolean
+                            description: Whether only logged-in users can join
+                            example: false
+                          colleagueOnly:
+                            type: boolean
+                            description: Whether only colleagues can join
+                            example: false
+                          participantHardAudioMute:
+                            type: boolean
+                            description: Whether participants are hard muted for audio
+                            example: false
+                          participantHardVideoMute:
+                            type: boolean
+                            description: Whether participants are hard muted for video
+                            example: false
+                          isRestrictedMeeting:
+                            type: boolean
+                            description: Whether the meeting is restricted
+                            example: false
+                          isClassroomMode:
+                            type: boolean
+                            description: Whether classroom mode is enabled
+                            example: false
+                          restrictChat:
+                            type: string
+                            description: Chat restriction level
+                            example: NONE
+                title: CreateSessionResponseBody
+              examples:
+                Example1:
+                  summary: Example create session response
+                  value:
+                    status: Session created successfully.
+                    sessionDetails:
+                      _id: se-eff13292-c342-4394-85a1-e64b42fadd2b
+                      topic: Session2
+                      description: ''
+                      descriptionMarkdown:
+                        text: ''
+                        messageType: web
+                      meetingId: sm-0666ba1c-c585-4193-a329-2fc23bd29e72
+                      parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      type: normal
+                      startTime: '2025-08-21T14:30:00.000Z'
+                      endTime: '2025-08-21T15:00:00.000Z'
+                      invites: []
+                      status: active
+                      isDeleted: false
+                      cOn: '2025-08-20T21:38:13.546Z'
+                      mOn: '2025-08-20T21:38:13.546Z'
+                      __v: 0
+                      scheduledDuration: 1800000
+                      meetingUrl: https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y
+                      userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      jiomeetId: 0161894358
+                      pin: dJy2y
+                      advancedOptions:
+                        hostAudio: false
+                        participantAudio: true
+                        hostVideo: false
+                        participantVideo: true
+                        joinBeforeHost: true
+                        waitingRoom: false
+                        loggedInOnly: false
+                        colleagueOnly: false
+                        participantHardAudioMute: false
+                        participantHardVideoMute: false
+                        isRestrictedMeeting: false
+                        isClassroomMode: false
+                        restrictChat: NONE
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    get:
+      summary: Sessions - Get sessions
+      description: This API retrieves all sessions for a specific meeting including meeting details and
+        speakers
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to retrieve sessions
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meetingDetails:
+                    type: object
+                    description: Details of the parent meeting
+                    properties:
+                      topic:
+                        type: string
+                        description: Topic/title of the meeting
+                        example: Test1 user's JioEvent
+                      startTime:
+                        type: string
+                        format: date-time
+                        description: Start time of the meeting in ISO format
+                        example: '2025-08-21T14:00:00.000Z'
+                      topicMarkdown:
+                        type: object
+                        description: Markdown topic configuration
+                        properties:
+                          text:
+                            type: string
+                            description: Markdown text content
+                            example: Test1 user's JioEvent
+                          messageType:
+                            type: string
+                            description: Type of message
+                            example: default
+                      hash:
+                        type: string
+                        description: Hash value
+                        example: ''
+                  speakers:
+                    type: array
+                    description: List of speakers for the meeting
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          description: Unique identifier for the speaker invite
+                          example: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+                        firstName:
+                          type: string
+                          description: First name of the speaker
+                          example: tp-088573cb-34d3-405d-a954-119ee6aaff92
+                        lastName:
+                          type: string
+                          description: Last name of the speaker
+                          example: ''
+                        role:
+                          type: string
+                          description: Role of the speaker
+                          example: Host
+                        userId:
+                          type: string
+                          description: Unique identifier for the user
+                          example: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                        socialMediaLinks:
+                          type: array
+                          description: Array of social media links
+                          items:
+                            type: string
+                          example: []
+                  sessions:
+                    type: array
+                    description: List of sessions for the meeting
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          description: Unique identifier for the session
+                          example: se-77a4ef5e-0e86-4217-9f5b-08d766a48aef
+                        topic:
+                          type: string
+                          description: Topic/title of the session
+                          example: Welcome Session
+                        description:
+                          type: string
+                          description: Description of the session
+                          example: ''
+                        descriptionMarkdown:
+                          type: object
+                          description: Markdown description configuration
+                          properties:
+                            text:
+                              type: string
+                              description: Markdown text content
+                              example: ''
+                            messageType:
+                              type: string
+                              description: Type of message
+                              example: web
+                        meetingId:
+                          type: string
+                          description: Unique meeting ID for the session
+                          example: sm-92e0f49f-5e55-4703-b26e-f9c89898786e
+                        parentMeetingId:
+                          type: string
+                          description: ID of the parent webinar/meeting
+                          example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                        type:
+                          type: string
+                          description: Type of session
+                          example: default
+                        startTime:
+                          type: string
+                          format: date-time
+                          description: Start time of the session in ISO format
+                          example: '2025-08-21T14:00:00.000Z'
+                        endTime:
+                          type: string
+                          format: date-time
+                          description: End time of the session in ISO format
+                          example: '2025-08-21T14:30:00.000Z'
+                        invites:
+                          type: array
+                          description: Array of session invites
+                          items:
+                            type: object
+                          example: []
+                        status:
+                          type: string
+                          description: Current status of the session
+                          example: active
+                        isDeleted:
+                          type: boolean
+                          description: Whether the session has been deleted
+                          example: false
+                        cOn:
+                          type: string
+                          format: date-time
+                          description: Creation timestamp
+                          example: '2025-08-20T21:28:41.315Z'
+                        mOn:
+                          type: string
+                          format: date-time
+                          description: Last modification timestamp
+                          example: '2025-08-20T21:28:41.315Z'
+                        __v:
+                          type: integer
+                          description: Version number
+                          example: 0
+                        invitedCoHosts:
+                          type: array
+                          description: Array of invited co-hosts
+                          items:
+                            type: object
+                          example: []
+                        invitedSpeakers:
+                          type: array
+                          description: Array of invited speakers
+                          items:
+                            type: object
+                          example: []
+                        broadcasting:
+                          type: boolean
+                          description: Whether broadcasting is enabled
+                          example: false
+                        preRecordedVideo:
+                          type: object
+                          description: Pre-recorded video configuration
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Whether pre-recorded video is enabled
+                              example: false
+                            loop:
+                              type: integer
+                              description: Number of loops for pre-recorded video
+                              example: 1
+                        cohost:
+                          type: array
+                          description: Array of co-host user IDs
+                          items:
+                            type: string
+                          example:
+                          - u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                        meetingUrl:
+                          type: string
+                          description: URL for joining the session
+                          example: https://jioevents.com/shortener?meetingId=9376680649&pwd=qrBG5
+                  lastSessionDate:
+                    type: string
+                    format: date-time
+                    description: Date of the last session
+                    example: '2025-08-21T14:30:00.000Z'
+                title: GetSessionsResponseBody
+              examples:
+                Example1:
+                  summary: Example get sessions response
+                  value:
+                    meetingDetails:
+                      topic: Test1 user's JioEvent
+                      startTime: '2025-08-21T14:00:00.000Z'
+                      topicMarkdown:
+                        text: Test1 user's JioEvent
+                        messageType: default
+                      hash: ''
+                    speakers:
+                    - _id: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+                      firstName: tp-088573cb-34d3-405d-a954-119ee6aaff92
+                      lastName: ''
+                      role: Host
+                      userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      socialMediaLinks: []
+                    sessions:
+                    - _id: se-77a4ef5e-0e86-4217-9f5b-08d766a48aef
+                      topic: Welcome Session
+                      description: ''
+                      meetingId: sm-92e0f49f-5e55-4703-b26e-f9c89898786e
+                      parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      type: default
+                      startTime: '2025-08-21T14:00:00.000Z'
+                      endTime: '2025-08-21T14:30:00.000Z'
+                      invites: []
+                      status: active
+                      isDeleted: false
+                      cOn: '2025-08-20T21:28:41.315Z'
+                      mOn: '2025-08-20T21:28:41.315Z'
+                      __v: 0
+                      invitedCoHosts: []
+                      invitedSpeakers: []
+                      broadcasting: false
+                      preRecordedVideo:
+                        enabled: false
+                        loop: 1
+                      cohost:
+                      - u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      meetingUrl: https://jioevents.com/shortener?meetingId=9376680649&pwd=qrBG5
+                    - _id: se-eff13292-c342-4394-85a1-e64b42fadd2b
+                      topic: Session2
+                      description: ''
+                      descriptionMarkdown:
+                        text: ''
+                        messageType: web
+                      meetingId: sm-0666ba1c-c585-4193-a329-2fc23bd29e72
+                      parentMeetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      type: normal
+                      startTime: '2025-08-21T14:30:00.000Z'
+                      endTime: '2025-08-21T15:00:00.000Z'
+                      invites: []
+                      status: active
+                      isDeleted: false
+                      cOn: '2025-08-20T21:38:13.546Z'
+                      mOn: '2025-08-20T21:38:13.546Z'
+                      __v: 0
+                      invitedCoHosts: []
+                      invitedSpeakers: []
+                      broadcasting: false
+                      preRecordedVideo:
+                        enabled: false
+                        loop: 1
+                      cohost:
+                      - u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      meetingUrl: https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y
+                    lastSessionDate: '2025-08-21T14:30:00.000Z'
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request parameters are incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/meetingInvite/{meetingId}:
+    delete:
+      summary: Meeting Invite - Delete meeting invites
+      description: This API deletes one or more meeting invites for a specific meeting
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to delete invites
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meetingInviteIds:
+                  type: array
+                  description: Array of meeting invite IDs to delete
+                  items:
+                    type: string
+                  example:
+                  - mi-984037ef-b959-4210-998a-2be29c14e72b
+              title: DeleteMeetingInviteRequestBody
+            example:
+              meetingInviteIds:
+              - mi-984037ef-b959-4210-998a-2be29c14e72b
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the delete operation was successful
+                    example: true
+                title: DeleteMeetingInviteResponseBody
+              examples:
+                Example1:
+                  summary: Example delete meeting invite response
+                  value:
+                    success: true
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    get:
+      summary: Meeting Invite - Get meeting invites
+      description: This API retrieves meeting invites for a specific meeting with pagination and filtering
+        capabilities
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to retrieve invites
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      - name: offset
+        in: query
+        required: false
+        description: Number of records to skip for pagination
+        schema:
+          type: integer
+        example: 0
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of records to return
+        schema:
+          type: integer
+        example: 10
+      - name: keyword
+        in: query
+        required: false
+        description: Search keyword to filter invites
+        schema:
+          type: string
+        example: ''
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  maxInvites:
+                    type: integer
+                    description: Maximum number of invites allowed for the meeting
+                    example: 50
+                  invitesCount:
+                    type: integer
+                    description: Total number of invites for the meeting
+                    example: 1
+                  invitesList:
+                    type: array
+                    description: List of meeting invites
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          description: Unique identifier for the meeting invite
+                          example: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+                        firstName:
+                          type: string
+                          description: First name of the invitee
+                          example: tp-088573cb-34d3-405d-a954-119ee6aaff92
+                        lastName:
+                          type: string
+                          description: Last name of the invitee
+                          example: ''
+                        emailId:
+                          type: string
+                          description: Email address of the invitee
+                          example: tp-088573cb-34d3-405d-a954-119ee6aaff92@cpassbot.jiomeet
+                        role:
+                          type: string
+                          description: The role assigned to the invitee
+                          example: Host
+                        meetingId:
+                          type: string
+                          description: The meeting ID for which the invite was created
+                          example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                        userId:
+                          type: string
+                          description: Unique identifier for the user
+                          example: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                        isDeleted:
+                          type: boolean
+                          description: Whether the invite has been deleted
+                          example: false
+                        socialMediaLinks:
+                          type: array
+                          description: Array of social media links associated with the invitee
+                          items:
+                            type: string
+                          example: []
+                        registered:
+                          type: boolean
+                          description: Whether the invitee has registered
+                          example: false
+                        isInviteSent:
+                          type: boolean
+                          description: Whether the invite has been sent
+                          example: false
+                        cOn:
+                          type: string
+                          format: date-time
+                          description: Creation timestamp
+                          example: '2025-08-20T21:26:12.068Z'
+                        mOn:
+                          type: string
+                          format: date-time
+                          description: Last modification timestamp
+                          example: '2025-08-20T21:26:12.068Z'
+                        __v:
+                          type: integer
+                          description: Version number
+                          example: 0
+                title: GetMeetingInvitesResponseBody
+              examples:
+                Example1:
+                  summary: Example get meeting invites response
+                  value:
+                    maxInvites: 50
+                    invitesCount: 1
+                    invitesList:
+                    - _id: mi-89577cd6-b306-4219-a28e-8e42c69c6891
+                      firstName: tp-088573cb-34d3-405d-a954-119ee6aaff92
+                      lastName: ''
+                      emailId: tp-088573cb-34d3-405d-a954-119ee6aaff92@cpassbot.jiomeet
+                      role: Host
+                      meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      userId: u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237
+                      isDeleted: false
+                      socialMediaLinks: []
+                      registered: false
+                      isInviteSent: false
+                      cOn: '2025-08-20T21:26:12.068Z'
+                      mOn: '2025-08-20T21:26:12.068Z'
+                      __v: 0
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request parameters are incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/schedule/webinar:
+    delete:
+      summary: Scheduled Webinar - Delete a scheduled webinar
+      description: This API deletes a scheduled webinar using the meetingId returned when the webinar
+        was created
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                meetingId: sm-085033e1-b83c-43ea-afa9-49df09173534
+                type: current
+              type: object
+              properties:
+                meetingId:
+                  type: string
+                  description: The meeting id that can be used to update, delete or fetch this webinar
+                type:
+                  type: string
+                  description: Should be 'current' to delete current webinar
+              title: DeleteScheduledWebinarRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Indicates whether webinar is DELETED or NOT_DELETED
+                    example: DELETED
+                title: DeleteScheduledWebinarResponseBody
+              examples:
+                Example1:
+                  summary: Example delete scheduled webinar response
+                  value:
+                    status: DELETED
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    put:
+      summary: Scheduled Webinar - Update a scheduled webinar
+      description: This API updates a scheduled webinar using the meetingId returned when the webinar
+        was created
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                topic: Test1 user's JioEvent
+                startTime: '2025-08-21T14:00:00.000Z'
+                endTime: '2025-08-21T16:30:00.000Z'
+                meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                webinar:
+                  sessions:
+                    enabled: true
+                    registrationEnabled: false
+              type: object
+              properties:
+                meetingId:
+                  type: string
+                  description: The meeting id of the webinar
+                topic:
+                  type: string
+                  description: The topic of the webinar
+                startTime:
+                  type: string
+                  description: The start time of the webinar in ISO format
+                endTime:
+                  type: string
+                  description: The end time of the webinar in ISO format
+                webinar:
+                  type: object
+                  description: Webinar configuration to update
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the webinar feature is enabled
+                    sessions:
+                      type: object
+                      description: Sessions configuration
+                      properties:
+                        enabled:
+                          type: boolean
+                          description: Whether sessions are enabled
+                        registrationEnabled:
+                          type: boolean
+                          description: Whether session registration is enabled
+              title: UpdateScheduledWebinarRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jiomeetId:
+                    type: string
+                    description: The 10 digit unique ID of the webinar
+                    example: '7975873555'
+                  topic:
+                    type: string
+                    description: The topic/title of the webinar
+                    example: Test1 user's JioEvent
+                  startTime:
+                    type: string
+                    format: date-time
+                    description: The start time of the webinar in ISO format
+                    example: '2025-08-21T14:00:00.000Z'
+                  endTime:
+                    type: string
+                    format: date-time
+                    description: The end time of the webinar in ISO format
+                    example: '2025-08-21T16:30:00.000Z'
+                  scheduledDuration:
+                    type: number
+                    description: The duration of the webinar in milliseconds
+                    example: 9000000
+                  meetingUrl:
+                    type: string
+                    description: The meeting URL that users will use to join the webinar
+                    example: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                  speakerLink:
+                    type: string
+                    description: The speaker link for the webinar
+                    example: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                      lastName}
+                  attendeeLink:
+                    type: string
+                    description: The attendee link for the webinar
+                    example: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                  webinar:
+                    type: object
+                    description: Webinar-specific configuration and activation details
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Whether the webinar feature is enabled
+                        example: true
+                      options:
+                        type: object
+                        description: Webinar options configuration
+                        properties:
+                          quesAns:
+                            type: boolean
+                            description: Whether Q&A is enabled
+                            example: true
+                          allowGuests:
+                            type: boolean
+                            description: Whether guests are allowed
+                            example: true
+                          comments:
+                            type: boolean
+                            description: Whether comments are enabled
+                            example: true
+                          ticker:
+                            type: object
+                            description: Ticker configuration
+                            properties:
+                              enabled:
+                                type: boolean
+                                description: Whether ticker is enabled
+                                example: false
+                              text:
+                                type: string
+                                description: Ticker text
+                                example: ''
+                          thankYouMsg:
+                            type: object
+                            description: Thank you message configuration
+                            properties:
+                              enabled:
+                                type: boolean
+                                description: Whether thank you message is enabled
+                                example: true
+                              text:
+                                type: string
+                                description: Thank you message text
+                                example: Thank you for attending the event
+                          views:
+                            type: object
+                            description: Views configuration
+                            properties:
+                              showCount:
+                                type: boolean
+                                description: Whether to show view count
+                                example: true
+                          likes:
+                            type: object
+                            description: Likes and reactions configuration
+                            properties:
+                              showCount:
+                                type: boolean
+                                description: Whether to show like count
+                                example: true
+                              floatingReactions:
+                                type: object
+                                description: Floating reactions configuration
+                                properties:
+                                  enabled:
+                                    type: boolean
+                                    description: Whether floating reactions are enabled
+                                    example: true
+                              reactionType:
+                                type: array
+                                description: Available reaction types
+                                items:
+                                  type: string
+                                example:
+                                - laugh
+                                - awesome
+                                - like
+                                - applause
+                                - greet
+                              enabled:
+                                type: boolean
+                                description: Whether likes are enabled
+                                example: true
+                          videoQuality:
+                            type: string
+                            description: Video quality setting
+                            example: sd
+                          customization:
+                            type: object
+                            description: Customization options
+                            properties:
+                              hideCompletedSessions:
+                                type: boolean
+                                description: Whether to hide completed sessions
+                                example: true
+                              enableHandRaise:
+                                type: boolean
+                                description: Whether hand raise is enabled
+                                example: true
+                              hideWelcomeMessage:
+                                type: boolean
+                                description: Whether to hide welcome message
+                                example: true
+                              equalTileLayout:
+                                type: boolean
+                                description: Whether to use equal tile layout
+                                example: false
+                              shouldSendSMSToAttendee:
+                                type: boolean
+                                description: Whether to send SMS to attendee
+                                example: true
+                          practiceSession:
+                            type: boolean
+                            description: Whether practice session is enabled
+                            example: false
+                          onDemand:
+                            type: boolean
+                            description: Whether on-demand is enabled
+                            example: false
+                          record:
+                            type: boolean
+                            description: Whether recording is enabled
+                            example: false
+                          flashcard:
+                            type: boolean
+                            description: Whether flashcard is enabled
+                            example: false
+                          feedLayout:
+                            type: string
+                            description: Feed layout type
+                            example: grid
+                      registration:
+                        type: object
+                        description: Registration configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether registration is enabled
+                            example: false
+                          enabledFullName:
+                            type: boolean
+                            description: Whether full name is enabled for registration
+                            example: true
+                          autoApprove:
+                            type: boolean
+                            description: Whether auto approval is enabled
+                            example: true
+                          otpEnabled:
+                            type: boolean
+                            description: Whether OTP is enabled
+                            example: true
+                          inviteOnly:
+                            type: boolean
+                            description: Whether invite only is enabled
+                            example: false
+                          openInvite:
+                            type: boolean
+                            description: Whether open invite is enabled
+                            example: false
+                          closeBeforeDays:
+                            type: integer
+                            description: Days before which registration closes
+                            example: 0
+                      recording:
+                        type: object
+                        description: Recording configuration
+                        properties:
+                          recordingType:
+                            type: string
+                            description: Type of recording
+                            example: attendee_page_only_player
+                      attendeeFeed:
+                        type: string
+                        description: Attendee feed type
+                        example: live
+                      activation:
+                        type: object
+                        description: Activation details for the webinar
+                        properties:
+                          hash:
+                            type: string
+                            description: Unique hash for webinar activation
+                            example: _vs-p5ZUhx42846b73f6801755725171923
+                          url:
+                            type: string
+                            description: Activation URL for the webinar
+                            example: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+                      attendeeWebsocketEnabled:
+                        type: boolean
+                        description: Whether attendee websocket is enabled
+                        example: false
+                      broadcasting:
+                        type: boolean
+                        description: Whether broadcasting is enabled
+                        example: false
+                      qnaTimeLimit:
+                        type: integer
+                        description: Q&A time limit in minutes
+                        example: 3
+                      webinarPortal:
+                        type: object
+                        description: Webinar portal configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether webinar portal is enabled
+                            example: false
+                      sessions:
+                        type: object
+                        description: Sessions configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether sessions are enabled
+                            example: true
+                          registrationEnabled:
+                            type: boolean
+                            description: Whether session registration is enabled
+                            example: false
+                      networking:
+                        type: object
+                        description: Networking configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether networking is enabled
+                            example: false
+                          availability:
+                            type: string
+                            description: Networking availability
+                            example: always
+                      leaderboard:
+                        type: object
+                        description: Leaderboard configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether leaderboard is enabled
+                            example: false
+                      preRecordedVideo:
+                        type: object
+                        description: Pre-recorded video configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether pre-recorded video is enabled
+                            example: false
+                          loop:
+                            type: integer
+                            description: Number of loops for pre-recorded video
+                            example: 1
+                  advancedOptions:
+                    type: object
+                    description: Advanced configuration options for the webinar
+                    properties:
+                      joinBeforeHost:
+                        type: boolean
+                        description: Whether participants can join before the host
+                        example: true
+                      loggedInOnly:
+                        type: boolean
+                        description: Whether only logged-in users can join
+                        example: false
+                  status:
+                    type: string
+                    description: The current status of the webinar
+                    example: active
+                  roomPIN:
+                    type: string
+                    description: Meeting PIN that secures the webinar from unwanted access
+                    example: 1Hn8c
+                  meetingId:
+                    type: string
+                    description: The meeting ID that can be used to update, delete or fetch this webinar
+                    example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                title: ScheduledWebinarResponseBody
+              examples:
+                Example1:
+                  summary: Example update scheduled webinar response
+                  value:
+                    jiomeetId: '7975873555'
+                    topic: Test1 user's JioEvent
+                    startTime: '2025-08-21T14:00:00.000Z'
+                    endTime: '2025-08-21T16:30:00.000Z'
+                    scheduledDuration: 9000000
+                    meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                    speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                      lastName}
+                    attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                    webinar:
+                      enabled: true
+                      options:
+                        quesAns: true
+                        allowGuests: true
+                        comments: true
+                        ticker:
+                          enabled: false
+                          text: ''
+                        thankYouMsg:
+                          enabled: true
+                          text: Thank you for attending the event
+                        views:
+                          showCount: true
+                        likes:
+                          showCount: true
+                          floatingReactions:
+                            enabled: true
+                          reactionType:
+                          - laugh
+                          - awesome
+                          - like
+                          - applause
+                          - greet
+                          enabled: true
+                        videoQuality: sd
+                        customization:
+                          hideCompletedSessions: true
+                          enableHandRaise: true
+                          hideWelcomeMessage: true
+                          equalTileLayout: false
+                          shouldSendSMSToAttendee: true
+                        practiceSession: false
+                        onDemand: false
+                        record: false
+                        flashcard: false
+                        feedLayout: grid
+                      registration:
+                        enabled: false
+                        enabledFullName: true
+                        autoApprove: true
+                        otpEnabled: true
+                        inviteOnly: false
+                        openInvite: false
+                        closeBeforeDays: 0
+                      recording:
+                        recordingType: attendee_page_only_player
+                      attendeeFeed: live
+                      activation:
+                        hash: _xZtO9QIKVda1c34d0fe601755526454337
+                        url: https://jioevents.com/attendee/sm-085033e1-b83c-43ea-afa9-49df09173534/join/_xZtO9QIKVda1c34d0fe601755526454337
+                      attendeeWebsocketEnabled: false
+                      broadcasting: false
+                      qnaTimeLimit: 3
+                      webinarPortal:
+                        enabled: false
+                      sessions:
+                        enabled: true
+                        registrationEnabled: false
+                      networking:
+                        enabled: false
+                        availability: always
+                      leaderboard:
+                        enabled: false
+                      preRecordedVideo:
+                        enabled: false
+                        loop: 1
+                    advancedOptions:
+                      joinBeforeHost: true
+                      loggedInOnly: false
+                    status: active
+                    roomPIN: 2xJbU
+                    meetingId: sm-085033e1-b83c-43ea-afa9-49df09173534
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    post:
+      summary: Scheduled Webinar - Create a scheduled webinar
+      description: This API creates a scheduled webinar. Webinar validity is maintained until the host
+        establishes the start time and end time parameters.
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                topic: Test1 user's JioEvent
+                startTime: '2025-08-18T19:00:00.000Z'
+                endTime: '2025-08-18T19:30:00.000Z'
+                webinar:
+                  enabled: true
+              type: object
+              properties:
+                topic:
+                  type: string
+                  description: The topic of the webinar
+                startTime:
+                  type: string
+                  description: The start time of the webinar in ISO format
+                endTime:
+                  type: string
+                  description: The end time of the webinar in ISO format
+                webinar:
+                  type: object
+                  description: Webinar configuration
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the webinar feature is enabled
+              title: ScheduledWebinarRequestBody
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jiomeetId:
+                    type: string
+                    description: The 10 digit unique ID of the webinar
+                    example: '7975873555'
+                  topic:
+                    type: string
+                    description: The topic/title of the webinar
+                    example: Test1 user's JioEvent
+                  startTime:
+                    type: string
+                    format: date-time
+                    description: The start time of the webinar in ISO format
+                    example: '2025-08-21T14:00:00.000Z'
+                  endTime:
+                    type: string
+                    format: date-time
+                    description: The end time of the webinar in ISO format
+                    example: '2025-08-21T16:30:00.000Z'
+                  scheduledDuration:
+                    type: number
+                    description: The duration of the webinar in milliseconds
+                    example: 9000000
+                  meetingUrl:
+                    type: string
+                    description: The meeting URL that users will use to join the webinar
+                    example: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                  speakerLink:
+                    type: string
+                    description: The speaker link for the webinar
+                    example: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                      lastName}
+                  attendeeLink:
+                    type: string
+                    description: The attendee link for the webinar
+                    example: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                  webinar:
+                    type: object
+                    description: Webinar-specific configuration and activation details
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Whether the webinar feature is enabled
+                        example: true
+                      options:
+                        type: object
+                        description: Webinar options configuration
+                        properties:
+                          quesAns:
+                            type: boolean
+                            description: Whether Q&A is enabled
+                            example: true
+                          allowGuests:
+                            type: boolean
+                            description: Whether guests are allowed
+                            example: true
+                          comments:
+                            type: boolean
+                            description: Whether comments are enabled
+                            example: true
+                          ticker:
+                            type: object
+                            description: Ticker configuration
+                            properties:
+                              enabled:
+                                type: boolean
+                                description: Whether ticker is enabled
+                                example: false
+                              text:
+                                type: string
+                                description: Ticker text
+                                example: ''
+                          thankYouMsg:
+                            type: object
+                            description: Thank you message configuration
+                            properties:
+                              enabled:
+                                type: boolean
+                                description: Whether thank you message is enabled
+                                example: true
+                              text:
+                                type: string
+                                description: Thank you message text
+                                example: Thank you for attending the event
+                          views:
+                            type: object
+                            description: Views configuration
+                            properties:
+                              showCount:
+                                type: boolean
+                                description: Whether to show view count
+                                example: true
+                          likes:
+                            type: object
+                            description: Likes and reactions configuration
+                            properties:
+                              showCount:
+                                type: boolean
+                                description: Whether to show like count
+                                example: true
+                              floatingReactions:
+                                type: object
+                                description: Floating reactions configuration
+                                properties:
+                                  enabled:
+                                    type: boolean
+                                    description: Whether floating reactions are enabled
+                                    example: true
+                              reactionType:
+                                type: array
+                                description: Available reaction types
+                                items:
+                                  type: string
+                                example:
+                                - laugh
+                                - awesome
+                                - like
+                                - applause
+                                - greet
+                              enabled:
+                                type: boolean
+                                description: Whether likes are enabled
+                                example: true
+                          videoQuality:
+                            type: string
+                            description: Video quality setting
+                            example: sd
+                          customization:
+                            type: object
+                            description: Customization options
+                            properties:
+                              hideCompletedSessions:
+                                type: boolean
+                                description: Whether to hide completed sessions
+                                example: true
+                              enableHandRaise:
+                                type: boolean
+                                description: Whether hand raise is enabled
+                                example: true
+                              hideWelcomeMessage:
+                                type: boolean
+                                description: Whether to hide welcome message
+                                example: true
+                              equalTileLayout:
+                                type: boolean
+                                description: Whether to use equal tile layout
+                                example: false
+                              shouldSendSMSToAttendee:
+                                type: boolean
+                                description: Whether to send SMS to attendee
+                                example: true
+                          practiceSession:
+                            type: boolean
+                            description: Whether practice session is enabled
+                            example: false
+                          onDemand:
+                            type: boolean
+                            description: Whether on-demand is enabled
+                            example: false
+                          record:
+                            type: boolean
+                            description: Whether recording is enabled
+                            example: false
+                          flashcard:
+                            type: boolean
+                            description: Whether flashcard is enabled
+                            example: false
+                          feedLayout:
+                            type: string
+                            description: Feed layout type
+                            example: grid
+                      registration:
+                        type: object
+                        description: Registration configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether registration is enabled
+                            example: false
+                          enabledFullName:
+                            type: boolean
+                            description: Whether full name is enabled for registration
+                            example: true
+                          autoApprove:
+                            type: boolean
+                            description: Whether auto approval is enabled
+                            example: true
+                          otpEnabled:
+                            type: boolean
+                            description: Whether OTP is enabled
+                            example: true
+                          inviteOnly:
+                            type: boolean
+                            description: Whether invite only is enabled
+                            example: false
+                          openInvite:
+                            type: boolean
+                            description: Whether open invite is enabled
+                            example: false
+                          closeBeforeDays:
+                            type: integer
+                            description: Days before which registration closes
+                            example: 0
+                      recording:
+                        type: object
+                        description: Recording configuration
+                        properties:
+                          recordingType:
+                            type: string
+                            description: Type of recording
+                            example: attendee_page_only_player
+                      attendeeFeed:
+                        type: string
+                        description: Attendee feed type
+                        example: live
+                      activation:
+                        type: object
+                        description: Activation details for the webinar
+                        properties:
+                          hash:
+                            type: string
+                            description: Unique hash for webinar activation
+                            example: _vs-p5ZUhx42846b73f6801755725171923
+                          url:
+                            type: string
+                            description: Activation URL for the webinar
+                            example: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+                      attendeeWebsocketEnabled:
+                        type: boolean
+                        description: Whether attendee websocket is enabled
+                        example: false
+                      broadcasting:
+                        type: boolean
+                        description: Whether broadcasting is enabled
+                        example: false
+                      qnaTimeLimit:
+                        type: integer
+                        description: Q&A time limit in minutes
+                        example: 3
+                      webinarPortal:
+                        type: object
+                        description: Webinar portal configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether webinar portal is enabled
+                            example: false
+                      sessions:
+                        type: object
+                        description: Sessions configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether sessions are enabled
+                            example: true
+                          registrationEnabled:
+                            type: boolean
+                            description: Whether session registration is enabled
+                            example: false
+                      networking:
+                        type: object
+                        description: Networking configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether networking is enabled
+                            example: false
+                          availability:
+                            type: string
+                            description: Networking availability
+                            example: always
+                      leaderboard:
+                        type: object
+                        description: Leaderboard configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether leaderboard is enabled
+                            example: false
+                      preRecordedVideo:
+                        type: object
+                        description: Pre-recorded video configuration
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Whether pre-recorded video is enabled
+                            example: false
+                          loop:
+                            type: integer
+                            description: Number of loops for pre-recorded video
+                            example: 1
+                  advancedOptions:
+                    type: object
+                    description: Advanced configuration options for the webinar
+                    properties:
+                      joinBeforeHost:
+                        type: boolean
+                        description: Whether participants can join before the host
+                        example: true
+                      loggedInOnly:
+                        type: boolean
+                        description: Whether only logged-in users can join
+                        example: false
+                  status:
+                    type: string
+                    description: The current status of the webinar
+                    example: active
+                  roomPIN:
+                    type: string
+                    description: Meeting PIN that secures the webinar from unwanted access
+                    example: 1Hn8c
+                  meetingId:
+                    type: string
+                    description: The meeting ID that can be used to update, delete or fetch this webinar
+                    example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                title: ScheduledWebinarResponseBody
+              examples:
+                Example1:
+                  summary: Example scheduled webinar response
+                  value:
+                    jiomeetId: '7975873555'
+                    topic: Test1 user's JioEvent
+                    startTime: '2025-08-21T14:00:00.000Z'
+                    endTime: '2025-08-21T16:30:00.000Z'
+                    scheduledDuration: 9000000
+                    meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                    speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                      lastName}
+                    attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                    webinar:
+                      enabled: true
+                      options:
+                        quesAns: true
+                        allowGuests: true
+                        comments: true
+                        ticker:
+                          enabled: false
+                          text: ''
+                        thankYouMsg:
+                          enabled: true
+                          text: Thank you for attending the event
+                        views:
+                          showCount: true
+                        likes:
+                          showCount: true
+                          floatingReactions:
+                            enabled: true
+                          reactionType:
+                          - laugh
+                          - awesome
+                          - like
+                          - applause
+                          - greet
+                          enabled: true
+                        videoQuality: sd
+                        customization:
+                          hideCompletedSessions: true
+                          enableHandRaise: true
+                          hideWelcomeMessage: true
+                          equalTileLayout: false
+                          shouldSendSMSToAttendee: true
+                        practiceSession: false
+                        onDemand: false
+                        record: false
+                        flashcard: false
+                        feedLayout: grid
+                      registration:
+                        enabled: false
+                        enabledFullName: true
+                        autoApprove: true
+                        otpEnabled: true
+                        inviteOnly: false
+                        openInvite: false
+                        closeBeforeDays: 0
+                      recording:
+                        recordingType: attendee_page_only_player
+                      attendeeFeed: live
+                      activation:
+                        hash: _vs-p5ZUhx42846b73f6801755725171923
+                        url: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+                      attendeeWebsocketEnabled: false
+                      broadcasting: false
+                      qnaTimeLimit: 3
+                      webinarPortal:
+                        enabled: false
+                      sessions:
+                        enabled: true
+                        registrationEnabled: false
+                      networking:
+                        enabled: false
+                        availability: always
+                      leaderboard:
+                        enabled: false
+                      preRecordedVideo:
+                        enabled: false
+                        loop: 1
+                    advancedOptions:
+                      joinBeforeHost: true
+                      loggedInOnly: false
+                    status: active
+                    roomPIN: 1Hn8c
+                    meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+    get:
+      summary: Scheduled Webinar - Fetch a scheduled webinar
+      description: This API fetches scheduled webinar/s using the meetingId, jiomeetId or the time range
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The content type should be application/json
+        schema:
+          type: string
+        example: application/json
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: meetingId
+        in: query
+        required: false
+        description: The meeting Id of the scheduled webinar
+        schema:
+          type: string
+        example: sm-123456789
+      - name: jiomeetId
+        in: query
+        required: false
+        description: The 10 digit unique jiomeetId of the webinar
+        schema:
+          type: string
+        example: '1234567890'
+      - name: fromDate
+        in: query
+        required: false
+        description: Start of the time range. To be used in combination with toDate
+        schema:
+          type: string
+        example: '2024-03-01'
+      - name: endDate
+        in: query
+        required: false
+        description: End of the time range. To be used in combination with fromDate
+        schema:
+          type: string
+        example: '2024-03-31'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meetingsCount:
+                    type: number
+                    description: Number of meetings in the response
+                    example: 1
+                  meetingDetails:
+                    type: array
+                    description: List of meeting details
+                    items:
+                      type: object
+                      properties:
+                        jiomeetId:
+                          type: string
+                          description: The 10 digit unique ID of the webinar
+                          example: '7975873555'
+                        topic:
+                          type: string
+                          description: The topic/title of the webinar
+                          example: Test1 user's JioEvent
+                        startTime:
+                          type: string
+                          format: date-time
+                          description: The start time of the webinar in ISO format
+                          example: '2025-08-21T14:00:00.000Z'
+                        endTime:
+                          type: string
+                          format: date-time
+                          description: The end time of the webinar in ISO format
+                          example: '2025-08-21T16:30:00.000Z'
+                        scheduledDuration:
+                          type: number
+                          description: The duration of the webinar in milliseconds
+                          example: 9000000
+                        meetingUrl:
+                          type: string
+                          description: The meeting URL that users will use to join the webinar
+                          example: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                        speakerLink:
+                          type: string
+                          description: The speaker link for the webinar
+                          example: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                            lastName}
+                        attendeeLink:
+                          type: string
+                          description: The attendee link for the webinar
+                          example: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                        webinar:
+                          type: object
+                          description: Webinar-specific configuration and activation details
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Whether the webinar feature is enabled
+                              example: true
+                            options:
+                              type: object
+                              description: Webinar options configuration
+                              properties:
+                                quesAns:
+                                  type: boolean
+                                  description: Whether Q&A is enabled
+                                  example: true
+                                allowGuests:
+                                  type: boolean
+                                  description: Whether guests are allowed
+                                  example: true
+                                comments:
+                                  type: boolean
+                                  description: Whether comments are enabled
+                                  example: true
+                                ticker:
+                                  type: object
+                                  description: Ticker configuration
+                                  properties:
+                                    enabled:
+                                      type: boolean
+                                      description: Whether ticker is enabled
+                                      example: false
+                                    text:
+                                      type: string
+                                      description: Ticker text
+                                      example: ''
+                                thankYouMsg:
+                                  type: object
+                                  description: Thank you message configuration
+                                  properties:
+                                    enabled:
+                                      type: boolean
+                                      description: Whether thank you message is enabled
+                                      example: true
+                                    text:
+                                      type: string
+                                      description: Thank you message text
+                                      example: Thank you for attending the event
+                                views:
+                                  type: object
+                                  description: Views configuration
+                                  properties:
+                                    showCount:
+                                      type: boolean
+                                      description: Whether to show view count
+                                      example: true
+                                likes:
+                                  type: object
+                                  description: Likes and reactions configuration
+                                  properties:
+                                    showCount:
+                                      type: boolean
+                                      description: Whether to show like count
+                                      example: true
+                                    floatingReactions:
+                                      type: object
+                                      description: Floating reactions configuration
+                                      properties:
+                                        enabled:
+                                          type: boolean
+                                          description: Whether floating reactions are enabled
+                                          example: true
+                                    reactionType:
+                                      type: array
+                                      description: Available reaction types
+                                      items:
+                                        type: string
+                                      example:
+                                      - laugh
+                                      - awesome
+                                      - like
+                                      - applause
+                                      - greet
+                                    enabled:
+                                      type: boolean
+                                      description: Whether likes are enabled
+                                      example: true
+                                videoQuality:
+                                  type: string
+                                  description: Video quality setting
+                                  example: sd
+                                customization:
+                                  type: object
+                                  description: Customization options
+                                  properties:
+                                    hideCompletedSessions:
+                                      type: boolean
+                                      description: Whether to hide completed sessions
+                                      example: true
+                                    enableHandRaise:
+                                      type: boolean
+                                      description: Whether hand raise is enabled
+                                      example: true
+                                    hideWelcomeMessage:
+                                      type: boolean
+                                      description: Whether to hide welcome message
+                                      example: true
+                                    equalTileLayout:
+                                      type: boolean
+                                      description: Whether to use equal tile layout
+                                      example: false
+                                    shouldSendSMSToAttendee:
+                                      type: boolean
+                                      description: Whether to send SMS to attendee
+                                      example: true
+                                practiceSession:
+                                  type: boolean
+                                  description: Whether practice session is enabled
+                                  example: false
+                                onDemand:
+                                  type: boolean
+                                  description: Whether on-demand is enabled
+                                  example: false
+                                record:
+                                  type: boolean
+                                  description: Whether recording is enabled
+                                  example: false
+                                flashcard:
+                                  type: boolean
+                                  description: Whether flashcard is enabled
+                                  example: false
+                                feedLayout:
+                                  type: string
+                                  description: Feed layout type
+                                  example: grid
+                            registration:
+                              type: object
+                              description: Registration configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether registration is enabled
+                                  example: false
+                                enabledFullName:
+                                  type: boolean
+                                  description: Whether full name is enabled for registration
+                                  example: true
+                                autoApprove:
+                                  type: boolean
+                                  description: Whether auto approval is enabled
+                                  example: true
+                                otpEnabled:
+                                  type: boolean
+                                  description: Whether OTP is enabled
+                                  example: true
+                                inviteOnly:
+                                  type: boolean
+                                  description: Whether invite only is enabled
+                                  example: false
+                                openInvite:
+                                  type: boolean
+                                  description: Whether open invite is enabled
+                                  example: false
+                                closeBeforeDays:
+                                  type: integer
+                                  description: Days before which registration closes
+                                  example: 0
+                            recording:
+                              type: object
+                              description: Recording configuration
+                              properties:
+                                recordingType:
+                                  type: string
+                                  description: Type of recording
+                                  example: attendee_page_only_player
+                            attendeeFeed:
+                              type: string
+                              description: Attendee feed type
+                              example: live
+                            activation:
+                              type: object
+                              description: Activation details for the webinar
+                              properties:
+                                hash:
+                                  type: string
+                                  description: Unique hash for webinar activation
+                                  example: _vs-p5ZUhx42846b73f6801755725171923
+                                url:
+                                  type: string
+                                  description: Activation URL for the webinar
+                                  example: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+                            attendeeWebsocketEnabled:
+                              type: boolean
+                              description: Whether attendee websocket is enabled
+                              example: false
+                            broadcasting:
+                              type: boolean
+                              description: Whether broadcasting is enabled
+                              example: false
+                            qnaTimeLimit:
+                              type: integer
+                              description: Q&A time limit in minutes
+                              example: 3
+                            webinarPortal:
+                              type: object
+                              description: Webinar portal configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether webinar portal is enabled
+                                  example: false
+                            sessions:
+                              type: object
+                              description: Sessions configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether sessions are enabled
+                                  example: true
+                                registrationEnabled:
+                                  type: boolean
+                                  description: Whether session registration is enabled
+                                  example: false
+                            networking:
+                              type: object
+                              description: Networking configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether networking is enabled
+                                  example: false
+                                availability:
+                                  type: string
+                                  description: Networking availability
+                                  example: always
+                            leaderboard:
+                              type: object
+                              description: Leaderboard configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether leaderboard is enabled
+                                  example: false
+                            preRecordedVideo:
+                              type: object
+                              description: Pre-recorded video configuration
+                              properties:
+                                enabled:
+                                  type: boolean
+                                  description: Whether pre-recorded video is enabled
+                                  example: false
+                                loop:
+                                  type: integer
+                                  description: Number of loops for pre-recorded video
+                                  example: 1
+                        advancedOptions:
+                          type: object
+                          description: Advanced configuration options for the webinar
+                          properties:
+                            joinBeforeHost:
+                              type: boolean
+                              description: Whether participants can join before the host
+                              example: true
+                            loggedInOnly:
+                              type: boolean
+                              description: Whether only logged-in users can join
+                              example: false
+                        status:
+                          type: string
+                          description: The current status of the webinar
+                          example: active
+                        roomPIN:
+                          type: string
+                          description: Meeting PIN that secures the webinar from unwanted access
+                          example: 1Hn8c
+                        meetingId:
+                          type: string
+                          description: The meeting ID that can be used to update, delete or fetch this
+                            webinar
+                          example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                      title: ScheduledWebinarResponseBody
+                title: GetScheduledWebinarResponseBody
+              examples:
+                Example1:
+                  summary: Example fetch scheduled webinar response
+                  value:
+                    meetingDetails:
+                    - jiomeetId: '7975873555'
+                      topic: Test1 user's JioEvent
+                      startTime: '2025-08-21T14:00:00.000Z'
+                      endTime: '2025-08-21T16:30:00.000Z'
+                      scheduledDuration: 9000000
+                      meetingUrl: https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c
+                      speakerLink: https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName
+                        lastName}
+                      attendeeLink: https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}
+                      webinar:
+                        enabled: true
+                        options:
+                          quesAns: true
+                          allowGuests: true
+                          comments: true
+                          ticker:
+                            enabled: false
+                            text: ''
+                          thankYouMsg:
+                            enabled: true
+                            text: Thank you for attending the event
+                          views:
+                            showCount: true
+                          likes:
+                            showCount: true
+                            floatingReactions:
+                              enabled: true
+                            reactionType:
+                            - laugh
+                            - awesome
+                            - like
+                            - applause
+                            - greet
+                            enabled: true
+                          videoQuality: sd
+                          customization:
+                            hideCompletedSessions: true
+                            enableHandRaise: true
+                            hideWelcomeMessage: true
+                            equalTileLayout: false
+                            shouldSendSMSToAttendee: true
+                          practiceSession: false
+                          onDemand: false
+                          record: false
+                          flashcard: false
+                          feedLayout: grid
+                        registration:
+                          enabled: false
+                          enabledFullName: true
+                          autoApprove: true
+                          otpEnabled: true
+                          inviteOnly: false
+                          openInvite: false
+                          closeBeforeDays: 0
+                        recording:
+                          recordingType: attendee_page_only_player
+                        attendeeFeed: live
+                        activation:
+                          hash: _vs-p5ZUhx42846b73f6801755725171923
+                          url: https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923
+                        attendeeWebsocketEnabled: false
+                        broadcasting: false
+                        qnaTimeLimit: 3
+                        webinarPortal:
+                          enabled: false
+                        sessions:
+                          enabled: true
+                          registrationEnabled: false
+                        networking:
+                          enabled: false
+                          availability: always
+                        leaderboard:
+                          enabled: false
+                        preRecordedVideo:
+                          enabled: false
+                          loop: 1
+                      advancedOptions:
+                        joinBeforeHost: true
+                        loggedInOnly: false
+                      status: active
+                      roomPIN: 1Hn8c
+                      meetingId: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+                    meetingsCount: 1
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request body is incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+  /api/platform/v1/webinar/{meetingId}/download:
+    get:
+      summary: Webinar - Download attendance/ Registration report
+      description: This API generates and provides a download link for webinar attendance/ registration
+        data
+      tags:
+      - JioEventsCpaasPlatform
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: You need an app created on the JioEvents Platform and using the app credentials you
+          can create a JWT to access this API. The JWT should have an issuer and the key "app" with the
+          app id generated from the Platform.
+        schema:
+          type: string
+        example: <Authentication_token_signed_using_secret_or_private_key>
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting ID for which to download attendance/ registration data
+        schema:
+          type: string
+        example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277
+      - name: registered
+        in: query
+        required: false
+        description: When set to true, generates registration report instead of attendance data
+        schema:
+          type: boolean
+        example: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the download request was successful
+                    example: true
+                  fileName:
+                    type: string
+                    description: Name of the attendance file
+                    example: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx
+                  downloadUrl:
+                    type: string
+                    description: URL to download the attendance file
+                    example: https://jiomeetpro.jio.com/api/meeting/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/webinar/download/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWVhZDY5ZDhlLThjMzAtNDJmMS05Nzk4LThhY2ZhNWRkMTI3Ny1hdHRlbmRhbmNlLnhsc3giLCJpYXQiOjE3NTU3MjY5NDgsImV4cCI6MTc1NTcyNzI0OH0.nd_l91epkHKl8rZ8o8bAVR9xeN4VJXaR7SErmL8Qvr9eWUn0nHj8UhfFurP_6-Bca1_aK6kdUxJPYgr-TxR_MpkYCr9husHFz2inuWvu-dOuDPxSMNT3KeRmiTDYUm9OrUOCFj9ZjOmCL9yPUhQRGa8XC3zM37oq6jvEwCBeAyxF-_ukuRsFpQtGpXwbatZuEuziY42Mmw2hpA2DKs5MsClUcoS6EfhlYM0rNefynwvfnjSo3MPfY9yYjgFtCKO936EqnhaD4nFsBTGIk3f4_8ZRIve3fR7oWq-uAAaJey4TJcq1vhNqOScCFliLFrpaUnYZaaGfubw2kqxn_61vBQ
+                title: DownloadWebinarAttendanceResponseBody
+              examples:
+                AttendanceExample:
+                  summary: Example download webinar attendance response
+                  value:
+                    success: true
+                    fileName: sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx
+                    downloadUrl: https://jiomeetpro.jio.com/api/meeting/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/webinar/download/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWVhZDY5ZDhlLThjMzAtNDJmMS05Nzk4LThhY2ZhNWRkMTI3Ny1hdHRlbmRhbmNlLnhsc3giLCJpYXQiOjE3NTU3MjY5NDgsImV4cCI6MTc1NTcyNzI0OH0.nd_l91epkHKl8rZ8o8bAVR9xeN4VJXaR7SErmL8Qvr9eWUn0nHj8UhfFurP_6-Bca1_aK6kdUxJPYgr-TxR_MpkYCr9husHFz2inuWvu-dOuDPxSMNT3KeRmiTDYUm9OrUOCFj9ZjOmCL9yPUhQRGa8XC3zM37oq6jvEwCBeAyxF-_ukuRsFpQtGpXwbatZuEuziY42Mmw2hpA2DKs5MsClUcoS6EfhlYM0rNefynwvfnjSo3MPfY9yYjgFtCKO936EqnhaD4nFsBTGIk3f4_8ZRIve3fR7oWq-uAAaJey4TJcq1vhNqOScCFliLFrpaUnYZaaGfubw2kqxn_61vBQ
+                RegistrationExample:
+                  summary: Example download webinar registration response
+                  value:
+                    success: true
+                    fileName: sm-cc88e8f1-65f4-4a44-8280-a526215033c2-registered-attendees.xlsx
+                    downloadUrl: https://jiomeetpro.jio.com/api/meeting/sm-cc88e8f1-65f4-4a44-8280-a526215033c2/webinar/download/sm-cc88e8f1-65f4-4a44-8280-a526215033c2-registered-attendees.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWNjODhlOGYxLTY1ZjQtNGE0NC04MjgwLWE1MjYyMTUwMzNjMi1yZWdpc3RlcmVkLWF0dGVuZGVlcy54bHN4IiwiaWF0IjoxNzU2NDU1MjQ4LCJleHAiOjE3NTY0NTU1NDh9.kiqkbDatP6lREN-qO87t8xGuHewX_9K9U7hG1Uv9zLvHc2VJ3TOKL4TOGCPeyR6sOmzgbO5d7DwUampawk-183dlnVRx2v3LF7IWzMdwnwkW2wImgiHGh0jOPnmTxDtNvedgVFFawJrGGlB0yIFxgO3Ut2_AJVylh3Obcf4hPBMQ8_EMuAaEavFKURvQC5rR26_3mfMRxKfNFKI3rNGHR6gcWA4LB1eBoVuVraSkdUM6nqs56BNUb8W_bqrq6GLu4IXeSLcUuU1ahsW7hM-APHXxnt25BM8H2A69WJByPBh2RXBzn4NhfV7PXnOy13yTYlA_1ZCmB8nEjWNisxrW9A
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errors:
+                    type: string
+                    description: The error message of the API
+                title: CustomError
+        '412':
+          content:
+            application/json:
+              summary: Validation Errors usually arise when the request parameters are incorrect
+              schema:
+                type: object
+                properties:
+                  customCode:
+                    type: number
+                    description: Status Code of the API
+                  message:
+                    type: string
+                    description: The error code of the API
+                  errorsArray:
+                    type: array
+                    description: The errors array which includes objects with a "property" and "message"
+                      properties describing the error
+                title: ValidationError
+components:
+  securitySchemes: {}

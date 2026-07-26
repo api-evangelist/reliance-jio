@@ -1,0 +1,55 @@
+generated: '2026-07-25'
+method: generated
+source: >-
+  Generated from the 29 operations harvested into openapi/reliance-jio-*-openapi.yml plus
+  conventions/reliance-jio-conventions.yml, errors/reliance-jio-problem-types.yml,
+  authentication/reliance-jio-authentication.yml and scopes/reliance-jio-scopes.yml.
+  Reliance Jio publishes no AGENTS.md and no skill files of its own.
+description: >-
+  Packaged agent operating instructions for the three REST API surfaces Reliance Jio
+  documents publicly. Each skill is grounded in real methods and paths; the operationIds
+  are assigned by the matching overlay because Jio's own spec declares none.
+skills:
+  - file: reliance-jio-create-and-record-a-meeting.md
+    name: Create and record a JioMeet meeting
+    api: openapi/reliance-jio-jiomeet-platform-openapi.yml
+    server: https://jiomeetpro.jio.com
+    auth: app-credential JWT (HS256 / RS256)
+    operations:
+      - createADynamicMeeting
+      - startRecording
+      - checkRecordingStatus
+      - stopRecording
+      - listRecordings
+      - getMeetingReport
+      - listChatThread
+  - file: reliance-jio-manage-user-meetings-with-oauth.md
+    name: Manage a JioMeet user's meetings with OAuth
+    api: openapi/reliance-jio-jiomeet-oauth-openapi.yml
+    server: https://jiomeetpro.jio.com
+    auth: OAuth 2.0 authorization code (Basic at token endpoint, Bearer thereafter)
+    operations:
+      - accessTokenEndpointFetchAccessAndRefreshToken
+      - userInfoFetchUserProfileInfo
+      - scheduledMeetingCreateAScheduledMeeting
+      - scheduledMeetingListAllMeetingsOfUser
+      - scheduledMeetingFetchAScheduledMeeting
+      - scheduledMeetingUpdateAScheduledMeeting
+      - scheduledMeetingDeleteAScheduledMeeting
+  - file: reliance-jio-run-a-jioevents-webinar.md
+    name: Run a JioEvents webinar end to end
+    api: openapi/reliance-jio-jioevents-platform-openapi.yml
+    server: https://jioevents.com
+    auth: app-credential JWT (HS256 / RS256)
+    operations:
+      - scheduledWebinarCreateAScheduledWebinar
+      - scheduledWebinarFetchAScheduledWebinar
+      - scheduledWebinarUpdateAScheduledWebinar
+      - scheduledWebinarDeleteAScheduledWebinar
+      - sessionsCreateASession
+      - sessionsGetSessions
+      - sessionsDeleteASession
+      - meetingInviteCreateAMeetingInvite
+      - meetingInviteGetMeetingInvites
+      - meetingInviteDeleteMeetingInvites
+      - webinarDownloadAttendanceRegistrationReport

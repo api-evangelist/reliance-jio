@@ -1,0 +1,55 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for JioMeet Platform APIs
+  version: 1.0.0
+extends: openapi/reliance-jio-jiomeet-platform-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: Harvested from the docusaurus-openapi-docs build output published at https://dev.jiomeet.com
+      - Jio serves no downloadable OpenAPI document.
+    x-apievangelist-harvested: '2026-07-25'
+- target: $.paths['/api/platform/v1/recordings/start'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: startRecording
+- target: $.paths['/api/platform/v1/room'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: createADynamicMeeting
+- target: $.paths['/api/platform/v1/recordings/list'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: listRecordings
+- target: $.paths['/api/platform/v1/schedule/meeting'].put
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingUpdateAScheduledMeeting
+- target: $.paths['/api/platform/v1/recordings/isrecording'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: checkRecordingStatus
+- target: $.paths['/api/platform/v1/recordings/stop'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: stopRecording
+- target: $.paths['/api/platform/v1/analytics/report'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: getMeetingReport
+- target: $.paths['/api/platform/v1/schedule/meeting'].delete
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingDeleteAScheduledMeeting
+- target: $.paths['/api/platform/v1/chat/thread'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: listChatThread
+- target: $.paths['/api/platform/v1/schedule/meeting'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingCreateAScheduledMeeting
+- target: $.paths['/api/platform/v1/schedule/meeting'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingFetchAScheduledMeeting

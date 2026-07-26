@@ -1,0 +1,1446 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "JioMeet User OAuth APIs",
+  "description": "This section provides information about JioMeet's OAuth User APIs.These APIs can be utilized to seamlessly integrate JioMeet functionality into your backend systems.",
+  "version": "1.0.0"
+ },
+ "servers": [
+  {
+   "url": "https://jiomeetpro.jio.com"
+  }
+ ],
+ "tags": [
+  {
+   "name": "JioMeetCpaasPlatform"
+  }
+ ],
+ "paths": {
+  "/api/meeting/meetingDetails/{meetingId}": {
+   "get": {
+    "summary": "Scheduled Meeting - Fetch a scheduled meeting",
+    "description": "This API fetches details of a scheduled meeting using the provided meetingId.  Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meeting details",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "meetingId",
+      "in": "path",
+      "required": true,
+      "description": "The ID of the meeting.",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "jiomeetId": {
+            "type": "string",
+            "description": "The unique identifier for the JioMeet session."
+           },
+           "topic": {
+            "type": "string",
+            "description": "The topic or title of the meeting."
+           },
+           "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The start time of the meeting in ISO format."
+           },
+           "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The end time of the meeting in ISO format."
+           },
+           "scheduledDuration": {
+            "type": "integer",
+            "description": "The scheduled duration of the meeting in milliseconds."
+           },
+           "meetingUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to join the meeting."
+           },
+           "status": {
+            "type": "string",
+            "description": "The current status of the meeting."
+           },
+           "pin": {
+            "type": "string",
+            "description": "The PIN required to join the meeting room."
+           },
+           "_id": {
+            "type": "string",
+            "description": "The system-generated unique identifier for the meeting."
+           }
+          },
+          "title": "ScheduledMeeting"
+         },
+         "title": "GetScheduledMeetingResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example fetch scheduled meeting response",
+          "value": [
+           {
+            "jiomeetId": "7212310665",
+            "topic": "Meeting created at 07:09 AM",
+            "startTime": "2023-09-08T02:39:27.000Z",
+            "endTime": "2023-09-08T03:09:27.000Z",
+            "scheduledDuration": 1800000,
+            "meetingUrl": "https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq",
+            "status": "active",
+            "pin": "7mVhq",
+            "_id": "sm-aed12dea-60d2-4757-9705-6c93dce0e3f0"
+           }
+          ]
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "summary": "Scheduled Meeting - Update a scheduled meeting",
+    "description": "This API updates a scheduled meeting using the meetingId returned when the meeting was created. Required OAuth scope: `meeting:update` - To grant permission to update the scheduled meeting.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "meetingId",
+      "in": "path",
+      "required": true,
+      "description": "The ID of the meeting.",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "example": {
+         "topic": "My Updated Scheduled Meeting",
+         "startTime": "2023-12-12T13:50:00.000Z",
+         "endTime": "2023-12-12T14:20:00.000Z",
+         "isPinEnabled": true
+        },
+        "type": "object",
+        "properties": {
+         "topic": {
+          "type": "string",
+          "description": "The topic of the meeting"
+         },
+         "startTime": {
+          "type": "string",
+          "description": "The start time of the meeting in ISO format"
+         },
+         "endTime": {
+          "type": "string",
+          "description": "The end time of the meeting in ISO format"
+         },
+         "isPinEnabled": {
+          "type": "boolean",
+          "description": "This boolean indicates whether a PIN is required to join the call."
+         },
+         "advancedOptions": {
+          "type": "object",
+          "properties": {
+           "joinBeforeHost": {
+            "type": "boolean",
+            "description": "This boolean describes whether to allow users to join the meeting before the host"
+           },
+           "waitingRoom": {
+            "type": "boolean",
+            "description": "This boolean describes whether to enable the waiting room for the meeting"
+           },
+           "participantHardAudioMute": {
+            "type": "boolean",
+            "description": "This boolean describes whether to hard mute all participants in the meeting"
+           },
+           "participantHardVideoMute": {
+            "type": "boolean",
+            "description": "This boolean describes whether to hard mute all participants in the meeting"
+           },
+           "isClassroomMode": {
+            "type": "boolean",
+            "description": "This boolean describes whether to enable classroom mode for the meeting"
+           }
+          },
+          "title": "AdvancedOptions"
+         }
+        },
+        "title": "UpdateScheduledMeetingRequestBody"
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "_id": {
+           "type": "String",
+           "description": "The meeting id that can be used to update, delete or fetch this meeting"
+          },
+          "jiomeetId": {
+           "type": "string",
+           "description": "The 10 digit unique ID of the meeting"
+          },
+          "topic": {
+           "type": "string",
+           "description": "The topic of the meeting"
+          },
+          "startTime": {
+           "type": "string",
+           "description": "The start time of the meeting in ISO format"
+          },
+          "endTime": {
+           "type": "string",
+           "description": "The end time of the meeting in ISO format"
+          },
+          "scheduledDuration": {
+           "type": "number",
+           "description": "The duration of the meeting in milliseconds"
+          },
+          "meetingUrl": {
+           "type": "string",
+           "description": "The meeting link that the users will use to join the meeting. These users will be guest users and hence wont have any privileges to alter any meeting settings."
+          },
+          "pin": {
+           "type": "string",
+           "description": "Meeting secret that secures the meeting from unwanted access"
+          },
+          "status": {
+           "type": "string",
+           "description": "The status of the meeting"
+          },
+          "advancedOptions": {
+           "type": "object",
+           "properties": {
+            "joinBeforeHost": {
+             "type": "boolean",
+             "description": "This boolean describes whether to allow users to join the meeting before the host"
+            },
+            "waitingRoom": {
+             "type": "boolean",
+             "description": "This boolean describes whether to enable the waiting room for the meeting"
+            },
+            "participantHardAudioMute": {
+             "type": "boolean",
+             "description": "This boolean describes whether to hard mute all participants in the meeting"
+            },
+            "participantHardVideoMute": {
+             "type": "boolean",
+             "description": "This boolean describes whether to hard mute all participants in the meeting"
+            },
+            "isClassroomMode": {
+             "type": "boolean",
+             "description": "This boolean describes whether to enable classroom mode for the meeting"
+            }
+           },
+           "title": "AdvancedOptions"
+          }
+         },
+         "title": "ScheduledMeetingDetails"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example update scheduled meeting response",
+          "value": {
+           "jiomeetId": "5319535369",
+           "topic": "My Updated Scheduled Meeting",
+           "startTime": "2023-12-12T13:50:00.000Z",
+           "endTime": "2023-12-12T14:20:00.000Z",
+           "scheduledDuration": 1800000,
+           "meetingUrl": "https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CrU",
+           "advancedOptions": {
+            "joinBeforeHost": true,
+            "waitingRoom": false,
+            "participantHardAudioMute": false,
+            "participantHardVideoMute": false,
+            "isClassroomMode": false
+           },
+           "isPinEnabled": true,
+           "status": "active",
+           "pin": "n5CaU",
+           "_id": "sm-77189593-f31a-4b62-941a-74f9147e465"
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/meeting": {
+   "post": {
+    "summary": "Scheduled Meeting - Create a scheduled meeting",
+    "description": "This API creates a scheduled meeting. Scheduled meetings are valid until 1 day after the start time of the meeting. Required OAuth scope: `meeting:create` - To grant permission to create a scheduled meeting.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "example": {
+         "topic": "The title of your meeting",
+         "startTime": "2023-11-11T12:50:00.000Z",
+         "endTime": "2023-11-11T15:50:00.000Z",
+         "isPinEnabled": true
+        },
+        "type": "object",
+        "properties": {
+         "topic": {
+          "type": "string",
+          "description": "The topic of the meeting"
+         },
+         "startTime": {
+          "type": "string",
+          "description": "The start time of the meeting in ISO format"
+         },
+         "endTime": {
+          "type": "string",
+          "description": "The end time of the meeting in ISO format"
+         },
+         "isPinEnabled": {
+          "type": "boolean",
+          "description": "This boolean indicates whether a PIN is required to join the call."
+         },
+         "advancedOptions": {
+          "type": "object",
+          "properties": {
+           "joinBeforeHost": {
+            "type": "boolean",
+            "description": "This boolean describes whether to allow users to join the meeting before the host"
+           },
+           "waitingRoom": {
+            "type": "boolean",
+            "description": "This boolean describes whether to enable the waiting room for the meeting"
+           },
+           "participantHardAudioMute": {
+            "type": "boolean",
+            "description": "This boolean describes whether to hard mute all participants in the meeting"
+           },
+           "participantHardVideoMute": {
+            "type": "boolean",
+            "description": "This boolean describes whether to hard mute all participants in the meeting"
+           },
+           "isClassroomMode": {
+            "type": "boolean",
+            "description": "This boolean describes whether to enable classroom mode for the meeting"
+           }
+          },
+          "title": "AdvancedOptions"
+         }
+        },
+        "title": "ScheduledMeetingRequestBody"
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "status": {
+           "type": "string",
+           "description": "Status of the meeting creation."
+          },
+          "meetingDetails": {
+           "type": "object",
+           "properties": {
+            "_id": {
+             "type": "String",
+             "description": "The meeting id that can be used to update, delete or fetch this meeting"
+            },
+            "jiomeetId": {
+             "type": "string",
+             "description": "The 10 digit unique ID of the meeting"
+            },
+            "topic": {
+             "type": "string",
+             "description": "The topic of the meeting"
+            },
+            "startTime": {
+             "type": "string",
+             "description": "The start time of the meeting in ISO format"
+            },
+            "endTime": {
+             "type": "string",
+             "description": "The end time of the meeting in ISO format"
+            },
+            "scheduledDuration": {
+             "type": "number",
+             "description": "The duration of the meeting in milliseconds"
+            },
+            "meetingUrl": {
+             "type": "string",
+             "description": "The meeting link that the users will use to join the meeting. These users will be guest users and hence wont have any privileges to alter any meeting settings."
+            },
+            "pin": {
+             "type": "string",
+             "description": "Meeting secret that secures the meeting from unwanted access"
+            },
+            "status": {
+             "type": "string",
+             "description": "The status of the meeting"
+            },
+            "advancedOptions": {
+             "type": "object",
+             "properties": {
+              "joinBeforeHost": {
+               "type": "boolean",
+               "description": "This boolean describes whether to allow users to join the meeting before the host"
+              },
+              "waitingRoom": {
+               "type": "boolean",
+               "description": "This boolean describes whether to enable the waiting room for the meeting"
+              },
+              "participantHardAudioMute": {
+               "type": "boolean",
+               "description": "This boolean describes whether to hard mute all participants in the meeting"
+              },
+              "participantHardVideoMute": {
+               "type": "boolean",
+               "description": "This boolean describes whether to hard mute all participants in the meeting"
+              },
+              "isClassroomMode": {
+               "type": "boolean",
+               "description": "This boolean describes whether to enable classroom mode for the meeting"
+              }
+             },
+             "title": "AdvancedOptions"
+            }
+           },
+           "title": "ScheduledMeetingDetails"
+          }
+         },
+         "title": "ScheduledMeetingCreateResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example scheduled meeting response",
+          "value": {
+           "status": "Meeting created successfully.",
+           "meetingDetails": [
+            {
+             "jiomeetId": "5319535369",
+             "topic": "My Scheduled Meeting",
+             "startTime": "2023-09-11T12:50:00.000Z",
+             "endTime": "2023-09-15T13:20:00.000Z",
+             "scheduledDuration": 1800000,
+             "meetingUrl": "https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CaU",
+             "advancedOptions": {
+              "joinBeforeHost": true,
+              "waitingRoom": false,
+              "participantHardAudioMute": false,
+              "participantHardVideoMute": false,
+              "isClassroomMode": false
+             },
+             "status": "active",
+             "pin": "n5CaU",
+             "_id": "sm-77189593-f31a-4b62-941a-74f9147e465"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/oauth2/v2/token": {
+   "post": {
+    "summary": "Access Token Endpoint -fetch access and refresh token",
+    "description": "This API acquires access and refresh tokens using valid credentials. Set the 'grant_type' parameter in the JSON request body as \"authorization_code\" for the authorization code flow or \"refresh_token\" for the token refresh flow.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "grant_type": {
+          "type": "string",
+          "enum": [
+           "authorization_code",
+           "refresh_token"
+          ],
+          "required": true,
+          "description": "Specifies the grant type for the token endpoint, either \"authorization_code\" or \"refresh_token\".\n"
+         },
+         "code": {
+          "type": "string",
+          "required": false,
+          "description": "- The authorization code token provided after the authorization request. - Include this only when grant_type is \"authorization_code\".\n"
+         },
+         "refresh_token": {
+          "type": "string",
+          "required": false,
+          "description": "- The refresh token provided along with the original access token. - Include this only when grant_type is \"refresh_token\".\n"
+         }
+        },
+        "title": "AccessTokenRequestBody"
+       },
+       "example": {
+        "code": "43473295-453c-451e-83af-7620f41fb87f",
+        "grant_type": "authorization_code"
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "basicAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "access_token": {
+           "type": "String",
+           "description": "JWT token that can be sent to Jiomeet server to gain access to protected resources."
+          },
+          "refresh_token": {
+           "type": "string",
+           "description": "JWT token that can be used to obtain a new access token from Jiomeet server. Refresh tokens are used when the current access token becomes invalid or expires."
+          },
+          "token_type": {
+           "type": "string",
+           "description": "The type of token returned. In this case, it's a \"Bearer\" token, which means the token is used by appending it to a Bearer HTTP header."
+          },
+          "expires_in": {
+           "type": "string",
+           "description": "The expiration time of the access token. It tells the application when the token will expire so it can obtain a new one."
+          },
+          "scope": {
+           "type": "string",
+           "description": "Specifies the permissions that are granted to the access token. It defines the actions that can be performed with the token."
+          }
+         },
+         "title": "AccessTokenResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example Access token response",
+          "value": {
+           "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE2OTYzNDIwMDJ9.q9ov96lDmdYdBhQ-5JnppOB3s1we6B5NIaqkHoYFjHMSBpY6F22BIfYRSzKZNglByuu6_nw6QGM8MptyQT_qpqnPlCH-uDRgkQ5vvvARLW6wOH2b8kUzEpr8My2seB5WBniplu4UoYEfKRPEuu-8y1fnUF_aDfQ276NP3RU0-8Y",
+           "refresh_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE3MDE0Mzk2MDJ9.nd1LJFFN-C6gu6hjWk0kJ1MVZ5_twB_ggvnuoYAuk9r3xVi9KzFlc6mbM6cuP7_RvoGvSp_Oqd_VSzn9O3QRFFhyrEzU0rYG6QBqfCD2Jx4DB_8-oqiBFm-lUWKmwxGOuJ1BElqb-7rEk4HpizlNqoP281L3QQ4T82GUopSgS3A",
+           "token_type": "Bearer",
+           "expires_in": "2023-10-03T14:05:42.305Z",
+           "scope": "meeting:create meeting:delete user:read"
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/meeting/{userId}": {
+   "get": {
+    "summary": "Scheduled Meeting - List all meetings of user",
+    "description": "Fetch all scheduled meetings for a user based on various filters such as meetingId, jiomeetId, or a specific time range.  Use the optional query parameters to refine the search. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meetings.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "userId",
+      "in": "path",
+      "required": true,
+      "description": "The ID of the user.",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     },
+     {
+      "name": "past",
+      "in": "query",
+      "required": false,
+      "description": "Indicates whether to either fetch past or upcoming meetings.",
+      "schema": {
+       "type": "boolean"
+      }
+     }
+    ],
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "totalCount": {
+           "type": "integer",
+           "description": "The total number of scheduled meetings."
+          },
+          "moreAvailable": {
+           "type": "boolean",
+           "description": "Indicates if more meetings are available."
+          },
+          "meetingDetails": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "jiomeetId": {
+              "type": "string",
+              "description": "The unique identifier for the JioMeet session."
+             },
+             "topic": {
+              "type": "string",
+              "description": "The topic or title of the meeting."
+             },
+             "startTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start time of the meeting in ISO format."
+             },
+             "endTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end time of the meeting in ISO format."
+             },
+             "scheduledDuration": {
+              "type": "integer",
+              "description": "The scheduled duration of the meeting in milliseconds."
+             },
+             "meetingUrl": {
+              "type": "string",
+              "format": "uri",
+              "description": "The URL to join the meeting."
+             },
+             "status": {
+              "type": "string",
+              "description": "The current status of the meeting."
+             },
+             "pin": {
+              "type": "string",
+              "description": "The PIN required to join the meeting room."
+             },
+             "_id": {
+              "type": "string",
+              "description": "The system-generated unique identifier for the meeting."
+             }
+            },
+            "title": "ScheduledMeeting"
+           }
+          }
+         },
+         "title": "ListScheduledMeetingResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example fetch scheduled meeting response",
+          "value": {
+           "totalCount": 1,
+           "moreAvailable": false,
+           "meetingDetails": [
+            {
+             "jiomeetId": "7212310665",
+             "topic": "Meeting created at 07:09 AM",
+             "startTime": "2023-09-08T02:39:27.000Z",
+             "endTime": "2023-09-08T03:09:27.000Z",
+             "scheduledDuration": 1800000,
+             "meetingUrl": "https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq",
+             "status": "active",
+             "pin": "7mVhq",
+             "_id": "sm-aed12dea-60d2-4757-9705-6c93dce0e3f0"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/my_profile": {
+   "get": {
+    "summary": "User Info - Fetch User profile info",
+    "description": "This API fetches the user's profile information. Required OAuth scope: `user:read` - To grant permission to read the user's profile information.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "_id": {
+           "type": "string",
+           "description": "A unique identifier for the user."
+          },
+          "name": {
+           "type": "string",
+           "description": "The user's first name."
+          },
+          "lname": {
+           "type": "string",
+           "description": "The user's last name."
+          },
+          "email": {
+           "type": "string",
+           "description": "The user's email address."
+          }
+         },
+         "title": "UserProfileResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example User Profile",
+          "value": {
+           "_id": "u-5a0d550b-85cc-4200-97j5-81088364a6b8",
+           "name": "John",
+           "lname": "Doe",
+           "email": "johndoe@gmail.com"
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/meeting/cancel/{meetingId}": {
+   "post": {
+    "summary": "Scheduled Meeting - Delete a scheduled meeting",
+    "description": "This API deletes a scheduled meeting using the meetingId returned when the meeting was created.  Required OAuth scope: `meeting:delete` - To grant permission to delete the scheduled meeting.",
+    "tags": [
+     "JioMeetCpaasPlatform"
+    ],
+    "parameters": [
+     {
+      "name": "meetingId",
+      "in": "path",
+      "required": true,
+      "description": "The ID of the meeting.",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "The content type should be application/json.",
+      "schema": {
+       "type": "string"
+      },
+      "example": "application/json"
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "example": {
+         "cancel": "current"
+        },
+        "type": "object",
+        "properties": {
+         "cancel": {
+          "type": "string",
+          "description": "Specifies the scope of the deletion. Use 'current' to delete a specific scheduled meeting or the current instance of a recurring meeting. Use 'all' to delete the entire series of recurring meetings.",
+          "enum": [
+           "current",
+           "all"
+          ]
+         }
+        },
+        "title": "DeleteScheduledMeetingRequestBody"
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "status": {
+           "type": "string",
+           "description": "Message indicating the result of the delete operation.",
+           "enum": [
+            "Your meeting has been cancelled successfully.",
+            "Your meetings has been cancelled successfully."
+           ]
+          }
+         },
+         "title": "DeleteScheduledMeetingResponseBody"
+        },
+        "examples": {
+         "Example1": {
+          "summary": "Example delete scheduled meeting response",
+          "value": {
+           "status": "Your meeting has been cancelled successfully."
+          }
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "401": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errors": {
+           "type": "String",
+           "description": "The error message of the API"
+          }
+         },
+         "title": "CustomError"
+        }
+       }
+      }
+     },
+     "412": {
+      "content": {
+       "application/json": {
+        "summary": "Validation Errors usually arise when the request body is incorrect",
+        "schema": {
+         "type": "object",
+         "properties": {
+          "customCode": {
+           "type": "number",
+           "description": "Status Code of the API"
+          },
+          "message": {
+           "type": "string",
+           "description": "The error code of the API"
+          },
+          "errorsArray": {
+           "type": "Array",
+           "description": "The errors array which includes objects with a \"property\" and \"message\" properties describing the error"
+          }
+         },
+         "title": "ValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "securitySchemes": {
+   "bearerAuth": {
+    "type": "http",
+    "scheme": "bearer",
+    "description": "Authenticate using the `access_token` obtained from the `/api/oauth2/v2/token` endpoint.\n"
+   },
+   "basicAuth": {
+    "type": "http",
+    "scheme": "basic",
+    "description": "Authenticate using your OAuth `ClientId` as the username and the corresponding OAuth `secret` as the password.\n"
+   }
+  }
+ }
+}

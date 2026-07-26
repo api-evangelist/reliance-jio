@@ -1,0 +1,55 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for JioEvents Platform APIs
+  version: 1.0.0
+extends: openapi/reliance-jio-jioevents-platform-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: Harvested from the docusaurus-openapi-docs build output published at https://dev.jiomeet.com
+      - Jio serves no downloadable OpenAPI document.
+    x-apievangelist-harvested: '2026-07-25'
+- target: $.paths['/api/platform/v1/meetingInvite'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: meetingInviteCreateAMeetingInvite
+- target: $.paths['/api/platform/v1/sessions/{meetingId}/{sessionId}'].delete
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: sessionsDeleteASession
+- target: $.paths['/api/platform/v1/sessions/{meetingId}'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: sessionsCreateASession
+- target: $.paths['/api/platform/v1/meetingInvite/{meetingId}'].delete
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: meetingInviteDeleteMeetingInvites
+- target: $.paths['/api/platform/v1/sessions/{meetingId}'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: sessionsGetSessions
+- target: $.paths['/api/platform/v1/meetingInvite/{meetingId}'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: meetingInviteGetMeetingInvites
+- target: $.paths['/api/platform/v1/schedule/webinar'].delete
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledWebinarDeleteAScheduledWebinar
+- target: $.paths['/api/platform/v1/schedule/webinar'].put
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledWebinarUpdateAScheduledWebinar
+- target: $.paths['/api/platform/v1/webinar/{meetingId}/download'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: webinarDownloadAttendanceRegistrationReport
+- target: $.paths['/api/platform/v1/schedule/webinar'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledWebinarCreateAScheduledWebinar
+- target: $.paths['/api/platform/v1/schedule/webinar'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledWebinarFetchAScheduledWebinar

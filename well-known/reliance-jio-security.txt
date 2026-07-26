@@ -1,0 +1,11 @@
+# Found an application bug or a security vulnerability?
+# You can report to
+
+Contact: mailto:jio.bugsreporting@jio.com
+
+# What we do once an application bug or security vulnerability is reported to us?
+
+# Jio encourages responsible disclosure of security bugs by security researchers.
+# All bugs or security vulnerabilities reported to us will be analysed and evaluated by our Application Security Experts
+# who will then work along with you to address and fix them.
+# Based on the impact and severity of the reported bug you may also become eligible for a reward under our Bug Bounty Program.

@@ -1,0 +1,806 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/reliance-jio-jioevents-platform-openapi.yml, openapi/reliance-jio-jiomeet-oauth-openapi.yml,
+  openapi/reliance-jio-jiomeet-platform-openapi.yml
+description: Entity graph derived from the request/response schema titles and the id-reference fields
+  in Jio's published JioMeet / JioEvents API reference. The source spec declares no components.schemas
+  - every schema is inline - so entities are the inline schema titles Jio names.
+core_entities:
+- name: Meeting
+  identifier: jiomeetId
+  note: 10-digit meeting id, secured by roomPIN; addressed as {meetingId} in paths.
+- name: Webinar
+  identifier: meetingId
+  note: JioEvents scheduled webinar; owns Sessions and Meeting Invites.
+- name: Session
+  identifier: sessionId
+  note: A session inside a JioEvents webinar.
+- name: Recording
+  identifier: historyId
+  note: A recording of a meeting, started/stopped through the platform API.
+- name: User
+  identifier: userId
+  note: JioMeet user; the OAuth API acts on the authenticated user's meetings.
+schemas:
+- name: GetScheduledMeetingResponseBody
+  kind: response
+  fields:
+  - name: meetingsCount
+    type: number
+    description: Number of meetings in the response
+  - name: meetingDetails
+    type: array
+    description: List of meetings
+  seen_on:
+  - GET /api/meeting/meetingDetails/{meetingId}
+  - GET /api/platform/v1/schedule/meeting
+- name: RecordingResponse
+  kind: response
+  fields:
+  - name: status
+    type: string
+    description: Status whether the call was a success. Recording cant be started or stopped when the
+      meeting has no one in the call
+  - name: historyId
+    type: string
+    description: Unique identifier of the recording. This should be used to fetch the recording once it
+      has completed
+  seen_on:
+  - POST /api/platform/v1/recordings/start
+  - POST /api/platform/v1/recordings/stop
+- name: RecordingStartRequestBody
+  kind: request
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: roomPIN
+    type: string
+    description: Meeting secret that secures the meeting from unwanted access
+  seen_on:
+  - POST /api/platform/v1/recordings/start
+- name: RoomResponse
+  kind: response
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: roomPIN
+    type: string
+    description: Meeting PIN that secures the meeting from unwanted access
+  - name: subdomain
+    type: string
+    description: The JioMeet subdomain this meeting will run in
+  - name: joinEndpoint
+    type: string
+    description: The endpoint path for joining the guestMeetingLink/meetingLink.
+  - name: hostToken
+    type: string
+    description: This identifier allows a user to join with host privileges. To allow a user to join as
+      host, append this parameter in the query parameters of the meetingLink/guestMeetingLink. "hostToken"
+      is the query change
+  - name: guestMeetingLink
+    type: string
+    description: The meeting link that the users will use to join the meeting. These users will be guest
+      users and hence wont have any privileges to alter any meeting settings.
+  - name: meetingLink
+    type: string
+    description: The meeting link with your custom sub-domain that the users will use to join the meeting.
+      These users will be guest users and hence wont have any privileges to alter any meeting settings.
+  seen_on:
+  - POST /api/platform/v1/room
+- name: RoomRequestBody
+  kind: request
+  fields:
+  - name: name
+    type: string
+    description: name of the user creating the meeting
+  - name: title
+    type: string
+    description: title of the meeting
+  - name: description
+    type: string
+    description: description for the meeting
+  - name: hostToken
+    type: boolean
+    description: This boolean describes whether to return a host token or not. A host token can be used
+      to join a meeting as a host
+  - name: isAutoRecordingEnabled
+    type: boolean
+    description: This boolean describes whether to auto recording the call. The recording starts automatically
+      when there are more than 1 user in the call if this flag is enabled
+  seen_on:
+  - POST /api/platform/v1/room
+- name: MeetingInviteResponseBody
+  kind: response
+  fields:
+  - name: _id
+    type: string
+    description: Unique identifier for the meeting invite
+  - name: joinUrl
+    type: string
+    description: The URL that the invitee can use to join the meeting
+  - name: joinHash
+    type: string
+    description: Unique hash for joining the meeting
+  - name: firstName
+    type: string
+    description: First name of the invitee
+  - name: lastName
+    type: string
+    description: Last name of the invitee
+  - name: emailId
+    type: string
+    description: Email address of the invitee
+  - name: role
+    type: string
+    description: The role assigned to the invitee
+  - name: meetingId
+    type: string
+    description: The meeting ID for which the invite was created
+  - name: userId
+    type: string
+    description: Unique identifier for the user
+  - name: isDeleted
+    type: boolean
+    description: Whether the invite has been deleted
+  - name: socialMediaLinks
+    type: array
+    description: Array of social media links associated with the invitee
+  - name: registered
+    type: boolean
+    description: Whether the invitee has registered
+  - name: isInviteSent
+    type: boolean
+    description: Whether the invite has been sent
+  - name: sendInvite
+    type: boolean
+    description: Whether to send an email invite
+  - name: enableSpeakerTile
+    type: boolean
+    description: Whether to enable speaker tile for this participant
+  - name: orderId
+    type: integer
+    description: Order ID for the invite
+  - name: cOn
+    type: string
+    description: Creation timestamp
+  - name: mOn
+    type: string
+    description: Last modification timestamp
+  - name: __v
+    type: integer
+    description: Version number
+  seen_on:
+  - POST /api/platform/v1/meetingInvite
+- name: MeetingInviteRequestBody
+  kind: request
+  fields:
+  - name: role
+    type: string
+    description: The role of the invitee (e.g., "Co-Host", "Host", "Participant")
+  - name: firstName
+    type: string
+    description: First name of the invitee
+  - name: lastName
+    type: string
+    description: Last name of the invitee
+  - name: identity
+    type: string
+    description: Email address or identity of the invitee
+  - name: sendInvite
+    type: boolean
+    description: Whether to send an email invite to the participant
+  - name: meetingId
+    type: string
+    description: The meeting ID for which the invite is being created
+  seen_on:
+  - POST /api/platform/v1/meetingInvite
+- name: DeleteSessionResponseBody
+  kind: response
+  fields:
+  - name: success
+    type: boolean
+    description: Whether the delete operation was successful
+  seen_on:
+  - DELETE /api/platform/v1/sessions/{meetingId}/{sessionId}
+- name: RecordingsListResponse
+  kind: response
+  fields:
+  - name: callRecordings
+    type: array
+    description: An array of objects containing the recording download URL. Ensure you call the download
+      URL with the proper Authorization header to download the recording
+  seen_on:
+  - POST /api/platform/v1/recordings/list
+- name: RecordingListRequestBody
+  kind: request
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: roomPIN
+    type: string
+    description: Meeting secret that secures the meeting from unwanted access
+  - name: historyId
+    type: string
+    description: Unique identifier of the recording. This should be used to fetch the recording once it
+      has completed
+  seen_on:
+  - POST /api/platform/v1/recordings/list
+- name: ScheduledMeetingCreateResponseBody
+  kind: response
+  fields:
+  - name: status
+    type: string
+    description: Status of the meeting creation.
+  - name: meetingDetails
+    type: object
+    description: null
+  seen_on:
+  - POST /api/meeting
+- name: ScheduledMeetingRequestBody
+  kind: request
+  fields:
+  - name: topic
+    type: string
+    description: The topic of the meeting
+  - name: startTime
+    type: string
+    description: The start time of the meeting in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the meeting in ISO format
+  - name: isPinEnabled
+    type: boolean
+    description: This boolean indicates whether a PIN is required to join the call.
+  - name: advancedOptions
+    type: object
+    description: null
+  - name: isAutoRecordingEnabled
+    type: boolean
+    description: This boolean describes whether to auto recording the call. The recording starts automatically
+      when there are more than 1 user in the call if this flag is enabled
+  seen_on:
+  - POST /api/meeting
+  - POST /api/platform/v1/schedule/meeting
+- name: ScheduledMeetingDetails
+  kind: response
+  fields:
+  - name: _id
+    type: String
+    description: The meeting id that can be used to update, delete or fetch this meeting
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: topic
+    type: string
+    description: The topic of the meeting
+  - name: startTime
+    type: string
+    description: The start time of the meeting in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the meeting in ISO format
+  - name: scheduledDuration
+    type: number
+    description: The duration of the meeting in milliseconds
+  - name: meetingUrl
+    type: string
+    description: The meeting link that the users will use to join the meeting. These users will be guest
+      users and hence wont have any privileges to alter any meeting settings.
+  - name: pin
+    type: string
+    description: Meeting secret that secures the meeting from unwanted access
+  - name: status
+    type: string
+    description: The status of the meeting
+  - name: advancedOptions
+    type: object
+    description: null
+  seen_on:
+  - PUT /api/meeting/meetingDetails/{meetingId}
+- name: UpdateScheduledMeetingRequestBody
+  kind: request
+  fields:
+  - name: topic
+    type: string
+    description: The topic of the meeting
+  - name: startTime
+    type: string
+    description: The start time of the meeting in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the meeting in ISO format
+  - name: isPinEnabled
+    type: boolean
+    description: This boolean indicates whether a PIN is required to join the call.
+  - name: advancedOptions
+    type: object
+    description: null
+  - name: meetingId
+    type: string
+    description: The meeting id of the meeting
+  - name: isAutoRecordingEnabled
+    type: boolean
+    description: This boolean describes whether to auto recording the call. The recording starts automatically
+      when there are more than 1 user in the call if this flag is enabled
+  seen_on:
+  - PUT /api/meeting/meetingDetails/{meetingId}
+  - PUT /api/platform/v1/schedule/meeting
+- name: ScheduledMeetingResponseBody
+  kind: response
+  fields:
+  - name: meetingId
+    type: String
+    description: The meeting id that can be used to update, delete or fetch this meeting
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: topic
+    type: string
+    description: The topic of the meeting
+  - name: isAutoRecordingEnabled
+    type: boolean
+    description: This boolean describes whether to auto recording the call. The recording starts automatically
+      when there are more than 1 user in the call if this flag is enabled
+  - name: startTime
+    type: string
+    description: The start time of the meeting in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the meeting in ISO format
+  - name: scheduledDuration
+    type: number
+    description: The duration of the meeting in milliseconds
+  - name: meetingUrl
+    type: string
+    description: The meeting link that the users will use to join the meeting. These users will be guest
+      users and hence wont have any privileges to alter any meeting settings.
+  - name: hostUrl
+    type: string
+    description: The meeting link that the hosts will use to join the meeting. These users will be host
+      users and hence will have privileges to alter meeting settings.
+  - name: hostToken
+    type: string
+    description: This identifier allows a user to join with host privileges. To allow a user to join as
+      host, append this parameter in the query parameters of the meetingLink. "hostToken" is the query
+      change
+  - name: roomPIN
+    type: string
+    description: Meeting secret that secures the meeting from unwanted access
+  - name: status
+    type: string
+    description: The status of the meeting
+  - name: advancedOptions
+    type: object
+    description: null
+  seen_on:
+  - PUT /api/platform/v1/schedule/meeting
+  - POST /api/platform/v1/schedule/meeting
+- name: CreateSessionResponseBody
+  kind: response
+  fields:
+  - name: status
+    type: string
+    description: Status message indicating the result of session creation
+  - name: sessionDetails
+    type: object
+    description: Detailed information about the created session
+  seen_on:
+  - POST /api/platform/v1/sessions/{meetingId}
+- name: CreateSessionRequestBody
+  kind: request
+  fields:
+  - name: description
+    type: string
+    description: Description of the session
+  - name: descriptionMarkdown
+    type: object
+    description: Markdown description configuration
+  - name: invites
+    type: array
+    description: Array of session invites
+  - name: topic
+    type: string
+    description: Topic/title of the session
+  - name: startTime
+    type: string
+    description: Start time of the session in ISO format
+  - name: endTime
+    type: string
+    description: End time of the session in ISO format
+  seen_on:
+  - POST /api/platform/v1/sessions/{meetingId}
+- name: RecordingStatusResponse
+  kind: response
+  fields:
+  - name: recordingStatus
+    type: boolean
+    description: Boolean representing whether the recording is happening or not
+  seen_on:
+  - POST /api/platform/v1/recordings/isrecording
+- name: RecordingStatusRequestBody
+  kind: request
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  seen_on:
+  - POST /api/platform/v1/recordings/isrecording
+- name: RecordingStopRequestBody
+  kind: request
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the meeting
+  - name: roomPIN
+    type: string
+    description: Meeting secret that secures the meeting from unwanted access
+  seen_on:
+  - POST /api/platform/v1/recordings/stop
+- name: DeleteMeetingInviteResponseBody
+  kind: response
+  fields:
+  - name: success
+    type: boolean
+    description: Whether the delete operation was successful
+  seen_on:
+  - DELETE /api/platform/v1/meetingInvite/{meetingId}
+- name: DeleteMeetingInviteRequestBody
+  kind: request
+  fields:
+  - name: meetingInviteIds
+    type: array
+    description: Array of meeting invite IDs to delete
+  seen_on:
+  - DELETE /api/platform/v1/meetingInvite/{meetingId}
+- name: GetSessionsResponseBody
+  kind: response
+  fields:
+  - name: meetingDetails
+    type: object
+    description: Details of the parent meeting
+  - name: speakers
+    type: array
+    description: List of speakers for the meeting
+  - name: sessions
+    type: array
+    description: List of sessions for the meeting
+  - name: lastSessionDate
+    type: string
+    description: Date of the last session
+  seen_on:
+  - GET /api/platform/v1/sessions/{meetingId}
+- name: GetMeetingInvitesResponseBody
+  kind: response
+  fields:
+  - name: maxInvites
+    type: integer
+    description: Maximum number of invites allowed for the meeting
+  - name: invitesCount
+    type: integer
+    description: Total number of invites for the meeting
+  - name: invitesList
+    type: array
+    description: List of meeting invites
+  seen_on:
+  - GET /api/platform/v1/meetingInvite/{meetingId}
+- name: DeleteScheduledWebinarResponseBody
+  kind: response
+  fields:
+  - name: status
+    type: string
+    description: Indicates whether webinar is DELETED or NOT_DELETED
+  seen_on:
+  - DELETE /api/platform/v1/schedule/webinar
+- name: DeleteScheduledWebinarRequestBody
+  kind: request
+  fields:
+  - name: meetingId
+    type: string
+    description: The meeting id that can be used to update, delete or fetch this webinar
+  - name: type
+    type: string
+    description: Should be 'current' to delete current webinar
+  seen_on:
+  - DELETE /api/platform/v1/schedule/webinar
+- name: ChatThreadResponse
+  kind: response
+  fields:
+  - name: report
+    type: array
+    description: An array of objects containing metadata related to a participant’s session in a meeting
+      or call. It includes user identity, meeting identifiers, role, connection details, timestamps, endpoint
+      type, and session metrics. This data is useful for auditing, analytics, or monitoring participant
+      activity within a conferencing platform.
+  seen_on:
+  - GET /api/platform/v1/analytics/report
+  - GET /api/platform/v1/chat/thread
+- name: DeleteScheduledMeetingResponseBody
+  kind: response
+  fields:
+  - name: status
+    type: string
+    description: Indicates whether meeting is DELETED or NOT_DELETED
+  seen_on:
+  - DELETE /api/platform/v1/schedule/meeting
+  - POST /api/meeting/cancel/{meetingId}
+- name: DeleteScheduledMeetingRequestBody
+  kind: request
+  fields:
+  - name: meetingId
+    type: String
+    description: The meeting id that can be used to update, delete or fetch this meeting
+  - name: type
+    type: String
+    description: Should be 'current' to delete current meeting
+  - name: cancel
+    type: string
+    description: Specifies the scope of the deletion. Use 'current' to delete a specific scheduled meeting
+      or the current instance of a recurring meeting. Use 'all' to delete the entire series of recurring
+      meetings.
+  seen_on:
+  - DELETE /api/platform/v1/schedule/meeting
+  - POST /api/meeting/cancel/{meetingId}
+- name: ScheduledWebinarResponseBody
+  kind: response
+  fields:
+  - name: jiomeetId
+    type: string
+    description: The 10 digit unique ID of the webinar
+  - name: topic
+    type: string
+    description: The topic/title of the webinar
+  - name: startTime
+    type: string
+    description: The start time of the webinar in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the webinar in ISO format
+  - name: scheduledDuration
+    type: number
+    description: The duration of the webinar in milliseconds
+  - name: meetingUrl
+    type: string
+    description: The meeting URL that users will use to join the webinar
+  - name: speakerLink
+    type: string
+    description: The speaker link for the webinar
+  - name: attendeeLink
+    type: string
+    description: The attendee link for the webinar
+  - name: webinar
+    type: object
+    description: Webinar-specific configuration and activation details
+  - name: advancedOptions
+    type: object
+    description: Advanced configuration options for the webinar
+  - name: status
+    type: string
+    description: The current status of the webinar
+  - name: roomPIN
+    type: string
+    description: Meeting PIN that secures the webinar from unwanted access
+  - name: meetingId
+    type: string
+    description: The meeting ID that can be used to update, delete or fetch this webinar
+  seen_on:
+  - PUT /api/platform/v1/schedule/webinar
+  - POST /api/platform/v1/schedule/webinar
+- name: UpdateScheduledWebinarRequestBody
+  kind: request
+  fields:
+  - name: meetingId
+    type: string
+    description: The meeting id of the webinar
+  - name: topic
+    type: string
+    description: The topic of the webinar
+  - name: startTime
+    type: string
+    description: The start time of the webinar in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the webinar in ISO format
+  - name: webinar
+    type: object
+    description: Webinar configuration to update
+  seen_on:
+  - PUT /api/platform/v1/schedule/webinar
+- name: AccessTokenResponseBody
+  kind: response
+  fields:
+  - name: access_token
+    type: String
+    description: JWT token that can be sent to Jiomeet server to gain access to protected resources.
+  - name: refresh_token
+    type: string
+    description: JWT token that can be used to obtain a new access token from Jiomeet server. Refresh
+      tokens are used when the current access token becomes invalid or expires.
+  - name: token_type
+    type: string
+    description: The type of token returned. In this case, it's a "Bearer" token, which means the token
+      is used by appending it to a Bearer HTTP header.
+  - name: expires_in
+    type: string
+    description: The expiration time of the access token. It tells the application when the token will
+      expire so it can obtain a new one.
+  - name: scope
+    type: string
+    description: Specifies the permissions that are granted to the access token. It defines the actions
+      that can be performed with the token.
+  seen_on:
+  - POST /api/oauth2/v2/token
+- name: AccessTokenRequestBody
+  kind: request
+  fields:
+  - name: grant_type
+    type: string
+    description: 'Specifies the grant type for the token endpoint, either "authorization_code" or "refresh_token".
+
+      '
+  - name: code
+    type: string
+    description: '- The authorization code token provided after the authorization request. - Include this
+      only when grant_type is "authorization_code".
+
+      '
+  - name: refresh_token
+    type: string
+    description: '- The refresh token provided along with the original access token. - Include this only
+      when grant_type is "refresh_token".
+
+      '
+  seen_on:
+  - POST /api/oauth2/v2/token
+- name: ListScheduledMeetingResponseBody
+  kind: response
+  fields:
+  - name: totalCount
+    type: integer
+    description: The total number of scheduled meetings.
+  - name: moreAvailable
+    type: boolean
+    description: Indicates if more meetings are available.
+  - name: meetingDetails
+    type: array
+    description: null
+  seen_on:
+  - GET /api/meeting/{userId}
+- name: UserProfileResponseBody
+  kind: response
+  fields:
+  - name: _id
+    type: string
+    description: A unique identifier for the user.
+  - name: name
+    type: string
+    description: The user's first name.
+  - name: lname
+    type: string
+    description: The user's last name.
+  - name: email
+    type: string
+    description: The user's email address.
+  seen_on:
+  - GET /api/my_profile
+- name: DownloadWebinarAttendanceResponseBody
+  kind: response
+  fields:
+  - name: success
+    type: boolean
+    description: Whether the download request was successful
+  - name: fileName
+    type: string
+    description: Name of the attendance file
+  - name: downloadUrl
+    type: string
+    description: URL to download the attendance file
+  seen_on:
+  - GET /api/platform/v1/webinar/{meetingId}/download
+- name: ScheduledWebinarRequestBody
+  kind: request
+  fields:
+  - name: topic
+    type: string
+    description: The topic of the webinar
+  - name: startTime
+    type: string
+    description: The start time of the webinar in ISO format
+  - name: endTime
+    type: string
+    description: The end time of the webinar in ISO format
+  - name: webinar
+    type: object
+    description: Webinar configuration
+  seen_on:
+  - POST /api/platform/v1/schedule/webinar
+- name: GetScheduledWebinarResponseBody
+  kind: response
+  fields:
+  - name: meetingsCount
+    type: number
+    description: Number of meetings in the response
+  - name: meetingDetails
+    type: array
+    description: List of meeting details
+  seen_on:
+  - GET /api/platform/v1/schedule/webinar
+relationships:
+- from: DeleteScheduledMeetingRequestBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: DeleteScheduledWebinarRequestBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: MeetingInviteRequestBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: MeetingInviteResponseBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: MeetingInviteResponseBody
+  to: User
+  type: belongs_to
+  via: userId
+- from: RecordingListRequestBody
+  to: Recording
+  type: belongs_to
+  via: historyId
+- from: RecordingListRequestBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: RecordingResponse
+  to: Recording
+  type: belongs_to
+  via: historyId
+- from: RecordingStartRequestBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: RecordingStatusRequestBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: RecordingStopRequestBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: RoomResponse
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: ScheduledMeetingDetails
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: ScheduledMeetingResponseBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: ScheduledMeetingResponseBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: ScheduledWebinarResponseBody
+  to: Meeting
+  type: belongs_to
+  via: jiomeetId
+- from: ScheduledWebinarResponseBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: UpdateScheduledMeetingRequestBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId
+- from: UpdateScheduledWebinarRequestBody
+  to: Meeting
+  type: belongs_to
+  via: meetingId

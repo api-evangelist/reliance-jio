@@ -1,0 +1,39 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for JioMeet User OAuth APIs
+  version: 1.0.0
+extends: openapi/reliance-jio-jiomeet-oauth-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: Harvested from the docusaurus-openapi-docs build output published at https://dev.jiomeet.com
+      - Jio serves no downloadable OpenAPI document.
+    x-apievangelist-harvested: '2026-07-25'
+- target: $.paths['/api/meeting/meetingDetails/{meetingId}'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingFetchAScheduledMeeting
+- target: $.paths['/api/meeting'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingCreateAScheduledMeeting
+- target: $.paths['/api/meeting/meetingDetails/{meetingId}'].put
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingUpdateAScheduledMeeting
+- target: $.paths['/api/oauth2/v2/token'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: accessTokenEndpointFetchAccessAndRefreshToken
+- target: $.paths['/api/meeting/{userId}'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingListAllMeetingsOfUser
+- target: $.paths['/api/my_profile'].get
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: userInfoFetchUserProfileInfo
+- target: $.paths['/api/meeting/cancel/{meetingId}'].post
+  description: API Evangelist assigned operationId - the source spec declares none.
+  update:
+    operationId: scheduledMeetingDeleteAScheduledMeeting

@@ -1,0 +1,126 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://dev.jiomeet.com/docs/quick-start/authentication,
+  https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client, and the 29
+  operations harvested into openapi/reliance-jio-*-openapi.yml
+description: >-
+  Cross-cutting request/response semantics for the three REST APIs Reliance Jio
+  documents publicly (JioMeet Platform Server, JioMeet Platform OAuth, JioEvents Platform
+  Server). This is a thin conventions surface by design: Jio documents authentication
+  well and documents almost nothing else. There is no idempotency contract, no pagination
+  contract, no field expansion, no metadata store, no request-id tracing header, no
+  documented rate limiting and no webhook surface. Recording those absences is the point
+  of this artifact - they are what an agent or an integrator will hit first.
+base_urls:
+  - host: https://jiomeetpro.jio.com
+    apis: [JioMeet Platform APIs, JioMeet User OAuth APIs]
+  - host: https://jioevents.com
+    apis: [JioEvents Platform APIs]
+base_urls_note: >-
+  Neither host is stated in prose anywhere in the documentation. Both were recovered
+  from the servers[] block of the OpenAPI document embedded in the published
+  docusaurus-openapi-docs build at dev.jiomeet.com.
+api_style: REST over HTTPS, JSON request and response bodies
+authentication:
+  server_to_server:
+    scheme: Self-signed JWT in the Authorization header
+    algorithms: [HS256, RS256]
+    claims: issuer plus an "app" claim carrying the JioMeet app id
+    note: >-
+      Modelled in the spec as a required `Authorization` header PARAMETER, not as a
+      securityScheme - tooling that reads only components.securitySchemes will see the
+      JioMeet Platform and JioEvents Platform APIs as unauthenticated.
+  user_authorized:
+    scheme: OAuth 2.0 authorization code; HTTP Basic at the token endpoint, HTTP Bearer thereafter
+  detail: authentication/reliance-jio-authentication.yml
+  scopes: scopes/reliance-jio-scopes.yml
+content_negotiation:
+  request_content_type: application/json
+  note: >-
+    Every operation declares a `Content-Type` header parameter with the example
+    `application/json`; responses are application/json only. No alternative media types,
+    no versioned media types.
+idempotency:
+  supported: false
+  mechanism: null
+  evidence: >-
+    No Idempotency-Key (or equivalent) header, query parameter or body field appears in
+    any of the 29 harvested operations, and the documentation describes no retry
+    semantics. Repeating POST /api/platform/v1/room creates a new meeting each time.
+  note: >-
+    Deliberately recorded as unsupported. Jio publishes no idempotency contract, so no
+    Idempotency pointer is wired into apis.yml.
+pagination:
+  supported: false
+  evidence: >-
+    The collection operations - GET /api/platform/v1/schedule/meeting, GET
+    /api/meeting/{userId}, GET /api/platform/v1/sessions/{meetingId}, GET
+    /api/platform/v1/meetingInvite/{meetingId}, POST /api/platform/v1/recordings/list -
+    declare no limit, offset, page or cursor parameter and no has_more / next_cursor
+    response field.
+filtering:
+  supported: partial
+  note: >-
+    Time-window filtering exists on the reporting and recording surfaces via body or
+    query fields on POST /api/platform/v1/recordings/list and GET
+    /api/platform/v1/analytics/report. There is no general filter grammar.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: null
+  supported: false
+  note: No request-id / correlation-id header is documented on request or response.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: lifecycle/reliance-jio-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  shapes:
+    - name: CustomError
+      status: [400, 401]
+      fields: [customCode, message, errors]
+    - name: ValidationError
+      status: [412]
+      fields: [customCode, message, errorsArray]
+      note: >-
+        errorsArray holds objects with `property` and `message`. 412 Precondition Failed
+        is Jio's validation status - not 422 - and it is declared on all 29 operations.
+  detail: errors/reliance-jio-problem-types.yml
+rate_limits:
+  documented: false
+  signal_status: null
+  headers: []
+  note: >-
+    No rate limit, quota or 429 response is documented or declared on any operation. No
+    rate-limits artifact is emitted because there is nothing published to capture.
+webhooks:
+  supported: false
+  note: >-
+    No webhook catalogue and no AsyncAPI document exist. The nearest event surface is
+    browser postMessage events for the JioMeet web iframe embed
+    (https://dev.jiomeet.com/docs/1.0.0/web/postmessages-events) - an in-page messaging
+    contract, not a server-to-server callback.
+  components: components/reliance-jio-components.yml
+other_conventions:
+  - name: Meeting identity
+    detail: >-
+      A meeting is addressed by a 10-digit `jiomeetId` and secured by a `roomPIN`. Host
+      privileges travel as a `hostToken` appended to the join URL as a query parameter.
+  - name: Dynamic meeting TTL
+    detail: Meetings created via POST /api/platform/v1/room are valid for 24 hours.
+  - name: Timestamps
+    detail: ISO 8601 strings (startTime / endTime on scheduled meetings and webinars).
+  - name: Credential issuance
+    detail: >-
+      App id and secret (or an OAuth client) are generated in the console at
+      https://platform.jiomeet.com; the secret is downloadable once.
+  - name: Network allow-listing
+    detail: >-
+      Jio publishes an on-premise allow-listing guide at
+      https://dev.jiomeet.com/docs/whitelisting_on_premise for enterprises that must open
+      firewall paths to the JioMeet media plane.

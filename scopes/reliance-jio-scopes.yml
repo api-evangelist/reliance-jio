@@ -1,0 +1,61 @@
+generated: '2026-07-25'
+method: searched
+source: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+docs: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+description: >-
+  OAuth 2.0 authorization-code scopes for the JioMeet Platform OAuth API. These scopes
+  are documented on Jio's OAuth integration guide, NOT in the machine-readable spec -
+  the harvested OpenAPI models the OAuth API with plain http basic / http bearer
+  security schemes and declares no oauth2 flow object, so the scope list exists only in
+  prose. Scope is nevertheless returned at runtime: the token response carries a `scope`
+  field described as "the permissions that are granted to the access token".
+  This applies to the user-authorized JioMeet surface only; the JioMeet Platform Server
+  API and the JioEvents Platform Server API are app-credential JWT surfaces with no
+  scope model at all.
+spec_declares_oauth2_scheme: false
+schemes:
+  - name: oauth2-authorization-code
+    documented_only: true
+    source: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://jiomeetpro.jio.com/oauth2/authorize
+        tokenUrl: https://jiomeetpro.jio.com/api/oauth2/v2/token
+        token_endpoint_auth: HTTP Basic (clientId as username, clientSecret as password)
+        refresh_supported: true
+scopes:
+  - scope: user:read
+    group: user
+    description: Access to user profile information.
+    operations: ['GET /api/my_profile']
+  - scope: meeting:create
+    group: meeting
+    description: Create new meetings.
+    operations: ['POST /api/meeting']
+  - scope: meeting:read
+    group: meeting
+    description: View meeting details and participants.
+    operations: ['GET /api/meeting/meetingDetails/{meetingId}', 'GET /api/meeting/{userId}']
+  - scope: meeting:update
+    group: meeting
+    description: Modify meeting information.
+    operations: ['PUT /api/meeting/meetingDetails/{meetingId}']
+  - scope: meeting:delete
+    group: meeting
+    description: Remove existing meetings.
+    operations: ['POST /api/meeting/cancel/{meetingId}']
+  - scope: meeting:join
+    group: meeting
+    description: Access the JioMeet Web SDK for meeting participation.
+token_lifetimes:
+  authorization_code: 5 minutes
+  access_token: 1 day
+  refresh_token: 60 days
+redirect_uri_rules:
+  - HTTPS required; plain HTTP rejected.
+  - Raw IP addresses not allowed.
+  - >-
+    Must not contain the query parameters sessionId, token, success, redirect_uri or
+    clientId.
+  - No wildcards, fragments or prohibited special characters.
+  - Must match a URL registered on the OAuth application.
