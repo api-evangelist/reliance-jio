@@ -1,0 +1,157 @@
+aid: reliance-jio
+url: https://raw.githubusercontent.com/api-evangelist/reliance-jio/refs/heads/main/apis.yml
+name: Reliance Jio
+kind: company
+description: Reliance Jio Infocomm, the telecom arm of Jio Platforms Limited and Reliance
+  Industries, is India's largest mobile network operator, serving roughly half a billion
+  subscribers on an all-IP 4G/5G network from its home market of India, alongside JioFiber
+  broadband, JioAirFiber fixed wireless, IoT connectivity, and an enterprise CPaaS
+  business branded JioCX. Jio sits at the network-operator layer of the telecom value
+  chain and its API posture is split in two. Its BSS/OSS side is unusually standards-forward
+  - Jio was the first communications service provider to reach TM Forum Open API Platinum
+  conformance, with more than twenty certified Open APIs - but those interfaces are
+  internal supplier-integration contracts, not a public developer product. Its network
+  APIs are genuinely live, since Jio launched the CAMARA SIM Swap API alongside Bharti
+  Airtel
+  and Vodafone Idea under GSMA Open Gateway, and Jio is one of the twelve carrier equity
+  owners of Aduna, the Ericsson-led network-API joint venture. There is, however, no
+  first-party Open Gateway developer portal - opengateway.jio.com and developers.opengateway.jio.com
+  do not resolve - so those network APIs are partner-gated and reachable only through
+  the Aduna aggregation channel, the GSMA federated hub, and CPaaS partners rather
+  than directly from Jio. What Jio does publish self-serve is a real developer portal
+  for its SaaS products at dev.jiomeet.com, covering the JioMeet and JioEvents platform
+  REST APIs with JWT and OAuth 2.0 auth and thirty-four public client SDK repositories,
+  plus a set-top-box app developer programme at developer.jio.com. No downloadable
+  OpenAPI or Swagger document was found anywhere across those surfaces.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Telecommunications
+- India
+- Mobile Network Operator
+- Network APIs
+- CAMARA
+- Open Gateway
+- SIM Swap
+- Identity Verification
+- CPaaS
+- Messaging
+- Voice
+- IoT
+- Broadband
+- 5G
+- BSS
+- OSS
+- Standards
+- Video Conferencing
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis:
+- aid: reliance-jio:jiomeet-platform-server-api
+  name: JioMeet Platform Server API
+  description: Server-to-server REST API for the JioMeet video meeting platform, documented
+    publicly at dev.jiomeet.com. Covers creating dynamic meetings, creating, fetching,
+    updating and deleting scheduled meetings, starting, stopping and listing recordings,
+    checking recording status, listing chat threads, and pulling meeting reports. Authentication
+    is an HS256-signed JWT built from an app id and secret generated in the JioMeet
+    platform console. No public base URL is stated in the documentation and no OpenAPI
+    document is served.
+  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  tags:
+  - Video
+  - Meetings
+  - Recording
+  - Collaboration
+  properties:
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate-with-ser
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  - type: Authentication
+    url: https://dev.jiomeet.com/docs/quick-start/authentication
+- aid: reliance-jio:jiomeet-platform-oauth-api
+  name: JioMeet Platform OAuth API
+  description: User-authorized REST API for JioMeet, using OAuth 2.0. An access and
+    refresh token are obtained from the /api/oauth2/v2/token endpoint using HTTP Basic
+    authentication with an OAuth client id and secret, and subsequent calls use HTTP
+    Bearer authentication. Documented operations cover creating, fetching, listing,
+    updating and deleting a user's scheduled meetings and fetching user profile info.
+  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
+  tags:
+  - Video
+  - Meetings
+  - OAuth
+  - Identity
+  properties:
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
+  - type: Authentication
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/access-token-endpoint-fetch-access-and-refresh-token
+- aid: reliance-jio:jioevents-platform-server-api
+  name: JioEvents Platform Server API
+  description: Server-side REST API for JioEvents, Jio's webinar and virtual event
+    platform, documented alongside JioMeet at dev.jiomeet.com. Covers creating, fetching,
+    updating and deleting scheduled webinars, creating, listing and deleting sessions,
+    creating, listing and deleting meeting invites, and downloading attendance and
+    registration reports.
+  humanURL: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
+  tags:
+  - Events
+  - Webinars
+  - Video
+  properties:
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/scheduled-webinar-create-a-scheduled-webinar
+- aid: reliance-jio:jiopayments-stb-api
+  name: JioPayments Set-Top-Box API
+  description: In-app purchase and digital content payment API for applications published
+    on the Jio set-top box, distributed by Jio Platforms as a downloadable PDF API
+    specification (v1.1) from the JioDevelopers set-top-box developer page. The specification
+    PDF is publicly retrievable without login; the developer console that issues credentials
+    is behind a sign-up wall.
+  humanURL: https://developer.jio.com/set-top-box.html
+  tags:
+  - Payments
+  - Set-Top Box
+  - Media
+  properties:
+  - type: Documentation
+    url: https://developer.jio.com/set-top-box.html
+  - type: APIReference
+    url: https://jiomedia.akamaized.net//JioStore/Downloads/DeveloperToolKit/STB/JioPayments-STB-APISpecs-v1.1.pdf
+common:
+- type: Website
+  url: https://www.jio.com/
+- type: Documentation
+  url: https://dev.jiomeet.com/
+- type: DeveloperPortal
+  url: https://developer.jio.com/
+- type: SignUp
+  url: https://platform.jiomeet.com/
+- type: GitHubOrganization
+  url: https://github.com/JioMeet
+- type: LinkedIn
+  url: https://www.linkedin.com/company/jio/
+- type: Support
+  url: https://stackoverflow.com/questions/tagged/jiomeet
+- type: Documentation
+  url: https://publish.jiogames.com/documents/
+- type: Documentation
+  url: https://developer.jiogames.com/
+- type: Documentation
+  url: https://www.jio.com/business/services/jiocx/
+- type: Documentation
+  url: https://www.jio.com/business/services/iot/
+- type: Certification
+  url: https://s3.us-east-1.amazonaws.com/tmf-sfdc-public/Conformance/CON-01539/JIO-Certification%20Report-TMF653%20API-Aug2022.pdf
+- type: PressRelease
+  url: https://www.gsma.com/newsroom/press-release/indian-mobile-operators-help-online-businesses-combat-scams-and-identity-theft-through-new-federated-network-services-supported-by-gsma-open-gateway/
+- type: Partner
+  url: https://adunaglobal.com/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
