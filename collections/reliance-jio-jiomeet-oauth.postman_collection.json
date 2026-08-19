@@ -1,0 +1,2135 @@
+{
+  "item": [
+    {
+      "id": "adcf8f18-b37a-4297-88bd-5b65282cf8f4",
+      "name": "JioMeetCpaasPlatform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "901ec6d7-5845-47c5-988b-9210f0836d27",
+          "name": "Scheduled Meeting - Fetch a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Fetch a scheduled meeting",
+            "description": {
+              "content": "This API fetches details of a scheduled meeting using the provided meetingId.  Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meeting details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "meeting",
+                "meetingDetails",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The ID of the meeting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "99cfe2ff-63d3-44dd-b7ce-81877dceaf7f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"jiomeetId\": \"7212310665\",\n    \"topic\": \"Meeting created at 07:09 AM\",\n    \"startTime\": \"2023-09-08T02:39:27.000Z\",\n    \"endTime\": \"2023-09-08T03:09:27.000Z\",\n    \"scheduledDuration\": 1800000,\n    \"meetingUrl\": \"https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq\",\n    \"status\": \"active\",\n    \"pin\": \"7mVhq\",\n    \"_id\": \"sm-aed12dea-60d2-4757-9705-6c93dce0e3f0\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "378c08ff-66f9-4af7-912d-403c983355c1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d6febc1-01c4-45bb-b477-53e4d1867e26",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3824495c-2772-4e04-bdca-f3f536d0d405",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2ace790-ce5b-4146-b1ad-e4ed21bc58ad",
+          "name": "Scheduled Meeting - Update a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Update a scheduled meeting",
+            "description": {
+              "content": "This API updates a scheduled meeting using the meetingId returned when the meeting was created. Required OAuth scope: `meeting:update` - To grant permission to update the scheduled meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "meeting",
+                "meetingDetails",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The ID of the meeting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"isPinEnabled\": \"<boolean>\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": \"<boolean>\",\n    \"waitingRoom\": \"<boolean>\",\n    \"participantHardAudioMute\": \"<boolean>\",\n    \"participantHardVideoMute\": \"<boolean>\",\n    \"isClassroomMode\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d7029ef-153e-4ec8-b9a1-e131a6a71ad1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-12-12T13:50:00.000Z\",\n  \"endTime\": \"2023-12-12T14:20:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": \"5319535369\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-12-12T13:50:00.000Z\",\n  \"endTime\": \"2023-12-12T14:20:00.000Z\",\n  \"scheduledDuration\": 1800000,\n  \"meetingUrl\": \"https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CrU\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": true,\n    \"waitingRoom\": false,\n    \"participantHardAudioMute\": false,\n    \"participantHardVideoMute\": false,\n    \"isClassroomMode\": false\n  },\n  \"isPinEnabled\": true,\n  \"status\": \"active\",\n  \"pin\": \"n5CaU\",\n  \"_id\": \"sm-77189593-f31a-4b62-941a-74f9147e465\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f479e273-b920-4736-939a-a037cce22c2c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-12-12T13:50:00.000Z\",\n  \"endTime\": \"2023-12-12T14:20:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26705af9-383b-48c9-a44e-486af7a1e21e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-12-12T13:50:00.000Z\",\n  \"endTime\": \"2023-12-12T14:20:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4225b9a2-b53a-4328-90e8-d8eb0a5afb54",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "meetingDetails",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-12-12T13:50:00.000Z\",\n  \"endTime\": \"2023-12-12T14:20:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82bad3d3-848c-480b-9ada-7cee6b4fb307",
+          "name": "Scheduled Meeting - Create a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Create a scheduled meeting",
+            "description": {
+              "content": "This API creates a scheduled meeting. Scheduled meetings are valid until 1 day after the start time of the meeting. Required OAuth scope: `meeting:create` - To grant permission to create a scheduled meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "meeting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"isPinEnabled\": \"<boolean>\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": \"<boolean>\",\n    \"waitingRoom\": \"<boolean>\",\n    \"participantHardAudioMute\": \"<boolean>\",\n    \"participantHardVideoMute\": \"<boolean>\",\n    \"isClassroomMode\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2dde9f4-3b6a-4ae4-b366-63330646efa0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-11-11T12:50:00.000Z\",\n  \"endTime\": \"2023-11-11T15:50:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Meeting created successfully.\",\n  \"meetingDetails\": [\n    {\n      \"jiomeetId\": \"5319535369\",\n      \"topic\": \"My Scheduled Meeting\",\n      \"startTime\": \"2023-09-11T12:50:00.000Z\",\n      \"endTime\": \"2023-09-15T13:20:00.000Z\",\n      \"scheduledDuration\": 1800000,\n      \"meetingUrl\": \"https://jiomeetpro.jio.com/shortener?meetingId=5319535369&pwd=n5CaU\",\n      \"advancedOptions\": {\n        \"joinBeforeHost\": true,\n        \"waitingRoom\": false,\n        \"participantHardAudioMute\": false,\n        \"participantHardVideoMute\": false,\n        \"isClassroomMode\": false\n      },\n      \"status\": \"active\",\n      \"pin\": \"n5CaU\",\n      \"_id\": \"sm-77189593-f31a-4b62-941a-74f9147e465\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62b16e4c-9905-43cc-ae91-11cff805ca0c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-11-11T12:50:00.000Z\",\n  \"endTime\": \"2023-11-11T15:50:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8f7f772-9422-49a2-8f2d-9b82e08e88a2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-11-11T12:50:00.000Z\",\n  \"endTime\": \"2023-11-11T15:50:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eaac779a-d0a5-410b-b631-953f59b9bd5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-11-11T12:50:00.000Z\",\n  \"endTime\": \"2023-11-11T15:50:00.000Z\",\n  \"isPinEnabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bae1413b-81c2-47b8-9b39-76dd4c226f04",
+          "name": "Access Token Endpoint -fetch access and refresh token",
+          "request": {
+            "name": "Access Token Endpoint -fetch access and refresh token",
+            "description": {
+              "content": "This API acquires access and refresh tokens using valid credentials. Set the 'grant_type' parameter in the JSON request body as \"authorization_code\" for the authorization code flow or \"refresh_token\" for the token refresh flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "oauth2",
+                "v2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grant_type\": \"<string>\",\n  \"code\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85341a77-cfbe-4503-ab8e-28ce6f709c5e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "oauth2",
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"43473295-453c-451e-83af-7620f41fb87f\",\n  \"grant_type\": \"authorization_code\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE2OTYzNDIwMDJ9.q9ov96lDmdYdBhQ-5JnppOB3s1we6B5NIaqkHoYFjHMSBpY6F22BIfYRSzKZNglByuu6_nw6QGM8MptyQT_qpqnPlCH-uDRgkQ5vvvARLW6wOH2b8kUzEpr8My2seB5WBniplu4UoYEfKRPEuu-8y1fnUF_aDfQ276NP3RU0-8Y\",\n  \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1LTVhMGQ1NTBiLTg1Y2MtNDIwMC05N2U1LTgxMDg4MzY0YTZiZSIsInRva2VuSWQiOiJvdC02MDNkM2I3NS0wMjRjLTRhMjMtYmI0Mi0xMjk0MWM0ZDZhOTQiLCJzb3VyY2UiOiJvYXV0aHYyIiwiY2xpZW50SWQiOiI2NTAxNmRiZWM1OTAyZThmYmRlYmQyNGMiLCJzY29wZSI6Im1lZXRpbmc6Y3JlYXRlIG1lZXRpbmc6ZGVsZXRlIiwib2F1dGhTb3VyY2UiOiJvYXV0aHYyIiwiaWF0IjoxNjk2MjU1NjAyLCJleHAiOjE3MDE0Mzk2MDJ9.nd1LJFFN-C6gu6hjWk0kJ1MVZ5_twB_ggvnuoYAuk9r3xVi9KzFlc6mbM6cuP7_RvoGvSp_Oqd_VSzn9O3QRFFhyrEzU0rYG6QBqfCD2Jx4DB_8-oqiBFm-lUWKmwxGOuJ1BElqb-7rEk4HpizlNqoP281L3QQ4T82GUopSgS3A\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": \"2023-10-03T14:05:42.305Z\",\n  \"scope\": \"meeting:create meeting:delete user:read\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b7c1a9e-e543-4c2c-9ff0-7898843ad7f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "oauth2",
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"43473295-453c-451e-83af-7620f41fb87f\",\n  \"grant_type\": \"authorization_code\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db60860-616d-42c8-93c7-188f5e672fe6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "oauth2",
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"43473295-453c-451e-83af-7620f41fb87f\",\n  \"grant_type\": \"authorization_code\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1bc9599-73dd-4fb3-9553-9f42beaec8c0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "oauth2",
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"43473295-453c-451e-83af-7620f41fb87f\",\n  \"grant_type\": \"authorization_code\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "389e12b4-4b58-4b5c-9598-6d11b2a6e94e",
+          "name": "Scheduled Meeting - List all meetings of user",
+          "request": {
+            "name": "Scheduled Meeting - List all meetings of user",
+            "description": {
+              "content": "Fetch all scheduled meetings for a user based on various filters such as meetingId, jiomeetId, or a specific time range.  Use the optional query parameters to refine the search. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meetings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "meeting",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "past",
+                  "value": "<boolean>",
+                  "description": "Indicates whether to either fetch past or upcoming meetings."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "546b17a5-3280-4b9e-a819-ceafaa1a5027",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "past",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 1,\n  \"moreAvailable\": false,\n  \"meetingDetails\": [\n    {\n      \"jiomeetId\": \"7212310665\",\n      \"topic\": \"Meeting created at 07:09 AM\",\n      \"startTime\": \"2023-09-08T02:39:27.000Z\",\n      \"endTime\": \"2023-09-08T03:09:27.000Z\",\n      \"scheduledDuration\": 1800000,\n      \"meetingUrl\": \"https://jiomeetpro.jio.com/shortener?meetingId=7212310665&pwd=7mVhq\",\n      \"status\": \"active\",\n      \"pin\": \"7mVhq\",\n      \"_id\": \"sm-aed12dea-60d2-4757-9705-6c93dce0e3f0\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be1a15b-09da-440a-8169-12c8c745e152",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "past",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b127ac5-dd82-4ce1-b3f8-777e9e2a4d5c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "past",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f1c628f-8223-4a57-a567-859f7db5fd64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "past",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e19c96a-5373-4ce0-bf1c-1838e133a31b",
+          "name": "User Info - Fetch User profile info",
+          "request": {
+            "name": "User Info - Fetch User profile info",
+            "description": {
+              "content": "This API fetches the user's profile information. Required OAuth scope: `user:read` - To grant permission to read the user's profile information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "my_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e888d1c6-4bfb-4bd9-8974-ddc7328f28b3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "my_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"u-5a0d550b-85cc-4200-97j5-81088364a6b8\",\n  \"name\": \"John\",\n  \"lname\": \"Doe\",\n  \"email\": \"johndoe@gmail.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e3a110c-ee53-4084-9665-f5e8c67cbec3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "my_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "449f5946-1540-4432-afc9-a3f4ca4c9229",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "my_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a34a960-2121-47da-aeae-ae223802c273",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "my_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45348063-14b9-4d02-86f6-c18e84fb3bfa",
+          "name": "Scheduled Meeting - Delete a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Delete a scheduled meeting",
+            "description": {
+              "content": "This API deletes a scheduled meeting using the meetingId returned when the meeting was created.  Required OAuth scope: `meeting:delete` - To grant permission to delete the scheduled meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "meeting",
+                "cancel",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The ID of the meeting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2f8959f-fcef-483d-a598-565fc609031f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "cancel",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Your meeting has been cancelled successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49dc5890-e87c-4454-a2c5-5aa20c39102d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "cancel",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c80a556-0a55-45e4-85d2-32c2b9c1acac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "cancel",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1e80577-c728-4d7a-891a-ea948d25024e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "meeting",
+                    "cancel",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The ID of the meeting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://jiomeetpro.jio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86d35095-c2fd-4732-bb40-25718e429738",
+    "name": "JioMeet User OAuth APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This section provides information about JioMeet's OAuth User APIs.These APIs can be utilized to seamlessly integrate JioMeet functionality into your backend systems.",
+      "type": "text/plain"
+    }
+  }
+}

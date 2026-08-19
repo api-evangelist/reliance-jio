@@ -217,3 +217,9 @@ tools:
   method: POST
   path: /api/oauth2/v2/token
   server: https://jiomeetpro.jio.com
+deployment:
+  mode: none
+  verified: derived
+  tools: 29
+  checked: '2026-08-12'
+  source: catalog MCP census

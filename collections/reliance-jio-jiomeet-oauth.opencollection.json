@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "JioMeet User OAuth APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JioMeetCpaasPlatform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scheduled Meeting - Fetch a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/meeting/meetingDetails/:meetingId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the meeting."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API fetches details of a scheduled meeting using the provided meetingId.  Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meeting details"
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Update a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://jiomeetpro.jio.com/api/meeting/meetingDetails/:meetingId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the meeting."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API updates a scheduled meeting using the meetingId returned when the meeting was created. Required OAuth scope: `meeting:update` - To grant permission to update the scheduled meeting."
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Create a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/meeting",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API creates a scheduled meeting. Scheduled meetings are valid until 1 day after the start time of the meeting. Required OAuth scope: `meeting:create` - To grant permission to create a scheduled meeting."
+        },
+        {
+          "info": {
+            "name": "Access Token Endpoint -fetch access and refresh token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/oauth2/v2/token",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This API acquires access and refresh tokens using valid credentials. Set the 'grant_type' parameter in the JSON request body as \"authorization_code\" for the authorization code flow or \"refresh_token\" for the token refresh flow."
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - List all meetings of user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/meeting/:userId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              },
+              {
+                "name": "past",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to either fetch past or upcoming meetings."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch all scheduled meetings for a user based on various filters such as meetingId, jiomeetId, or a specific time range.  Use the optional query parameters to refine the search. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meetings."
+        },
+        {
+          "info": {
+            "name": "User Info - Fetch User profile info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/my_profile",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API fetches the user's profile information. Required OAuth scope: `user:read` - To grant permission to read the user's profile information."
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Delete a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/meeting/cancel/:meetingId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the meeting."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API deletes a scheduled meeting using the meetingId returned when the meeting was created.  Required OAuth scope: `meeting:delete` - To grant permission to delete the scheduled meeting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,347 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "JioMeet Platform APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JioMeetCpaasPlatform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/recordings/start",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API allows you to start a recording. Ensure that the meeting is started for this API to take effect. A historyId is returned by this API which can be used to fetch the recordings later"
+        },
+        {
+          "info": {
+            "name": "Create a dynamic meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/room",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API allows you to provision a dynamic meeting. Dynamic meetings are valid for 24 hours from the time of creation."
+        },
+        {
+          "info": {
+            "name": "List Recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/recordings/list",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API list recordings for a JioMeet meeting using the jiomeetId, roomPIN and the historyId (historyId is obtained through the start/stop recording APIs)"
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Fetch a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/schedule/meeting",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-123456789",
+                "type": "query",
+                "description": "The meeting Id of the scheduled meeting"
+              },
+              {
+                "name": "jiomeetId",
+                "value": "1234567890",
+                "type": "query",
+                "description": "The 10 digit unique jiomeetId of the meeting"
+              },
+              {
+                "name": "fromDate",
+                "value": "2023-10-01",
+                "type": "query",
+                "description": "Start of the time range. To be used in combination with toDate"
+              },
+              {
+                "name": "endDate",
+                "value": "2023-10-02",
+                "type": "query",
+                "description": "End of the time range. To be used in combination with fromDate"
+              }
+            ]
+          },
+          "docs": "This API fetches scheduled meeting/s using the meetingId, jiomeetId or the time range. Click the \"Show optional parameters\" button to test the query parameters"
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Create a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/schedule/meeting",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API creates a scheduled meeting. Scheduled meetings are valid for till after 1 day from the start time of the meeting."
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Update a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/schedule/meeting",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API updates a scheduled meeting using the meetingId returned when the meeting was created"
+        },
+        {
+          "info": {
+            "name": "Scheduled Meeting - Delete a scheduled meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/schedule/meeting",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API deletes a scheduled meeting using the meetingId returned when the meeting was created"
+        },
+        {
+          "info": {
+            "name": "Check Recording Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/recordings/isrecording",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API suggests the status of the recording, whether the recording is happening or not"
+        },
+        {
+          "info": {
+            "name": "Stop Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/recordings/stop",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API allows you to stop a recording. Ensure that the meeting is ongoing for this API to take effect. A historyId is returned by this API which can be used to fetch the recordings later"
+        },
+        {
+          "info": {
+            "name": "Get Meeting Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/analytics/report",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "jiomeetId",
+                "value": "3419081647",
+                "type": "query",
+                "description": "The 10 digit unique ID of the meeting"
+              },
+              {
+                "name": "roomPIN",
+                "value": "yM7EY    ",
+                "type": "query",
+                "description": "Meeting secret that secures the meeting from unwanted access"
+              }
+            ]
+          },
+          "docs": "This API gets the details of the meeting. The info contains the information about when users joined or left the meeting"
+        },
+        {
+          "info": {
+            "name": "List chat thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jiomeetpro.jio.com/api/platform/v1/chat/thread",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "jiomeetId",
+                "value": "1234567890",
+                "type": "query",
+                "description": "The 10 digit unique ID of the meeting"
+              },
+              {
+                "name": "roomPIN",
+                "value": "abcdef",
+                "type": "query",
+                "description": "Meeting secret that secures the meeting from unwanted access"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "The number of results to skip"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The total number of results to get"
+              }
+            ]
+          },
+          "docs": "This API lists the chat thread for the meeting"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

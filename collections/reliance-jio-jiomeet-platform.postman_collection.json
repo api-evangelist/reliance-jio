@@ -1,0 +1,3205 @@
+{
+  "item": [
+    {
+      "id": "1b313163-8355-4975-8325-708730f7d49a",
+      "name": "JioMeetCpaasPlatform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cd75484-fe69-415c-8b98-191c38e6e1b7",
+          "name": "Start Recording",
+          "request": {
+            "name": "Start Recording",
+            "description": {
+              "content": "This API allows you to start a recording. Ensure that the meeting is started for this API to take effect. A historyId is returned by this API which can be used to fetch the recordings later",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "recordings",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jiomeetId\": \"<string>\",\n  \"roomPIN\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b0791c1-6157-47df-bcf7-d78fc72cf040",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"historyId\": \"chis-123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92cfd43a-0ced-446f-8ead-5ad0943daea0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f42752af-f6b1-4996-9f27-c4d5d922dfec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9b143fd-5c23-4138-a3fe-e0c94a154287",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e76fbc76-f5d7-491c-825a-8c83c6e56526",
+          "name": "Create a dynamic meeting",
+          "request": {
+            "name": "Create a dynamic meeting",
+            "description": {
+              "content": "This API allows you to provision a dynamic meeting. Dynamic meetings are valid for 24 hours from the time of creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "room"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"hostToken\": \"<boolean>\",\n  \"isAutoRecordingEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4117715-09f1-4282-a32c-68bc832fcd54",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "room"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"name of the user creating the meeting\",\n  \"title\": \"title of the meeting\",\n  \"description\": \"description for the meeting\",\n  \"hostToken\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": 1234567890,\n  \"roomPIN\": \"abcdef\",\n  \"subdomain\": \"myjiomeetapplication\",\n  \"guestMeetingLink\": \"https://jiomeetpro.jio.com/guest?meetingId=123456789&pwd=abcdef\",\n  \"meetingLink\": \"https://myjiomeetapplication.platform.jiomeet.com/guest?meetingId=123456789&pwd=abcdef\\\"\",\n  \"joinEndpoint\": \"guest\",\n  \"hostToken\": \"xEEREASDASAD343a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "173a05ab-a729-47c6-82c1-172801d30604",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "room"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"name of the user creating the meeting\",\n  \"title\": \"title of the meeting\",\n  \"description\": \"description for the meeting\",\n  \"hostToken\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fdd5852-98d0-46de-8da9-74f71c709876",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "room"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"name of the user creating the meeting\",\n  \"title\": \"title of the meeting\",\n  \"description\": \"description for the meeting\",\n  \"hostToken\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "015e02c9-14ee-46d7-8d67-72d4c46a1044",
+          "name": "List Recordings",
+          "request": {
+            "name": "List Recordings",
+            "description": {
+              "content": "This API list recordings for a JioMeet meeting using the jiomeetId, roomPIN and the historyId (historyId is obtained through the start/stop recording APIs)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "recordings",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jiomeetId\": \"<string>\",\n  \"roomPIN\": \"<string>\",\n  \"historyId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0dddc2c-2349-4016-9fc0-4fa2943ccdfe",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\",\n  \"historyId\": \"Unique identifier of the recording. This should be used to fetch the recording once it has completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callRecordings\": [\n    {\n      \"recorderId\": \"Etglyx\",\n      \"url\": \"https://example.jio.com/api/shorturl/getVideo?hash=dFnCz8qIO10215123\",\n      \"customName\": \"Recording(1)_10:24__10:27\",\n      \"duration\": null,\n      \"dateCreated\": \"2022-03-10T04:54:50.254Z\",\n      \"startTime\": \"2022-03-10T04:54:55.247Z\",\n      \"endTime\": \"2022-03-10T04:57:22.785Z\",\n      \"fileSize\": 4255450\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e83d2ebd-f79c-4147-be39-9bac35ad4850",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\",\n  \"historyId\": \"Unique identifier of the recording. This should be used to fetch the recording once it has completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ceceb59f-b0b3-4187-9c6f-a601457f2453",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\",\n  \"historyId\": \"Unique identifier of the recording. This should be used to fetch the recording once it has completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b0c2095-ea44-45e5-ab20-93baaeaf840d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\",\n  \"historyId\": \"Unique identifier of the recording. This should be used to fetch the recording once it has completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80adc021-e8c2-4e05-a293-4d08df806c02",
+          "name": "Scheduled Meeting - Update a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Update a scheduled meeting",
+            "description": {
+              "content": "This API updates a scheduled meeting using the meetingId returned when the meeting was created",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "meeting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meetingId\": \"<string>\",\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"isAutoRecordingEnabled\": \"<boolean>\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": \"<boolean>\",\n    \"waitingRoom\": \"<boolean>\",\n    \"participantHardAudioMute\": \"<boolean>\",\n    \"participantHardVideoMute\": \"<boolean>\",\n    \"isClassroomMode\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00e674d0-9f8e-4ea7-b458-77ecffa7debf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-09-11T13:50:00.000Z\",\n  \"endTime\": \"2023-09-11T14:20:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": \"5319535369\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"isAutoRecordingEnabled\": false,\n  \"startTime\": \"2023-09-11T13:50:00.000Z\",\n  \"endTime\": \"2023-09-11T14:20:00.000Z\",\n  \"scheduledDuration\": 1800000,\n  \"meetingUrl\": \"https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU\",\n  \"hostUrl\": \"https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A\",\n  \"hostToken\": \"Z5gdmTRSb11A\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": true,\n    \"waitingRoom\": false,\n    \"participantHardAudioMute\": false,\n    \"participantHardVideoMute\": false,\n    \"isClassroomMode\": false\n  },\n  \"status\": \"active\",\n  \"roomPIN\": \"n5CaU\",\n  \"meetingId\": \"sm-77189593-f31a-4b62-941a-74f9147e465\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ea9da38-6a7c-4d4d-9c76-ca95e96c3ae1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-09-11T13:50:00.000Z\",\n  \"endTime\": \"2023-09-11T14:20:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28cba9e4-22ad-4764-8562-18b2df451f70",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-09-11T13:50:00.000Z\",\n  \"endTime\": \"2023-09-11T14:20:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b8cba72-6f56-4ffe-9295-04491f21540f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"topic\": \"My Updated Scheduled Meeting\",\n  \"startTime\": \"2023-09-11T13:50:00.000Z\",\n  \"endTime\": \"2023-09-11T14:20:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "598b74f7-1946-4105-bb94-0cfcec386e09",
+          "name": "Scheduled Meeting - Delete a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Delete a scheduled meeting",
+            "description": {
+              "content": "This API deletes a scheduled meeting using the meetingId returned when the meeting was created",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "meeting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meetingId\": \"<String>\",\n  \"type\": \"<String>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "164b554f-b896-4e2a-88f0-5ec6db780e3c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"DELETED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e91db7fa-2a4e-48bb-a5d6-2602e26f41c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a36d410-c3d7-4a82-b290-1ba205b8b76b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a75ca8fd-f9bb-421a-b2af-64e2f9d131f6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"The meeting returned when you scheduled the meeting\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33246da3-f910-4e8c-82b5-d3920f191de2",
+          "name": "Scheduled Meeting - Create a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Create a scheduled meeting",
+            "description": {
+              "content": "This API creates a scheduled meeting. Scheduled meetings are valid for till after 1 day from the start time of the meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "meeting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"isAutoRecordingEnabled\": \"<boolean>\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": \"<boolean>\",\n    \"waitingRoom\": \"<boolean>\",\n    \"participantHardAudioMute\": \"<boolean>\",\n    \"participantHardVideoMute\": \"<boolean>\",\n    \"isClassroomMode\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41ee7f02-eb08-4fe5-83fe-6a251e5aebcb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-09-11T12:50:00.000Z\",\n  \"endTime\": \"2023-09-11T12:50:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": \"5319535369\",\n  \"topic\": \"My Scheduled Meeting\",\n  \"isAutoRecordingEnabled\": false,\n  \"startTime\": \"2023-09-11T12:50:00.000Z\",\n  \"endTime\": \"2023-09-11T13:20:00.000Z\",\n  \"scheduledDuration\": 1800000,\n  \"meetingUrl\": \"https://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU\",\n  \"hostUrl\": \"httpss://platform.jiomeet.com/guest?meetingId=5319535369&pwd=n5CrU&hostToken=Z5gdmTRSb11A\",\n  \"hostToken\": \"Z5gdmTRSb11A\",\n  \"advancedOptions\": {\n    \"joinBeforeHost\": true,\n    \"waitingRoom\": false,\n    \"participantHardAudioMute\": false,\n    \"participantHardVideoMute\": false,\n    \"isClassroomMode\": false\n  },\n  \"status\": \"active\",\n  \"roomPIN\": \"n5CaU\",\n  \"meetingId\": \"sm-77189593-f31a-4b62-941a-74f9147e465\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4438e5e-79a7-4e0e-b795-5b6b5214bdbe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-09-11T12:50:00.000Z\",\n  \"endTime\": \"2023-09-11T12:50:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "895ca05a-fd1f-4c16-9786-50d1319f7180",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-09-11T12:50:00.000Z\",\n  \"endTime\": \"2023-09-11T12:50:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87c518ab-8805-4852-98ef-b3168a723c6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"The title of your meeting\",\n  \"startTime\": \"2023-09-11T12:50:00.000Z\",\n  \"endTime\": \"2023-09-11T12:50:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cf708ce-03a9-4105-9602-19febd8be648",
+          "name": "Scheduled Meeting - Fetch a scheduled meeting",
+          "request": {
+            "name": "Scheduled Meeting - Fetch a scheduled meeting",
+            "description": {
+              "content": "This API fetches scheduled meeting/s using the meetingId, jiomeetId or the time range. Click the \"Show optional parameters\" button to test the query parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "meeting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "meetingId",
+                  "value": "<string>",
+                  "description": "The meeting Id of the scheduled meeting"
+                },
+                {
+                  "disabled": false,
+                  "key": "jiomeetId",
+                  "value": "<string>",
+                  "description": "The 10 digit unique jiomeetId of the meeting"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "Start of the time range. To be used in combination with toDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "End of the time range. To be used in combination with fromDate"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e96ce8b3-9a98-4656-9a50-60903774587e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2023-10-02"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meetingsCount\": 1,\n  \"meetingDetails\": [\n    {\n      \"jiomeetId\": \"7212310665\",\n      \"topic\": \"Meeting created at 07:09 AM\",\n      \"isAutoRecordingEnabled\": true,\n      \"startTime\": \"2023-09-08T02:39:27.000Z\",\n      \"endTime\": \"2023-09-08T03:09:27.000Z\",\n      \"scheduledDuration\": 1800000,\n      \"meetingUrl\": \"https://platform.jiomeet.com/guest?meetingId=7212310665&pwd=7mVhq\",\n      \"status\": \"active\",\n      \"roomPIN\": \"7mVhq\",\n      \"meetingId\": \"sm-aed12dea-60d2-4757-9705-6c93dce0e3f0\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7913d9c5-1910-4a3b-a9ee-2cf1208e26cb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2023-10-02"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53595f58-233a-43d5-a2ce-6c62a078a500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2023-10-02"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c4b68b5-3d54-4cca-a73c-9597dc99725c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "meeting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2023-10-02"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5994671e-8664-4419-ad6a-2cace80c83e4",
+          "name": "Check Recording Status",
+          "request": {
+            "name": "Check Recording Status",
+            "description": {
+              "content": "This API suggests the status of the recording, whether the recording is happening or not",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "recordings",
+                "isrecording"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jiomeetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "696fca4f-bf23-44b6-8f9d-fffc563b6215",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "isrecording"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordingStatus\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d681235a-cfd4-4138-9eda-42388f988cbb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "isrecording"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ca1de0d-21ce-4196-aebb-2d80510aa484",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "isrecording"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae94e017-c5b3-45d0-a867-6a15e696a743",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "isrecording"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e66d132d-5b99-41ee-a3a8-d483a75f8eaa",
+          "name": "Stop Recording",
+          "request": {
+            "name": "Stop Recording",
+            "description": {
+              "content": "This API allows you to stop a recording. Ensure that the meeting is ongoing for this API to take effect. A historyId is returned by this API which can be used to fetch the recordings later",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "recordings",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jiomeetId\": \"<string>\",\n  \"roomPIN\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5509919-05e3-4e10-9b74-7d0d4e545d42",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"historyId\": \"chis-123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9d5e136-e6ee-457e-9dff-a8a36a60a8d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87594ba3-580c-42a1-a536-5e2fa9e3bd0f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04743899-5fba-4283-8cb1-ade31e791ea7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "recordings",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jiomeetId\": \"The 10 digit unique ID of the meeting\",\n  \"roomPIN\": \"Meeting secret that secures the meeting from unwanted access\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1f73c19-ad43-41e4-af7c-6338e7b5c64b",
+          "name": "Get Meeting Report",
+          "request": {
+            "name": "Get Meeting Report",
+            "description": {
+              "content": "This API gets the details of the meeting. The info contains the information about when users joined or left the meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "analytics",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jiomeetId",
+                  "value": "<string>",
+                  "description": "(Required) The 10 digit unique ID of the meeting"
+                },
+                {
+                  "disabled": false,
+                  "key": "roomPIN",
+                  "value": "<string>",
+                  "description": "(Required) Meeting secret that secures the meeting from unwanted access"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a67c7538-cf11-4e1c-b641-61cf72c35bb9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "analytics",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "3419081647"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "yM7EY    "
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"report\": [\n    {\n      \"Date\": \"25th July 2025\",\n      \"UserId\": \"gu-43616e22-af54-4315-bbe0-60f23182046c\",\n      \"Conference Id\": \"chis-197a6a1f-de07-4cdd-920c-af97c0cc1c5b\",\n      \"JiomeetId\": \"8069667546\",\n      \"Topic\": \"title of the meeting\",\n      \"Enterprise Name\": \"OTT\",\n      \"User Name\": \"asdfa \",\n      \"Call Role\": \"callJoinee\",\n      \"Status\": \"Accepted\",\n      \"User Role\": \"member\",\n      \"User Email\": \"NA\",\n      \"User PhoneNo.\": \"NA\",\n      \"User Type\": \"member\",\n      \"Machine IP Address\": \"116.50.84.118\",\n      \"Scheduled Meeting Start Time\": \"NA\",\n      \"Scheduled Meeting End Time\": \"NA\",\n      \"Actual Start Time\": \"10:45:11\",\n      \"Actual End Time\": \"10:46:20\",\n      \"Participants Endpoint Type\": \"web \",\n      \"Participants Endpoint Name\": \"web\",\n      \"Call Direction\": \"DialIn\",\n      \"Call Duration\": \"00:01:09\",\n      \"Type of Meeting\": \"Call\",\n      \"Media Engine\": \"NA\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46f658b1-1fe1-4863-b60f-2e872e0be171",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "analytics",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "3419081647"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "yM7EY    "
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0315e55-daa0-4b25-867e-d389e1ac2f48",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "analytics",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "3419081647"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "yM7EY    "
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e68f744b-9369-42aa-b3c7-eec394db1b8d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "analytics",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "3419081647"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "yM7EY    "
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3275cd20-193a-4dde-984f-6b78e0fd82bc",
+          "name": "List chat thread",
+          "request": {
+            "name": "List chat thread",
+            "description": {
+              "content": "This API lists the chat thread for the meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "chat",
+                "thread"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jiomeetId",
+                  "value": "<string>",
+                  "description": "(Required) The 10 digit unique ID of the meeting"
+                },
+                {
+                  "disabled": false,
+                  "key": "roomPIN",
+                  "value": "<string>",
+                  "description": "(Required) Meeting secret that secures the meeting from unwanted access"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>",
+                  "description": "The number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "The total number of results to get"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c822b598-3f9d-48ac-a7cc-ecdc4266fe46",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "chat",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "abcdef"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 2,\n  \"moreAvailable\": true,\n  \"messages\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27ec6247-4d8c-4d83-9805-e9f94b41f5c1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "chat",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "abcdef"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9afa8e1a-d9a8-4584-bf74-5dc2348dbe5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "chat",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "abcdef"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "471bdfbd-524a-433c-b153-727b92d5cf7d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "chat",
+                    "thread"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "roomPIN",
+                      "value": "abcdef"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioMeet Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Plaform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://jiomeetpro.jio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1762267e-afc7-4ac1-ac2a-b583a2e62c67",
+    "name": "JioMeet Platform APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This section covers the JioMeet Platform APIs which can be used to quickly setup JioMeet APIs in your backend.",
+      "type": "text/plain"
+    }
+  }
+}

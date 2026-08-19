@@ -1,0 +1,369 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "JioEvents Platform APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JioEventsCpaasPlatform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Meeting Invite - Create a meeting invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jioevents.com/api/platform/v1/meetingInvite",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API creates a meeting invite for a participant to join a scheduled webinar or meeting"
+        },
+        {
+          "info": {
+            "name": "Sessions - Delete a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://jioevents.com/api/platform/v1/sessions/:meetingId/:sessionId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to delete the session"
+              },
+              {
+                "name": "sessionId",
+                "value": "se-77a4ef5e-0e86-4217-9f5b-08d766a48aef",
+                "type": "path",
+                "description": "The ID of the session to delete"
+              }
+            ]
+          },
+          "docs": "This API deletes a specific session for a meeting"
+        },
+        {
+          "info": {
+            "name": "Sessions - Get sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jioevents.com/api/platform/v1/sessions/:meetingId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to retrieve sessions"
+              }
+            ]
+          },
+          "docs": "This API retrieves all sessions for a specific meeting including meeting details and speakers"
+        },
+        {
+          "info": {
+            "name": "Sessions - Create a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jioevents.com/api/platform/v1/sessions/:meetingId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to create a session"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API creates a session within a webinar/meeting"
+        },
+        {
+          "info": {
+            "name": "Meeting Invite - Get meeting invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jioevents.com/api/platform/v1/meetingInvite/:meetingId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to retrieve invites"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Search keyword to filter invites"
+              }
+            ]
+          },
+          "docs": "This API retrieves meeting invites for a specific meeting with pagination and filtering capabilities"
+        },
+        {
+          "info": {
+            "name": "Meeting Invite - Delete meeting invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://jioevents.com/api/platform/v1/meetingInvite/:meetingId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to delete invites"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API deletes one or more meeting invites for a specific meeting"
+        },
+        {
+          "info": {
+            "name": "Scheduled Webinar - Fetch a scheduled webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jioevents.com/api/platform/v1/schedule/webinar",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-123456789",
+                "type": "query",
+                "description": "The meeting Id of the scheduled webinar"
+              },
+              {
+                "name": "jiomeetId",
+                "value": "1234567890",
+                "type": "query",
+                "description": "The 10 digit unique jiomeetId of the webinar"
+              },
+              {
+                "name": "fromDate",
+                "value": "2024-03-01",
+                "type": "query",
+                "description": "Start of the time range. To be used in combination with toDate"
+              },
+              {
+                "name": "endDate",
+                "value": "2024-03-31",
+                "type": "query",
+                "description": "End of the time range. To be used in combination with fromDate"
+              }
+            ]
+          },
+          "docs": "This API fetches scheduled webinar/s using the meetingId, jiomeetId or the time range"
+        },
+        {
+          "info": {
+            "name": "Scheduled Webinar - Create a scheduled webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://jioevents.com/api/platform/v1/schedule/webinar",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API creates a scheduled webinar. Webinar validity is maintained until the host establishes the start time and end time parameters."
+        },
+        {
+          "info": {
+            "name": "Scheduled Webinar - Update a scheduled webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://jioevents.com/api/platform/v1/schedule/webinar",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API updates a scheduled webinar using the meetingId returned when the webinar was created"
+        },
+        {
+          "info": {
+            "name": "Scheduled Webinar - Delete a scheduled webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://jioevents.com/api/platform/v1/schedule/webinar",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API deletes a scheduled webinar using the meetingId returned when the webinar was created"
+        },
+        {
+          "info": {
+            "name": "Webinar - Download attendance/ Registration report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://jioevents.com/api/platform/v1/webinar/:meetingId/download",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "<Authentication_token_signed_using_secret_or_private_key>"
+              }
+            ],
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277",
+                "type": "path",
+                "description": "The meeting ID for which to download attendance/ registration data"
+              },
+              {
+                "name": "registered",
+                "value": "true",
+                "type": "query",
+                "description": "When set to true, generates registration report instead of attendance data"
+              }
+            ]
+          },
+          "docs": "This API generates and provides a download link for webinar attendance/ registration data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

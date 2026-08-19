@@ -1,0 +1,3365 @@
+{
+  "item": [
+    {
+      "id": "c98be1a5-4c67-49a0-9255-3bfba46fa704",
+      "name": "JioEventsCpaasPlatform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10dfe903-76ce-4e60-b9b1-82fd50bce0b3",
+          "name": "Meeting Invite - Create a meeting invite",
+          "request": {
+            "name": "Meeting Invite - Create a meeting invite",
+            "description": {
+              "content": "This API creates a meeting invite for a participant to join a scheduled webinar or meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "meetingInvite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"identity\": \"<string>\",\n  \"sendInvite\": \"<boolean>\",\n  \"meetingId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c13ef6dc-318f-47ad-a90a-8acbb7134c33",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The accept type should be application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"Co-Host\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"user\",\n  \"identity\": \"m48519891@gmail.com\",\n  \"sendInvite\": true,\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"mi-984037ef-b959-4210-998a-2be29c14e72b\",\n  \"joinUrl\": \"https://jioevents.com/meetingInvite/join/_tD6SZHCMQ50885cdde5341755725215006\",\n  \"joinHash\": \"_tD6SZHCMQ50885cdde5341755725215006\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"user\",\n  \"emailId\": \"m48519891@gmail.com\",\n  \"role\": \"Co-Host\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n  \"userId\": \"u-17dbc620-b434-4ef4-bc77-412e41f71911\",\n  \"isDeleted\": false,\n  \"socialMediaLinks\": [],\n  \"registered\": true,\n  \"isInviteSent\": false,\n  \"sendInvite\": true,\n  \"cOn\": \"2025-08-20T21:26:55.007Z\",\n  \"mOn\": \"2025-08-20T21:26:55.007Z\",\n  \"__v\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "765da25d-b30e-43c5-a1ce-ebbe3f4d5d11",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The accept type should be application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"Co-Host\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"user\",\n  \"identity\": \"m48519891@gmail.com\",\n  \"sendInvite\": true,\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc94be13-e0fc-4a7b-9ed0-bf79adb874f6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The accept type should be application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"Co-Host\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"user\",\n  \"identity\": \"m48519891@gmail.com\",\n  \"sendInvite\": true,\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0223a98b-789c-4297-962a-9c15d9bb01bf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The accept type should be application/json",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"Co-Host\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"user\",\n  \"identity\": \"m48519891@gmail.com\",\n  \"sendInvite\": true,\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4963f604-32e2-4511-8d29-178adbd8a92f",
+          "name": "Sessions - Delete a session",
+          "request": {
+            "name": "Sessions - Delete a session",
+            "description": {
+              "content": "This API deletes a specific session for a meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "sessions",
+                ":meetingId",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to delete the session"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) The ID of the session to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f5abf23-f4a8-43d0-bfd7-695aae82d32e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete the session"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) The ID of the session to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d6a1f49-9652-4d0d-99f8-3ea625d32346",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete the session"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) The ID of the session to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4598d7ff-e079-444f-aa90-9382ed31b978",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete the session"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) The ID of the session to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8aa5a09-30fb-4db0-9ed2-e0c22e965c3c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete the session"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) The ID of the session to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fd2e725-3697-482d-a224-1fd581f296d3",
+          "name": "Sessions - Create a session",
+          "request": {
+            "name": "Sessions - Create a session",
+            "description": {
+              "content": "This API creates a session within a webinar/meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "sessions",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to create a session"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"descriptionMarkdown\": {\n    \"text\": \"<string>\",\n    \"messageType\": \"<string>\"\n  },\n  \"invites\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"topic\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "440bb79f-c74a-40ad-9790-70216b347d1b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to create a session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"\",\n  \"descriptionMarkdown\": {\n    \"text\": \"\",\n    \"messageType\": \"web\"\n  },\n  \"invites\": [],\n  \"topic\": \"Session2\",\n  \"startTime\": \"2025-08-21T14:30:00.000Z\",\n  \"endTime\": \"2025-08-21T15:00:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Session created successfully.\",\n  \"sessionDetails\": {\n    \"_id\": \"se-eff13292-c342-4394-85a1-e64b42fadd2b\",\n    \"topic\": \"Session2\",\n    \"description\": \"\",\n    \"descriptionMarkdown\": {\n      \"text\": \"\",\n      \"messageType\": \"web\"\n    },\n    \"meetingId\": \"sm-0666ba1c-c585-4193-a329-2fc23bd29e72\",\n    \"parentMeetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n    \"type\": \"normal\",\n    \"startTime\": \"2025-08-21T14:30:00.000Z\",\n    \"endTime\": \"2025-08-21T15:00:00.000Z\",\n    \"invites\": [],\n    \"status\": \"active\",\n    \"isDeleted\": false,\n    \"cOn\": \"2025-08-20T21:38:13.546Z\",\n    \"mOn\": \"2025-08-20T21:38:13.546Z\",\n    \"__v\": 0,\n    \"scheduledDuration\": 1800000,\n    \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y\",\n    \"userId\": \"u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237\",\n    \"jiomeetId\": 161894358,\n    \"pin\": \"dJy2y\",\n    \"advancedOptions\": {\n      \"hostAudio\": false,\n      \"participantAudio\": true,\n      \"hostVideo\": false,\n      \"participantVideo\": true,\n      \"joinBeforeHost\": true,\n      \"waitingRoom\": false,\n      \"loggedInOnly\": false,\n      \"colleagueOnly\": false,\n      \"participantHardAudioMute\": false,\n      \"participantHardVideoMute\": false,\n      \"isRestrictedMeeting\": false,\n      \"isClassroomMode\": false,\n      \"restrictChat\": \"NONE\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4496314-291d-45fd-8027-423c15eeddf3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to create a session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"\",\n  \"descriptionMarkdown\": {\n    \"text\": \"\",\n    \"messageType\": \"web\"\n  },\n  \"invites\": [],\n  \"topic\": \"Session2\",\n  \"startTime\": \"2025-08-21T14:30:00.000Z\",\n  \"endTime\": \"2025-08-21T15:00:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9182c1fb-af4c-4f96-a4ed-104ba58cc1aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to create a session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"\",\n  \"descriptionMarkdown\": {\n    \"text\": \"\",\n    \"messageType\": \"web\"\n  },\n  \"invites\": [],\n  \"topic\": \"Session2\",\n  \"startTime\": \"2025-08-21T14:30:00.000Z\",\n  \"endTime\": \"2025-08-21T15:00:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dc65cad-ca62-492e-8561-06c75ecda254",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to create a session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"\",\n  \"descriptionMarkdown\": {\n    \"text\": \"\",\n    \"messageType\": \"web\"\n  },\n  \"invites\": [],\n  \"topic\": \"Session2\",\n  \"startTime\": \"2025-08-21T14:30:00.000Z\",\n  \"endTime\": \"2025-08-21T15:00:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10fd8967-094d-4c69-8776-26625a3e4cd3",
+          "name": "Sessions - Get sessions",
+          "request": {
+            "name": "Sessions - Get sessions",
+            "description": {
+              "content": "This API retrieves all sessions for a specific meeting including meeting details and speakers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "sessions",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to retrieve sessions"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61151e6c-605d-467c-bdf3-9b5d4a9464b9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve sessions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meetingDetails\": {\n    \"topic\": \"Test1 user's JioEvent\",\n    \"startTime\": \"2025-08-21T14:00:00.000Z\",\n    \"topicMarkdown\": {\n      \"text\": \"Test1 user's JioEvent\",\n      \"messageType\": \"default\"\n    },\n    \"hash\": \"\"\n  },\n  \"speakers\": [\n    {\n      \"_id\": \"mi-89577cd6-b306-4219-a28e-8e42c69c6891\",\n      \"firstName\": \"tp-088573cb-34d3-405d-a954-119ee6aaff92\",\n      \"lastName\": \"\",\n      \"role\": \"Host\",\n      \"userId\": \"u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237\",\n      \"socialMediaLinks\": []\n    }\n  ],\n  \"sessions\": [\n    {\n      \"_id\": \"se-77a4ef5e-0e86-4217-9f5b-08d766a48aef\",\n      \"topic\": \"Welcome Session\",\n      \"description\": \"\",\n      \"meetingId\": \"sm-92e0f49f-5e55-4703-b26e-f9c89898786e\",\n      \"parentMeetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n      \"type\": \"default\",\n      \"startTime\": \"2025-08-21T14:00:00.000Z\",\n      \"endTime\": \"2025-08-21T14:30:00.000Z\",\n      \"invites\": [],\n      \"status\": \"active\",\n      \"isDeleted\": false,\n      \"cOn\": \"2025-08-20T21:28:41.315Z\",\n      \"mOn\": \"2025-08-20T21:28:41.315Z\",\n      \"__v\": 0,\n      \"invitedCoHosts\": [],\n      \"invitedSpeakers\": [],\n      \"broadcasting\": false,\n      \"preRecordedVideo\": {\n        \"enabled\": false,\n        \"loop\": 1\n      },\n      \"cohost\": [\n        \"u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237\"\n      ],\n      \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=9376680649&pwd=qrBG5\"\n    },\n    {\n      \"_id\": \"se-eff13292-c342-4394-85a1-e64b42fadd2b\",\n      \"topic\": \"Session2\",\n      \"description\": \"\",\n      \"descriptionMarkdown\": {\n        \"text\": \"\",\n        \"messageType\": \"web\"\n      },\n      \"meetingId\": \"sm-0666ba1c-c585-4193-a329-2fc23bd29e72\",\n      \"parentMeetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n      \"type\": \"normal\",\n      \"startTime\": \"2025-08-21T14:30:00.000Z\",\n      \"endTime\": \"2025-08-21T15:00:00.000Z\",\n      \"invites\": [],\n      \"status\": \"active\",\n      \"isDeleted\": false,\n      \"cOn\": \"2025-08-20T21:38:13.546Z\",\n      \"mOn\": \"2025-08-20T21:38:13.546Z\",\n      \"__v\": 0,\n      \"invitedCoHosts\": [],\n      \"invitedSpeakers\": [],\n      \"broadcasting\": false,\n      \"preRecordedVideo\": {\n        \"enabled\": false,\n        \"loop\": 1\n      },\n      \"cohost\": [\n        \"u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237\"\n      ],\n      \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=0161894358&pwd=dJy2y\"\n    }\n  ],\n  \"lastSessionDate\": \"2025-08-21T14:30:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3519510a-df35-47bd-93dc-346be77d3c94",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve sessions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "720ffe4a-2d69-4021-a601-ccb5c5ebe105",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve sessions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55f12a52-d032-4e69-aee5-c750fa4f3e14",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "sessions",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve sessions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b789241a-d282-4302-9cb3-44fff09ce496",
+          "name": "Meeting Invite - Delete meeting invites",
+          "request": {
+            "name": "Meeting Invite - Delete meeting invites",
+            "description": {
+              "content": "This API deletes one or more meeting invites for a specific meeting",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "meetingInvite",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to delete invites"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meetingInviteIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "953ba123-ba12-440c-8565-84491560b38d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingInviteIds\": [\n    \"mi-984037ef-b959-4210-998a-2be29c14e72b\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4b4092d-e89d-4b65-904a-3990e9e19000",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingInviteIds\": [\n    \"mi-984037ef-b959-4210-998a-2be29c14e72b\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b28674c-efba-4a31-84cf-6197cedb3627",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingInviteIds\": [\n    \"mi-984037ef-b959-4210-998a-2be29c14e72b\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9720e85d-e178-45e5-8bc5-c5f523911f9c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to delete invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingInviteIds\": [\n    \"mi-984037ef-b959-4210-998a-2be29c14e72b\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d03903ff-ee84-4a9c-933a-a33329d1b85c",
+          "name": "Meeting Invite - Get meeting invites",
+          "request": {
+            "name": "Meeting Invite - Get meeting invites",
+            "description": {
+              "content": "This API retrieves meeting invites for a specific meeting with pagination and filtering capabilities",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "meetingInvite",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of records to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "Search keyword to filter invites"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to retrieve invites"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f99b355-5d6f-41d3-9308-d5fc107f6f6e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"maxInvites\": 50,\n  \"invitesCount\": 1,\n  \"invitesList\": [\n    {\n      \"_id\": \"mi-89577cd6-b306-4219-a28e-8e42c69c6891\",\n      \"firstName\": \"tp-088573cb-34d3-405d-a954-119ee6aaff92\",\n      \"lastName\": \"\",\n      \"emailId\": \"tp-088573cb-34d3-405d-a954-119ee6aaff92@cpassbot.jiomeet\",\n      \"role\": \"Host\",\n      \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n      \"userId\": \"u-5075a9a0-cfd0-4dd9-bca9-e441b0df9237\",\n      \"isDeleted\": false,\n      \"socialMediaLinks\": [],\n      \"registered\": false,\n      \"isInviteSent\": false,\n      \"cOn\": \"2025-08-20T21:26:12.068Z\",\n      \"mOn\": \"2025-08-20T21:26:12.068Z\",\n      \"__v\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "938de5f2-4220-455c-bfba-b4719dc6c829",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66be4288-a0a9-4c97-bb57-4c7e6cd3acc0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bbd1df1-bad6-42c7-afcd-a3dde233e798",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "meetingInvite",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to retrieve invites"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43ecaa4e-21fb-4799-b768-7dacf19f01e0",
+          "name": "Scheduled Webinar - Delete a scheduled webinar",
+          "request": {
+            "name": "Scheduled Webinar - Delete a scheduled webinar",
+            "description": {
+              "content": "This API deletes a scheduled webinar using the meetingId returned when the webinar was created",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "webinar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meetingId\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "399b43b6-2b14-429b-837d-1d84d0ca2601",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"sm-085033e1-b83c-43ea-afa9-49df09173534\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"DELETED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f76ad067-dcbb-4455-a1b8-638b3c1d7a5f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"sm-085033e1-b83c-43ea-afa9-49df09173534\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bbd1ae2-05da-4f55-833d-39c373cd5064",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"sm-085033e1-b83c-43ea-afa9-49df09173534\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48be4059-3cd5-4c05-a3b0-20f3a5e27fbb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meetingId\": \"sm-085033e1-b83c-43ea-afa9-49df09173534\",\n  \"type\": \"current\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9438d9c3-e044-4f1e-9bc4-a6db7f6327c8",
+          "name": "Scheduled Webinar - Update a scheduled webinar",
+          "request": {
+            "name": "Scheduled Webinar - Update a scheduled webinar",
+            "description": {
+              "content": "This API updates a scheduled webinar using the meetingId returned when the webinar was created",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "webinar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meetingId\": \"<string>\",\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"webinar\": {\n    \"enabled\": \"<boolean>\",\n    \"sessions\": {\n      \"enabled\": \"<boolean>\",\n      \"registrationEnabled\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61f6109f-f04b-4c9c-a8e0-f85ea9141e87",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n  \"webinar\": {\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": \"7975873555\",\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"scheduledDuration\": 9000000,\n  \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c\",\n  \"speakerLink\": \"https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName lastName}\",\n  \"attendeeLink\": \"https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}\",\n  \"webinar\": {\n    \"enabled\": true,\n    \"options\": {\n      \"quesAns\": true,\n      \"allowGuests\": true,\n      \"comments\": true,\n      \"ticker\": {\n        \"enabled\": false,\n        \"text\": \"\"\n      },\n      \"thankYouMsg\": {\n        \"enabled\": true,\n        \"text\": \"Thank you for attending the event\"\n      },\n      \"views\": {\n        \"showCount\": true\n      },\n      \"likes\": {\n        \"showCount\": true,\n        \"floatingReactions\": {\n          \"enabled\": true\n        },\n        \"reactionType\": [\n          \"laugh\",\n          \"awesome\",\n          \"like\",\n          \"applause\",\n          \"greet\"\n        ],\n        \"enabled\": true\n      },\n      \"videoQuality\": \"sd\",\n      \"customization\": {\n        \"hideCompletedSessions\": true,\n        \"enableHandRaise\": true,\n        \"hideWelcomeMessage\": true,\n        \"equalTileLayout\": false,\n        \"shouldSendSMSToAttendee\": true\n      },\n      \"practiceSession\": false,\n      \"onDemand\": false,\n      \"record\": false,\n      \"flashcard\": false,\n      \"feedLayout\": \"grid\"\n    },\n    \"registration\": {\n      \"enabled\": false,\n      \"enabledFullName\": true,\n      \"autoApprove\": true,\n      \"otpEnabled\": true,\n      \"inviteOnly\": false,\n      \"openInvite\": false,\n      \"closeBeforeDays\": 0\n    },\n    \"recording\": {\n      \"recordingType\": \"attendee_page_only_player\"\n    },\n    \"attendeeFeed\": \"live\",\n    \"activation\": {\n      \"hash\": \"_xZtO9QIKVda1c34d0fe601755526454337\",\n      \"url\": \"https://jioevents.com/attendee/sm-085033e1-b83c-43ea-afa9-49df09173534/join/_xZtO9QIKVda1c34d0fe601755526454337\"\n    },\n    \"attendeeWebsocketEnabled\": false,\n    \"broadcasting\": false,\n    \"qnaTimeLimit\": 3,\n    \"webinarPortal\": {\n      \"enabled\": false\n    },\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    },\n    \"networking\": {\n      \"enabled\": false,\n      \"availability\": \"always\"\n    },\n    \"leaderboard\": {\n      \"enabled\": false\n    },\n    \"preRecordedVideo\": {\n      \"enabled\": false,\n      \"loop\": 1\n    }\n  },\n  \"advancedOptions\": {\n    \"joinBeforeHost\": true,\n    \"loggedInOnly\": false\n  },\n  \"status\": \"active\",\n  \"roomPIN\": \"2xJbU\",\n  \"meetingId\": \"sm-085033e1-b83c-43ea-afa9-49df09173534\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0568e02-0b9e-4b87-bbde-ae5de4e1dd42",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n  \"webinar\": {\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c08700d-0ff4-41f2-b2b3-782d70641acb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n  \"webinar\": {\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45c3803a-e0de-4792-89d9-26cc2f753831",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\",\n  \"webinar\": {\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71d5d57c-37fc-4e0f-898e-b0b8cf8fa6b5",
+          "name": "Scheduled Webinar - Create a scheduled webinar",
+          "request": {
+            "name": "Scheduled Webinar - Create a scheduled webinar",
+            "description": {
+              "content": "This API creates a scheduled webinar. Webinar validity is maintained until the host establishes the start time and end time parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "webinar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\",\n  \"webinar\": {\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77016741-a880-40a8-a83a-80b8279bdfd7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-18T19:00:00.000Z\",\n  \"endTime\": \"2025-08-18T19:30:00.000Z\",\n  \"webinar\": {\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jiomeetId\": \"7975873555\",\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-21T14:00:00.000Z\",\n  \"endTime\": \"2025-08-21T16:30:00.000Z\",\n  \"scheduledDuration\": 9000000,\n  \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c\",\n  \"speakerLink\": \"https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName lastName}\",\n  \"attendeeLink\": \"https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}\",\n  \"webinar\": {\n    \"enabled\": true,\n    \"options\": {\n      \"quesAns\": true,\n      \"allowGuests\": true,\n      \"comments\": true,\n      \"ticker\": {\n        \"enabled\": false,\n        \"text\": \"\"\n      },\n      \"thankYouMsg\": {\n        \"enabled\": true,\n        \"text\": \"Thank you for attending the event\"\n      },\n      \"views\": {\n        \"showCount\": true\n      },\n      \"likes\": {\n        \"showCount\": true,\n        \"floatingReactions\": {\n          \"enabled\": true\n        },\n        \"reactionType\": [\n          \"laugh\",\n          \"awesome\",\n          \"like\",\n          \"applause\",\n          \"greet\"\n        ],\n        \"enabled\": true\n      },\n      \"videoQuality\": \"sd\",\n      \"customization\": {\n        \"hideCompletedSessions\": true,\n        \"enableHandRaise\": true,\n        \"hideWelcomeMessage\": true,\n        \"equalTileLayout\": false,\n        \"shouldSendSMSToAttendee\": true\n      },\n      \"practiceSession\": false,\n      \"onDemand\": false,\n      \"record\": false,\n      \"flashcard\": false,\n      \"feedLayout\": \"grid\"\n    },\n    \"registration\": {\n      \"enabled\": false,\n      \"enabledFullName\": true,\n      \"autoApprove\": true,\n      \"otpEnabled\": true,\n      \"inviteOnly\": false,\n      \"openInvite\": false,\n      \"closeBeforeDays\": 0\n    },\n    \"recording\": {\n      \"recordingType\": \"attendee_page_only_player\"\n    },\n    \"attendeeFeed\": \"live\",\n    \"activation\": {\n      \"hash\": \"_vs-p5ZUhx42846b73f6801755725171923\",\n      \"url\": \"https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923\"\n    },\n    \"attendeeWebsocketEnabled\": false,\n    \"broadcasting\": false,\n    \"qnaTimeLimit\": 3,\n    \"webinarPortal\": {\n      \"enabled\": false\n    },\n    \"sessions\": {\n      \"enabled\": true,\n      \"registrationEnabled\": false\n    },\n    \"networking\": {\n      \"enabled\": false,\n      \"availability\": \"always\"\n    },\n    \"leaderboard\": {\n      \"enabled\": false\n    },\n    \"preRecordedVideo\": {\n      \"enabled\": false,\n      \"loop\": 1\n    }\n  },\n  \"advancedOptions\": {\n    \"joinBeforeHost\": true,\n    \"loggedInOnly\": false\n  },\n  \"status\": \"active\",\n  \"roomPIN\": \"1Hn8c\",\n  \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "541f3713-5a1b-4629-93f8-ffc2071cd234",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-18T19:00:00.000Z\",\n  \"endTime\": \"2025-08-18T19:30:00.000Z\",\n  \"webinar\": {\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f70bb6ce-d43e-4801-a971-1966ede85b24",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-18T19:00:00.000Z\",\n  \"endTime\": \"2025-08-18T19:30:00.000Z\",\n  \"webinar\": {\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d49efea3-ff2d-46e0-b972-e00563f3e84b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"Test1 user's JioEvent\",\n  \"startTime\": \"2025-08-18T19:00:00.000Z\",\n  \"endTime\": \"2025-08-18T19:30:00.000Z\",\n  \"webinar\": {\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea682fa8-da90-4ab4-951d-bfceef2a8096",
+          "name": "Scheduled Webinar - Fetch a scheduled webinar",
+          "request": {
+            "name": "Scheduled Webinar - Fetch a scheduled webinar",
+            "description": {
+              "content": "This API fetches scheduled webinar/s using the meetingId, jiomeetId or the time range",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "schedule",
+                "webinar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "meetingId",
+                  "value": "<string>",
+                  "description": "The meeting Id of the scheduled webinar"
+                },
+                {
+                  "disabled": false,
+                  "key": "jiomeetId",
+                  "value": "<string>",
+                  "description": "The 10 digit unique jiomeetId of the webinar"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "Start of the time range. To be used in combination with toDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "End of the time range. To be used in combination with fromDate"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45d82eaf-ed96-4986-af8e-7f7f06a6d311",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2024-03-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-03-31"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meetingDetails\": [\n    {\n      \"jiomeetId\": \"7975873555\",\n      \"topic\": \"Test1 user's JioEvent\",\n      \"startTime\": \"2025-08-21T14:00:00.000Z\",\n      \"endTime\": \"2025-08-21T16:30:00.000Z\",\n      \"scheduledDuration\": 9000000,\n      \"meetingUrl\": \"https://jioevents.com/shortener?meetingId=7975873555&pwd=1Hn8c\",\n      \"speakerLink\": \"https://jioevents.com/guest?meetingId=7975873555&pwd=1Hn8c&memberName={firstName lastName}\",\n      \"attendeeLink\": \"https://jioevents.com/webinar/attendee/guest/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/hash=_vs-p5ZUhx42846b73f6801755725171923?firstName={firstName}&lastName={lastName}\",\n      \"webinar\": {\n        \"enabled\": true,\n        \"options\": {\n          \"quesAns\": true,\n          \"allowGuests\": true,\n          \"comments\": true,\n          \"ticker\": {\n            \"enabled\": false,\n            \"text\": \"\"\n          },\n          \"thankYouMsg\": {\n            \"enabled\": true,\n            \"text\": \"Thank you for attending the event\"\n          },\n          \"views\": {\n            \"showCount\": true\n          },\n          \"likes\": {\n            \"showCount\": true,\n            \"floatingReactions\": {\n              \"enabled\": true\n            },\n            \"reactionType\": [\n              \"laugh\",\n              \"awesome\",\n              \"like\",\n              \"applause\",\n              \"greet\"\n            ],\n            \"enabled\": true\n          },\n          \"videoQuality\": \"sd\",\n          \"customization\": {\n            \"hideCompletedSessions\": true,\n            \"enableHandRaise\": true,\n            \"hideWelcomeMessage\": true,\n            \"equalTileLayout\": false,\n            \"shouldSendSMSToAttendee\": true\n          },\n          \"practiceSession\": false,\n          \"onDemand\": false,\n          \"record\": false,\n          \"flashcard\": false,\n          \"feedLayout\": \"grid\"\n        },\n        \"registration\": {\n          \"enabled\": false,\n          \"enabledFullName\": true,\n          \"autoApprove\": true,\n          \"otpEnabled\": true,\n          \"inviteOnly\": false,\n          \"openInvite\": false,\n          \"closeBeforeDays\": 0\n        },\n        \"recording\": {\n          \"recordingType\": \"attendee_page_only_player\"\n        },\n        \"attendeeFeed\": \"live\",\n        \"activation\": {\n          \"hash\": \"_vs-p5ZUhx42846b73f6801755725171923\",\n          \"url\": \"https://jioevents.com/attendee/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/join/_vs-p5ZUhx42846b73f6801755725171923\"\n        },\n        \"attendeeWebsocketEnabled\": false,\n        \"broadcasting\": false,\n        \"qnaTimeLimit\": 3,\n        \"webinarPortal\": {\n          \"enabled\": false\n        },\n        \"sessions\": {\n          \"enabled\": true,\n          \"registrationEnabled\": false\n        },\n        \"networking\": {\n          \"enabled\": false,\n          \"availability\": \"always\"\n        },\n        \"leaderboard\": {\n          \"enabled\": false\n        },\n        \"preRecordedVideo\": {\n          \"enabled\": false,\n          \"loop\": 1\n        }\n      },\n      \"advancedOptions\": {\n        \"joinBeforeHost\": true,\n        \"loggedInOnly\": false\n      },\n      \"status\": \"active\",\n      \"roomPIN\": \"1Hn8c\",\n      \"meetingId\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277\"\n    }\n  ],\n  \"meetingsCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41a4976a-f1cb-48e8-a2bb-3784954eb455",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2024-03-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-03-31"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f21aca30-6b9c-41ba-b386-54392185bfd2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2024-03-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-03-31"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2a2ef54-98ee-4e9a-b2ca-fb4740706160",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "schedule",
+                    "webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "meetingId",
+                      "value": "sm-123456789"
+                    },
+                    {
+                      "key": "jiomeetId",
+                      "value": "1234567890"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2024-03-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-03-31"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The content type should be application/json",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d64ca2d6-d0ca-4ffb-97be-3cb30da9f98d",
+          "name": "Webinar - Download attendance/ Registration report",
+          "request": {
+            "name": "Webinar - Download attendance/ Registration report",
+            "description": {
+              "content": "This API generates and provides a download link for webinar attendance/ registration data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "platform",
+                "v1",
+                "webinar",
+                ":meetingId",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "registered",
+                  "value": "<boolean>",
+                  "description": "When set to true, generates registration report instead of attendance data"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID for which to download attendance/ registration data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e54fae45-f142-462c-ad61-42966f1a263c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "webinar",
+                    ":meetingId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "registered",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to download attendance/ registration data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"fileName\": \"sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx\",\n  \"downloadUrl\": \"https://jiomeetpro.jio.com/api/meeting/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277/webinar/download/sm-ead69d8e-8c30-42f1-9798-8acfa5dd1277-attendance.xlsx?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWxlTmFtZSI6InNtLWVhZDY5ZDhlLThjMzAtNDJmMS05Nzk4LThhY2ZhNWRkMTI3Ny1hdHRlbmRhbmNlLnhsc3giLCJpYXQiOjE3NTU3MjY5NDgsImV4cCI6MTc1NTcyNzI0OH0.nd_l91epkHKl8rZ8o8bAVR9xeN4VJXaR7SErmL8Qvr9eWUn0nHj8UhfFurP_6-Bca1_aK6kdUxJPYgr-TxR_MpkYCr9husHFz2inuWvu-dOuDPxSMNT3KeRmiTDYUm9OrUOCFj9ZjOmCL9yPUhQRGa8XC3zM37oq6jvEwCBeAyxF-_ukuRsFpQtGpXwbatZuEuziY42Mmw2hpA2DKs5MsClUcoS6EfhlYM0rNefynwvfnjSo3MPfY9yYjgFtCKO936EqnhaD4nFsBTGIk3f4_8ZRIve3fR7oWq-uAAaJey4TJcq1vhNqOScCFliLFrpaUnYZaaGfubw2kqxn_61vBQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c03f289-4e25-490c-a8c6-6f769efdcdc3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "webinar",
+                    ":meetingId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "registered",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to download attendance/ registration data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3af18f54-70ae-4655-9937-b3b9d2c29232",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "webinar",
+                    ":meetingId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "registered",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to download attendance/ registration data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 69.86614626917076,\n  \"message\": \"string\",\n  \"errors\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6bae992-bc09-4b90-bb02-daa4e4780bb4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "platform",
+                    "v1",
+                    "webinar",
+                    ":meetingId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "registered",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID for which to download attendance/ registration data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) You need an app created on the JioEvents Platform and using the app credentials you can create a JWT to access this API. The JWT should have an issuer and the key \"app\" with the app id generated from the Platform.",
+                    "key": "Authorization",
+                    "value": "<Authentication_token_signed_using_secret_or_private_key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customCode\": 1281.591295328217,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://jioevents.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad47300e-c88c-48d4-a401-cb6e92cff9b2",
+    "name": "JioEvents Platform APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This section covers the JioEvents Platform APIs which can be used to quickly setup JioEvents APIs in your backend for event management and virtual event hosting.",
+      "type": "text/plain"
+    }
+  }
+}
