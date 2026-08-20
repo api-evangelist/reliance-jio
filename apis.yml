@@ -95,6 +95,11 @@ apis:
   tags:
   - Video
   - Meetings
+  - Authentication
+  - Identity
+  tags_raw:
+  - Video
+  - Meetings
   - OAuth
   - Identity
   properties:
@@ -123,6 +128,10 @@ apis:
   humanURL: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
   baseURL: https://jioevents.com
   tags:
+  - Event
+  - Webinars
+  - Video
+  tags_raw:
   - Events
   - Webinars
   - Video
