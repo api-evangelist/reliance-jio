@@ -52,108 +52,13 @@ created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.23'
 apis:
-- aid: reliance-jio:jiomeet-platform-server-api
-  name: JioMeet Platform Server API
-  description: Server-to-server REST API for the JioMeet video meeting platform, documented
-    publicly at dev.jiomeet.com. Covers creating dynamic meetings, creating, fetching,
-    updating and deleting scheduled meetings, starting, stopping and listing recordings,
-    checking recording status, listing chat threads, and pulling meeting reports. Authentication
-    is an HS256-signed JWT built from an app id and secret generated in the JioMeet
-    platform console. No public base URL is stated in the documentation and no OpenAPI
-    document is served, but the OpenAPI source is embedded in the published documentation
-    build and has been harvested to openapi/ (11 operations, server https://jiomeetpro.jio.com).
-  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
-  baseURL: https://jiomeetpro.jio.com
-  tags:
-  - Video
-  - Meetings
-  - Recording
-  - Collaboration
-  properties:
-  - type: Documentation
-    url: https://dev.jiomeet.com/docs/quick-start/integrate-with-ser
-  - type: APIReference
-    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
-  - type: Authentication
-    url: https://dev.jiomeet.com/docs/quick-start/authentication
-  - type: OpenAPI
-    url: openapi/reliance-jio-jiomeet-platform-openapi.yml
-  - type: Overlay
-    url: overlays/reliance-jio-jiomeet-platform-overlay.yaml
-  - type: AgentSkill
-    name: Create and record a JioMeet meeting
-    url: skills/reliance-jio-create-and-record-a-meeting.md
-- aid: reliance-jio:jiomeet-platform-oauth-api
-  name: JioMeet Platform OAuth API
-  description: User-authorized REST API for JioMeet, using OAuth 2.0. An access and
-    refresh token are obtained from the /api/oauth2/v2/token endpoint using HTTP Basic
-    authentication with an OAuth client id and secret, and subsequent calls use HTTP
-    Bearer authentication. Documented operations cover creating, fetching, listing,
-    updating and deleting a user's scheduled meetings and fetching user profile info.
-  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
-  baseURL: https://jiomeetpro.jio.com
-  tags:
-  - Video
-  - Meetings
-  - Authentication
-  - Identity
-  tags_raw:
-  - Video
-  - Meetings
-  - OAuth
-  - Identity
-  properties:
-  - type: Documentation
-    url: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
-  - type: APIReference
-    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
-  - type: Authentication
-    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/access-token-endpoint-fetch-access-and-refresh-token
-  - type: OpenAPI
-    url: openapi/reliance-jio-jiomeet-oauth-openapi.yml
-  - type: Overlay
-    url: overlays/reliance-jio-jiomeet-oauth-overlay.yaml
-  - type: OAuthScopes
-    url: scopes/reliance-jio-scopes.yml
-  - type: AgentSkill
-    name: Manage a JioMeet user's meetings with OAuth
-    url: skills/reliance-jio-manage-user-meetings-with-oauth.md
-- aid: reliance-jio:jioevents-platform-server-api
-  name: JioEvents Platform Server API
-  description: Server-side REST API for JioEvents, Jio's webinar and virtual event
-    platform, documented alongside JioMeet at dev.jiomeet.com. Covers creating, fetching,
-    updating and deleting scheduled webinars, creating, listing and deleting sessions,
-    creating, listing and deleting meeting invites, and downloading attendance and
-    registration reports.
-  humanURL: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
-  baseURL: https://jioevents.com
-  tags:
-  - Event
-  - Webinars
-  - Video
-  tags_raw:
-  - Events
-  - Webinars
-  - Video
-  properties:
-  - type: Documentation
-    url: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
-  - type: APIReference
-    url: https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/scheduled-webinar-create-a-scheduled-webinar
-  - type: OpenAPI
-    url: openapi/reliance-jio-jioevents-platform-openapi.yml
-  - type: Overlay
-    url: overlays/reliance-jio-jioevents-platform-overlay.yaml
-  - type: AgentSkill
-    name: Run a JioEvents webinar end to end
-    url: skills/reliance-jio-run-a-jioevents-webinar.md
 - aid: reliance-jio:jiopayments-stb-api
   name: JioPayments Set-Top-Box API
-  description: In-app purchase and digital content payment API for applications published
-    on the Jio set-top box, distributed by Jio Platforms as a downloadable PDF API
-    specification (v1.1) from the JioDevelopers set-top-box developer page. The specification
-    PDF is publicly retrievable without login; the developer console that issues credentials
-    is behind a sign-up wall.
+  description: >-
+    In-app purchase and digital content payment API for applications published on the Jio set-top box,
+    distributed by Jio Platforms as a downloadable PDF API specification (v1.1) from the JioDevelopers
+    set-top-box developer page. The specification PDF is publicly retrievable without login; the developer
+    console that issues credentials is behind a sign-up wall.
   humanURL: https://developer.jio.com/set-top-box.html
   tags:
   - Payments
@@ -163,8 +68,85 @@ apis:
   - type: Documentation
     url: https://developer.jio.com/set-top-box.html
   - type: APIReference
-    url: https://jiomedia.akamaized.net//JioStore/Downloads/DeveloperToolKit/STB/JioPayments-STB-APISpecs-v1.1.pdf
+    url: >-
+      https://jiomedia.akamaized.net//JioStore/Downloads/DeveloperToolKit/STB/JioPayments-STB-APISpecs-v1.1.pdf
+- aid: reliance-jio:reliance-jio-jioeventscpaasplatform-api
+  name: Reliance Jio Jio Events Cpaas Platform API
+  description: >-
+    The JioEventsCpaasPlatform API from Reliance Jio — 6 operation(s) for jioeventscpaasplatform.
+  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  baseURL: https://jiomeetpro.jio.com
+  tags:
+  - JioEventsCpaasPlatform
+  properties:
+  - type: OpenAPI
+    url: openapi/reliance-jio-jioeventscpaasplatform-api-openapi.yml
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate-with-ser
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  - type: Authentication
+    url: https://dev.jiomeet.com/docs/quick-start/authentication
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
+  - type: Authentication
+    url: >-
+      https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/access-token-endpoint-fetch-access-and-refresh-token
+  - type: OAuthScopes
+    url: scopes/reliance-jio-scopes.yml
+  - type: Documentation
+    url: >-
+      https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
+  - type: APIReference
+    url: >-
+      https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/scheduled-webinar-create-a-scheduled-webinar
+- aid: reliance-jio:reliance-jio-jiomeetcpaasplatform-api
+  name: Reliance Jio Jio Meet Cpaas Platform API
+  description: >-
+    The JioMeetCpaasPlatform API from Reliance Jio — 14 operation(s) for jiomeetcpaasplatform.
+  humanURL: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  baseURL: https://jiomeetpro.jio.com
+  tags:
+  - JioMeetCpaasPlatform
+  properties:
+  - type: OpenAPI
+    url: openapi/reliance-jio-jiomeetcpaasplatform-api-openapi.yml
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate-with-ser
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20Server%20APIs/jiomeet-platform-apis
+  - type: Authentication
+    url: https://dev.jiomeet.com/docs/quick-start/authentication
+  - type: Documentation
+    url: https://dev.jiomeet.com/docs/quick-start/integrate_using_oauth_client
+  - type: APIReference
+    url: https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/jiomeet-user-oauth-apis
+  - type: Authentication
+    url: >-
+      https://dev.jiomeet.com/docs/JioMeet%20Platform%20OAuth%20APIs/access-token-endpoint-fetch-access-and-refresh-token
+  - type: OAuthScopes
+    url: scopes/reliance-jio-scopes.yml
+  - type: Documentation
+    url: >-
+      https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/jioevents-platform-apis
+  - type: APIReference
+    url: >-
+      https://dev.jiomeet.com/docs/JioEvents%20Platform%20Server%20APIs/scheduled-webinar-create-a-scheduled-webinar
 common:
+- type: Overlay
+  url: overlays/reliance-jio-jiomeet-platform-overlay.yaml
+- type: AgentSkill
+  url: skills/reliance-jio-create-and-record-a-meeting.md
+- type: Overlay
+  url: overlays/reliance-jio-jiomeet-oauth-overlay.yaml
+- type: AgentSkill
+  url: skills/reliance-jio-manage-user-meetings-with-oauth.md
+- type: Overlay
+  url: overlays/reliance-jio-jioevents-platform-overlay.yaml
+- type: AgentSkill
+  url: skills/reliance-jio-run-a-jioevents-webinar.md
 - type: AgenticAccess
   url: agentic-access/reliance-jio-agentic-access.yml
 - type: Authentication
