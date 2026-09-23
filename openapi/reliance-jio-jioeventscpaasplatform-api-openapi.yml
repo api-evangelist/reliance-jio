@@ -231,6 +231,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1MeetingInvite
+      x-operation-id-source: derived
   /api/platform/v1/sessions/{meetingId}/{sessionId}:
     delete:
       summary: Sessions - Delete a session
@@ -332,6 +334,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: deleteApiPlatformV1SessionsByMeetingIdBySessionId
+      x-operation-id-source: derived
   /api/platform/v1/sessions/{meetingId}:
     post:
       summary: Sessions - Create a session
@@ -669,6 +673,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1SessionsByMeetingId
+      x-operation-id-source: derived
     get:
       summary: Sessions - Get sessions
       description: This API retrieves all sessions for a specific meeting including meeting details and speakers
@@ -1001,6 +1007,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1SessionsByMeetingId
+      x-operation-id-source: derived
   /api/platform/v1/meetingInvite/{meetingId}:
     delete:
       summary: Meeting Invite - Delete meeting invites
@@ -1112,6 +1120,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: deleteApiPlatformV1MeetingInviteByMeetingId
+      x-operation-id-source: derived
     get:
       summary: Meeting Invite - Get meeting invites
       description: This API retrieves meeting invites for a specific meeting with pagination and filtering capabilities
@@ -1306,6 +1316,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1MeetingInviteByMeetingId
+      x-operation-id-source: derived
   /api/platform/v1/schedule/webinar:
     delete:
       summary: Scheduled Webinar - Delete a scheduled webinar
@@ -1409,6 +1421,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: deleteApiPlatformV1ScheduleWebinar
+      x-operation-id-source: derived
     put:
       summary: Scheduled Webinar - Update a scheduled webinar
       description: This API updates a scheduled webinar using the meetingId returned when the webinar was created
@@ -1929,6 +1943,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: putApiPlatformV1ScheduleWebinar
+      x-operation-id-source: derived
     post:
       summary: Scheduled Webinar - Create a scheduled webinar
       description: This API creates a scheduled webinar. Webinar validity is maintained until the host establishes the start time and end time parameters.
@@ -2433,6 +2449,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1ScheduleWebinar
+      x-operation-id-source: derived
     get:
       summary: Scheduled Webinar - Fetch a scheduled webinar
       description: This API fetches scheduled webinar/s using the meetingId, jiomeetId or the time range
@@ -2949,6 +2967,8 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1ScheduleWebinar
+      x-operation-id-source: derived
   /api/platform/v1/webinar/{meetingId}/download:
     get:
       summary: Webinar - Download attendance/ Registration report
@@ -3060,3 +3080,5 @@ paths:
                     type: array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1WebinarByMeetingIdDownload
+      x-operation-id-source: derived

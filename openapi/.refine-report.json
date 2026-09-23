@@ -1,0 +1,31 @@
+{
+  "provider": "reliance-jio",
+  "sources": [
+    "_original/jio-jioevents-platform-openapi.json",
+    "_original/jio-jiomeet-oauth-openapi.json",
+    "_original/jio-jiomeet-platform-openapi.json"
+  ],
+  "outputs": [
+    "reliance-jio-jioeventscpaasplatform-api-openapi.yml",
+    "reliance-jio-jiomeetcpaasplatform-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "3 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "jio-jioevents-platform-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jio-jiomeet-oauth-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jio-jiomeet-platform-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'JioMeetCpaasPlatform' spans 2 source specs (jio-jiomeet-oauth-openapi.json, jio-jiomeet-platform-openapi.json): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/reliance-jio-jiomeet-platform-openapi.yml: archived document superseded by a larger archived document",
+    "_original/reliance-jio-jiomeet-oauth-openapi.yml: archived document superseded by a larger archived document",
+    "_original/reliance-jio-jioevents-platform-openapi.yml: archived document superseded by a larger archived document",
+    "reliance-jio-jioeventscpaasplatform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "reliance-jio-jiomeetcpaasplatform-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

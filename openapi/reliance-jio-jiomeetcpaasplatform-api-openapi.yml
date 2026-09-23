@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Reliance Jio Jio Meet Cpaas Platform API
   version: 1.0.0
-  description: 'Operations tagged JioMeetCpaasPlatform across 2 of this provider''s published API definitions: reliance-jio-jiomeet-oauth-openapi.yml, reliance-jio-jiomeet-platform-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged JioMeetCpaasPlatform across 2 of this provider''s published API definitions: jio-jiomeet-oauth-openapi.json, jio-jiomeet-platform-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://jiomeetpro.jio.com
 tags:
@@ -11,7 +11,7 @@ paths:
   /api/meeting/meetingDetails/{meetingId}:
     get:
       summary: Scheduled Meeting - Fetch a scheduled meeting
-      description: 'This API fetches details of a scheduled meeting using the provided meetingId.  Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meeting details'
+      description: 'This API fetches details of a scheduled meeting using the provided meetingId. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meeting details'
       tags:
       - JioMeetCpaasPlatform
       parameters:
@@ -133,6 +133,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiMeetingMeetingDetailsByMeetingId
+      x-operation-id-source: derived
     put:
       summary: Scheduled Meeting - Update a scheduled meeting
       description: 'This API updates a scheduled meeting using the meetingId returned when the meeting was created. Required OAuth scope: `meeting:update` - To grant permission to update the scheduled meeting.'
@@ -320,6 +322,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: putApiMeetingMeetingDetailsByMeetingId
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/meeting:
@@ -512,6 +516,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiMeeting
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/oauth2/v2/token:
@@ -642,12 +648,14 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiOauth2V2Token
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/meeting/{userId}:
     get:
       summary: Scheduled Meeting - List all meetings of user
-      description: 'Fetch all scheduled meetings for a user based on various filters such as meetingId, jiomeetId, or a specific time range.  Use the optional query parameters to refine the search. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meetings.'
+      description: 'Fetch all scheduled meetings for a user based on various filters such as meetingId, jiomeetId, or a specific time range. Use the optional query parameters to refine the search. Required OAuth scope: `meeting:read` - To grant permission to read the scheduled meetings.'
       tags:
       - JioMeetCpaasPlatform
       parameters:
@@ -787,6 +795,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiMeetingByUserId
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/my_profile:
@@ -882,12 +892,14 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiMyProfile
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/meeting/cancel/{meetingId}:
     post:
       summary: Scheduled Meeting - Delete a scheduled meeting
-      description: 'This API deletes a scheduled meeting using the meetingId returned when the meeting was created.  Required OAuth scope: `meeting:delete` - To grant permission to delete the scheduled meeting.'
+      description: 'This API deletes a scheduled meeting using the meetingId returned when the meeting was created. Required OAuth scope: `meeting:delete` - To grant permission to delete the scheduled meeting.'
       tags:
       - JioMeetCpaasPlatform
       parameters:
@@ -989,6 +1001,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiMeetingCancelByMeetingId
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/recordings/start:
@@ -1097,6 +1111,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1RecordingsStart
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/room:
@@ -1220,6 +1236,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1Room
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/recordings/list:
@@ -1336,6 +1354,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1RecordingsList
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/schedule/meeting:
@@ -1539,6 +1559,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: putApiPlatformV1ScheduleMeeting
+      x-operation-id-source: derived
     delete:
       summary: Scheduled Meeting - Delete a scheduled meeting
       description: This API deletes a scheduled meeting using the meetingId returned when the meeting was created
@@ -1640,6 +1662,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: deleteApiPlatformV1ScheduleMeeting
+      x-operation-id-source: derived
     post:
       summary: Scheduled Meeting - Create a scheduled meeting
       description: This API creates a scheduled meeting. Scheduled meetings are valid for till after 1 day from the start time of the meeting.
@@ -1836,6 +1860,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1ScheduleMeeting
+      x-operation-id-source: derived
     get:
       summary: Scheduled Meeting - Fetch a scheduled meeting
       description: This API fetches scheduled meeting/s using the meetingId, jiomeetId or the time range. Click the "Show optional parameters" button to test the query parameters
@@ -1963,6 +1989,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1ScheduleMeeting
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/recordings/isrecording:
@@ -2063,6 +2091,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1RecordingsIsrecording
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/recordings/stop:
@@ -2171,6 +2201,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: postApiPlatformV1RecordingsStop
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/analytics/report:
@@ -2349,6 +2381,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1AnalyticsReport
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
   /api/platform/v1/chat/thread:
@@ -2465,6 +2499,8 @@ paths:
                     type: Array
                     description: The errors array which includes objects with a "property" and "message" properties describing the error
                 title: ValidationError
+      operationId: getApiPlatformV1ChatThread
+      x-operation-id-source: derived
     servers:
     - url: https://jiomeetpro.jio.com
 components:
@@ -2482,5 +2518,5 @@ components:
 
         '
 x-refined-from:
-- reliance-jio-jiomeet-oauth-openapi.yml
-- reliance-jio-jiomeet-platform-openapi.yml
+- jio-jiomeet-oauth-openapi.json
+- jio-jiomeet-platform-openapi.json
