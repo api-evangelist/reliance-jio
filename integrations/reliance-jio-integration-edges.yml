@@ -19,7 +19,88 @@ edges:
     api_families_basis: null
     detected_by: sweep-telco-network-apis.py
     detected: '2026-10-12'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@jiomeet/core-sdk-web
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@jiomeet/core-sdk-web'
+      version: 1.1.1
+      released: '2025-09-26'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@jiomeet/core-sdk-web
+      repo_leg: github-org:jiomeet
+      publisher_leg: org:jiomeet
+      matched_by: github-org
+    - name: '@jiomeet/core-template-web'
+      version: 1.1.1
+      released: '2025-09-26'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@jiomeet/core-template-web
+      repo_leg: github-org:jiomeet
+      publisher_leg: org:jiomeet
+      matched_by: github-org
+    - name: '@jiomeet/core_sdk_plugin'
+      version: 2.3.2
+      released: '2025-09-26'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@jiomeet/core_sdk_plugin
+      repo_leg: github-org:jiomeet
+      publisher_leg: org:jiomeet
+      matched_by: github-org
+    - name: '@jiomeet/healthcare-template-react-native'
+      version: 1.2.0
+      released: '2025-09-26'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@jiomeet/healthcare-template-react-native
+      repo_leg: github-org:jiomeet
+      publisher_leg: org:jiomeet
+      matched_by: github-org
+    - name: '@jiomeet/hooks-sdk-web'
+      version: 1.1.1
+      released: '2025-09-26'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@jiomeet/hooks-sdk-web
+      repo_leg: github-org:jiomeet
+      publisher_leg: org:jiomeet
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 generated: '2026-10-12'
 method: searched
 checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
 - https://raw.githubusercontent.com/camaraproject/camara-landscape/main/landscape.yml
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
+source:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
